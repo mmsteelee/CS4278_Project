@@ -16,11 +16,34 @@ MERN fullstack application:
 
 # Developer Info
 
-### Setup
+## Server setup with Express.js and Node.js
 
-TODO
+[Download Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and run
+```
+npm i express mongoose body-parser bcryptjs validation
+```
+and 
+```
+npm i -D nodemon
+```
+to install the server and developer dependencies 
 
-### Useful Links
+Now to start the server, type
+```
+npm run app
+```
+in the terminal to start the Node Js server on your machine. You can acess the server by acessing http://localhost:8082 on the browser. Nodemon automatically restarts the server when you make changes to the backend files
+
+## Frontend Development
+
+cd into the vandy_run_club_client directory and run
+```
+npm start
+```
+which will launch the client code in the browser. Put http://localhost:3000 into the browser to access.
+
+
+## Useful Links
 [MERN full tutorial](https://blog.logrocket.com/mern-stack-tutorial/)
 
 [Website Using Maps Routes](https://onthegomap.com/#/create)
