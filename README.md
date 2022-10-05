@@ -18,6 +18,8 @@ MERN fullstack application:
 
 ## Server setup with Express.js and Node.js
 
+CD into the server directory.
+
 [Download Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and run
 ```
 npm i express mongoose body-parser bcryptjs validation
@@ -36,7 +38,7 @@ in the terminal to start the Node Js server on your machine. You can acess the s
 
 ## Frontend Development
 
-cd into the vandy_run_club_client directory and run
+cd into the client directory and run
 ```
 npm start
 ```
