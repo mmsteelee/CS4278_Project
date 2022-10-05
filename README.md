@@ -22,7 +22,7 @@ CD into the server directory.
 
 [Download Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and run
 ```
-npm i express mongoose body-parser bcryptjs validation
+npm i express mongoose body-parser bcryptjs validation cors dotenv
 ```
 and 
 ```
@@ -40,6 +40,10 @@ in the terminal to start the Node Js server on your machine. You can acess the s
 
 cd into the client directory and run
 ```
+npm install reactstrap
+```
+to download node modules for the client then run 
+```
 npm start
 ```
 which will launch the client code in the browser. Put http://localhost:3000 into the browser to access.
@@ -47,6 +51,8 @@ which will launch the client code in the browser. Put http://localhost:3000 into
 
 ## Useful Links
 [MERN full tutorial](https://blog.logrocket.com/mern-stack-tutorial/)
+
+[Connecting MangoDB to Backend](https://www.mongodb.com/languages/mern-stack-tutorial)
 
 [Website Using Maps Routes](https://onthegomap.com/#/create)
 - [GitHub](https://github.com/onthegomap)
