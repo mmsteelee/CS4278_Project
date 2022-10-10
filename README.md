@@ -16,36 +16,18 @@ MERN fullstack application:
 
 # Developer Info
 
-## Server setup with Express.js and Node.js
+Install all dependencies 
 
-CD into the server directory.
+```
+npm install
+```
 
-[Download Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and run
-```
-npm i express mongoose body-parser bcryptjs validation cors dotenv
-```
-and 
-```
-npm i -D nodemon
-```
-to install the server and developer dependencies 
+Run server and client
 
-Now to start the server, type
-```
-npm run app
-```
-in the terminal to start the Node Js server on your machine. You can acess the server by acessing http://localhost:8082 on the browser. Nodemon automatically restarts the server when you make changes to the backend files
-
-## Frontend Development
-
-cd into the client directory and run
-```
-npm install reactstrap
-```
-to download node modules for the client then run 
 ```
 npm start
 ```
+
 which will launch the client code in the browser. Put http://localhost:3000 into the browser to access.
 
 

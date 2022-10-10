@@ -1,0 +1,22 @@
+{
+  "name": "VU Run Club Web App",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "main": "",
+  "license": "ISC",
+  "keywords": [],
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmsteelee/VandyRunClubSite.git"
+  },
+  "scripts": {
+    "install": "concurrently \"cd ./server && npm i\" \"cd ./client && npm i\"",
+    "start": "concurrently \"cd ./server && npm start\" \"cd ./client && npm start\"",
+    "delete-modules": "rm -r ./node_modules && cd ./server && rm -r ./node_modules && cd ../client && rm -r ./node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^6.3.0"
+  }
+}
