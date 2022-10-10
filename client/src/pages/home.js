@@ -1,5 +1,7 @@
 import React from 'react'
-import './home.style.css'
+import '../styles/home.css'
+
+import Header from '../components/Header'
 
 
 // import CustomButton from '../../components/custom-button/custom-buttom.component'
@@ -17,7 +19,7 @@ const HomePage = () => {
       <div class="site-wrapper-inner">
 
         <div class="container">
-        <Header/>
+        {/* <Header/> */}
         
           {/* <div class="masthead clearfix">
             <div class="container inner">
@@ -33,7 +35,7 @@ const HomePage = () => {
           </div> */}
 
           <div class="inner cover">
-            <h1 class="cover-heading">Welcome to the Vady Run Club</h1>
+            <h1 class="cover-heading">Welcome to the Vandy Run Club</h1>
             <p class="lead">Check the calendar below for upcoming events!</p>
             <p class="lead">
                 <div>
