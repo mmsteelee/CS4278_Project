@@ -7,8 +7,8 @@ import Header from '../components/Header'
 import { ReactEmbeddedGoogleCalendar } from 'react-embedded-google-calendar'
 import NavBar from '../components/NavBar.js'
 
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
 
 
 // import CustomButton from '../../components/custom-button/custom-buttom.component'
@@ -22,8 +22,9 @@ const HomePage = () => {
 
   return (
     <div>
+      <NavBar/>
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,7 +43,7 @@ const HomePage = () => {
             </ul>
           </div>
         </nav>
-      </div>
+      </div> */}
 
       <div class="container">
         <div class="inner cover">
@@ -62,7 +63,7 @@ const HomePage = () => {
 
     </div>
 
-    //</div>
+    </div>
   )
 }
 
