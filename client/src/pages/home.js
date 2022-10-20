@@ -19,8 +19,7 @@ import NavBar from '../components/NavBar.js'
 
 const HomePage = () => {
   // const scrollOffset = -1*window.innerHeight*.1
-
-console.log(test);
+ 
 
   return (
     <div>
