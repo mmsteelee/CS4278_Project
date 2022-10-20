@@ -1,12 +1,12 @@
 import {useAuth} from './contexts/AuthContext'
 // import Header from './components/Header'
 
-import CreateARun from './pages/create';
-import FindARun from './pages/find';
-import FindYourRun from './pages/FindYourRun';
+//import CreateARun from './pages/create';
+// import FindARun from './pages/find';
+// import FindYourRun from './pages/FindYourRun';
 import HomePage from './pages/home'
 import Links from './pages/links'
-import MeetTheTeam from './pages/meetTheTeam';
+// import MeetTheTeam from './pages/meetTheTeam';
 
 
 //import {Link} from "react-router-dom";
@@ -40,9 +40,9 @@ function App() {
       <Router>
         <Routes>
       
-          <Route exact path="/" component={MeetTheTeam} />
+          {/* <Route exact path="/" component={MeetTheTeam} /> */}
           <Route path="/about" component={Links} />
-          <Route path="/contactus" component={FindYourRun} />
+          {/* <Route path="/contactus" component={FindYourRun} /> */}
             
           <Navigate to="/" />
         </Routes>

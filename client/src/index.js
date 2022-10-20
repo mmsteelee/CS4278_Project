@@ -6,6 +6,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import '@fontsource/roboto'
 import './styles/index.css'
 
+window.React1 = require('react');
+
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
