@@ -1,15 +1,22 @@
 const express = require('express')
-const login = require('../controllers/auth/login')
+const {login, user, exp} = require('../controllers/auth')
 const auth  = require('../middlewares/auth')
-const user = require('../controllers/auth/user')
 
-// initialize router
 const router = express.Router()
 
-// POST at path: http://localhost:8080/auth/login
+// @route       POST auth/login
+// @desc        Post user google data
+// @access      Public
 router.post('/login', login)
 
-// GET at path: http://localhost:8080/auth/user
+// @route       GET auth/user
+// @desc        Get user data
+// @access      Private
 router.get('/user', auth, user)
+
+// @route       GET auth/exp
+// @desc        Get token expiration time
+// @access      Public
+router.get('/exp', exp)
 
 module.exports = router

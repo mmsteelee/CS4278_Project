@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import useStyles from './styles';
-import {api as axios} from '../../utils/axios'
+import { login } from "../../api/auth";
 
 import {useGoogleLogin} from '@react-oauth/google';
 import { Navigate } from "react-router-dom"
@@ -24,11 +24,7 @@ const Auth = () => {
         setsignInText('Logging into Vandy Run Club!')
 
         // API Call
-        await axios({
-            method: "POST",
-            url: "/auth/login",
-            data: {accessToken}
-        })
+        await login(accessToken)
         .then( res => {
             if(res.data.message) {
                 setsignInText(res.data.message + '. Please try again with a valid vanderbilt.edu email')
@@ -39,7 +35,7 @@ const Auth = () => {
         })
         .catch(err => console.log("ERROR: ", err.json))
     }
-    const login = useGoogleLogin({onSuccess: handleGoogleLoginSuccess})
+    const googleLogin = useGoogleLogin({onSuccess: handleGoogleLoginSuccess})
 
     return(
         <div>
@@ -52,7 +48,7 @@ const Auth = () => {
                 <Typography varient="h5">
                     {signInText}
                 </Typography>
-                <Button fullWidth variant="contained" className={classes.googleButton} color="primary" onClick={() => login()}>
+                <Button fullWidth variant="contained" className={classes.googleButton} color="primary" onClick={() => googleLogin()}>
                     Google Sign In
                  </Button>
             </Paper>
