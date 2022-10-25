@@ -20,7 +20,9 @@
     "concurrently": "^6.3.0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "bootstrap": "^5.2.2",
+    "jwt-decode": "^3.1.2",
     "react-bootstrap": "^2.5.0",
     "react-bootstrap-navbar": "^1.1.0",
     "react-embedded-google-calendar": "^1.0.11"

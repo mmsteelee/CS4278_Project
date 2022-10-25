@@ -3,7 +3,6 @@ import '../styles/home.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Header from '../components/Header'
 import { ReactEmbeddedGoogleCalendar } from 'react-embedded-google-calendar'
 import NavBar from '../components/NavBar.js'
 

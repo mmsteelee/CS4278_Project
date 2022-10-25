@@ -6,14 +6,21 @@ const instance = new mongoose.Schema(
       document ID is set by default via MongoDB - next line is deprecated
       _id: mongoose.Schema.Types.ObjectId,
     */
-
-    username: {
+    email: {
       type: String,
       required: true,
       lowercase: true,
       unique: true,
     },
-    password: {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    picture: {
       type: String,
       required: true,
     },

@@ -1,59 +1,59 @@
-const joi = require('joi')
-const bcrypt = require('bcrypt')
 const Account = require('../../models/Account')
-const {signToken} = require('../../middlewares/jsonwebtoken')
+const axios = require('axios')
+const jwt = require('jsonwebtoken')
 
-async function login(request, response, next) {
-  try {
-    // Validate request data
-    await joi
-      .object({
-        username: joi.string().required(),
-        password: joi.string().required(),
-      })
-      .validateAsync(request.body)
-  } catch (error) {
-    return response.status(400).json({
-      error: 'ValidationError',
-      message: error.message,
-    })
-  }
+const login = async (req, res) => { 
+  const googleAccessToken = req.body.accessToken;
+  axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: {
+            "Authorization": `Bearer ${googleAccessToken}`
+        }
+  }).then(async response => {
+    const firstName = response.data.given_name;
+    const lastName = response.data.family_name;
+    const email = response.data.email;
+    const picture = response.data.picture;
 
-  try {
-    const {username, password} = request.body
-
-    // Get account from DB, and verify existance
-    const foundAccount = await Account.findOne({username})
-    if (!foundAccount) {
-      return response.status(400).json({
-        message: 'Bad credentials',
-      })
+    if (email.split('@')[1].toLowerCase() !== 'vanderbilt.edu') {
+      console.log('Invalid Email Domain: ' + email)
+      return res.status(200).json({message: "Invalid Email Domain"})
     }
 
-    // Decrypt and verify password
-    const passOk = await bcrypt.compare(password, foundAccount.password)
-    if (!passOk) {
-      return response.status(400).json({
-        message: 'Bad credentials',
-      })
+    const existingUser = await Account.findOne({email})
+
+    if (existingUser) {
+      const token = jwt.sign({
+        email: existingUser.email,
+        id: existingUser._id
+      }, process.env.JWT_SECRET, {expiresIn: "1h"})
+
+      console.log('Existing user: ' + existingUser)
+      
+      res
+        .status(200)
+        .json({result: existingUser, token})
+    } else {
+      const result = await Account.create({verified:"true",email, firstName, lastName, picture: picture, role:"user"})
+
+      const token = jwt.sign({
+          email: result.email,
+          id: result._id
+      }, process.env.JWT_SECRET, {expiresIn: "1h"})
+
+      console.log('New user: ' + result)
+
+      res
+        .status(200)
+        .json({result, token})
+
+      console.log(res)
     }
-
-    // Remove password from response data
-    foundAccount.password = undefined
-    delete foundAccount.password
-
-    // Generate access token
-    const token = signToken({uid: foundAccount._id, role: foundAccount.role})
-
-    response.status(200).json({
-      message: 'Succesfully logged-in',
-      data: foundAccount,
-      token,
-    })
-  } catch (error) {
-    console.error(error)
-    response.status(500).send()
-  }
+  }).catch(err => {
+    console.log('Error: ' + err)
+    res
+      .status(400)
+      .json({message: "Invalid access token!"})
+  })
 }
 
 module.exports = login
