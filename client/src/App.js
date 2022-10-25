@@ -15,18 +15,17 @@ export default function App() {
   const [cookies, setCookie] = useCookies(['name'])
   
   useEffect(() => {
-    console.log(cookies.token)
+    // fetch user information if token still stored in cookies
     async function auth(){
       await axios({
           method: "GET",
-          url: "/auth/user",
-          withCredentials: true
+          url: "/auth/user"
       })
       .then(resUser => setUser(resUser.data))
-      .catch(err => console.log("ERROR: ", err.json))
+      .catch(err => console.log("ERROR: ", err.json))    
     }
     auth()
-  })
+  }, [])
 
   return (
     <div className='App'>

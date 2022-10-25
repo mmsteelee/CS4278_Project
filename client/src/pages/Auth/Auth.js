@@ -21,7 +21,6 @@ const Auth = () => {
     async function handleGoogleLoginSuccess(tokenResponse) {
         const accessToken = tokenResponse.access_token;
         
-        console.log(accessToken)
         setsignInText('Logging into Vandy Run Club!')
 
         // API Call
@@ -31,13 +30,11 @@ const Auth = () => {
             data: {accessToken}
         })
         .then( res => {
-            console.log(res)
             if(res.data.message) {
                 setsignInText(res.data.message + '. Please try again with a valid vanderbilt.edu email')
             } else {
-                setUser(res.data.result)
                 setCookie('token', res.data.token, {path:'/'})
-                console.log('set token cookie')
+                setUser(res.data.result)
             }  
         })
         .catch(err => console.log("ERROR: ", err.json))
