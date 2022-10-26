@@ -2,15 +2,21 @@ import React, {createContext, useEffect, useState}  from 'react'
 import {Routes , Navigate, Route} from 'react-router-dom'
 import { useCookies } from 'react-cookie';
 
-// import Header from './components/Header'
 import HomePage from './pages/home'
 import Auth from './pages/Auth/Auth'
 import Links from './components/links'
+import FindYourRun from './components/findyourrun.js';
+import MeetTheTeam from './components/meetTheTeam.js';
+import CreateARun from './components/create.js';
+import FindARun from './components/find.js';
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';
 
 import {user as tokenLogin, exp} from './api/auth'
+// import Create from './components/create';
+// import FindARun from './components/find.js';
+// import CreateARun from './components/create.js';
 
 export const UserContext = createContext(null)
 export const CookieContext = createContext(null)
@@ -59,6 +65,10 @@ export default function App() {
             <Route exact path="/" element={user ? <HomePage/> : <Navigate to="/auth"/>}></Route>
             <Route exact path="/auth" element={<Auth/>}></Route>
             <Route exact path="/links" element={user ? <Links/> : <Navigate to="/auth"/>}></Route>
+            <Route exact path="/findyourrun" element={user ? <FindYourRun/> : <Navigate to="/auth"/>}></Route>
+            <Route exact path="/meettheteam" element={user ? <MeetTheTeam/> : <Navigate to="/auth"/>}></Route>
+            <Route exact path="/createarun" element={user ? <CreateARun/> : <Navigate to="/auth"/>}></Route>
+            <Route exact path="/findarun" element={user ? <FindARun/> : <Navigate to="/auth"/>}></Route>
           </Routes>
         }
         <PopUpDialog

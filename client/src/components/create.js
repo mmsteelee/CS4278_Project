@@ -2,17 +2,17 @@ import React from 'react'
 // //import { Link } from "react-router-dom";
 import NavBar from './NavBar.js'
 
-const Links = () => {
+const CreateARun = () => {
     return (
       <div>
         <NavBar/>
     
       <div className='container'>
         
-        <h1>Links</h1>
+        <h1>Create a run</h1>
       </div>
       </div>
     );
   };
     
-  export default Links;
+  export default CreateARun;
