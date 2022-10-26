@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 // import Header from './components/Header'
 import HomePage from './pages/home'
 import Auth from './pages/Auth/Auth'
+import Links from './components/links'
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';
@@ -55,8 +56,9 @@ export default function App() {
         { loading ? 
           <LoadingAnimation /> :
           <Routes>
-            <Route exact path="/auth" element={<Auth/>}></Route>
             <Route exact path="/" element={user ? <HomePage/> : <Navigate to="/auth"/>}></Route>
+            <Route exact path="/auth" element={<Auth/>}></Route>
+            <Route exact path="/links" element={user ? <Links/> : <Navigate to="/auth"/>}></Route>
           </Routes>
         }
         <PopUpDialog
