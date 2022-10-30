@@ -1,4 +1,0 @@
-import React from "react";
-const MapContext = new React.createContext();
-export default MapContext;
-//https://medium.com/swlh/how-to-incorporate-openlayers-maps-into-react-65b411985744

@@ -159,3 +159,4 @@ export const formatArea = function (polygon) {
 };
 
 //modified from code in https://github.com/ldreaaml/react-openlayers-map/blob/master/src/map/MeasuringComponent.js
+//and https://openlayers.org/en/latest/examples/measure.html
