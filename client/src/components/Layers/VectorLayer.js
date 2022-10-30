@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import MapContext from "../Map/MapContext";
+import MapContext from "../MapOld/MapContext";
 import OLVectorLayer from "ol/layer/Vector";
 const VectorLayer = ({ source, style, zIndex = 0 }) => {
   const { map } = useContext(MapContext);
