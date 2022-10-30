@@ -14,19 +14,43 @@ import {
   modifyStyle,
   segmentStyle,
   style,
+  completeStyle,
   labelStyle,
   tipStyle,
 } from "./MeasuringComponent";
 
+const raster = new TileLayer({
+  source: new OSM(),
+});
+
+const source = new VectorSource();
+
+const vector = new VectorLayer({
+  source: source,
+  style: {
+    'fill-color': 'rgba(255, 255, 255, 0.2)',
+    'stroke-color': '#ffcc33',
+    'stroke-width': 2,
+    'circle-radius': 7,
+    'circle-fill-color': '#ffcc33',
+  },
+});
+
 let tipPoint;
 
 const segmentStyles = [segmentStyle];
-const source = new VectorSource();
+
 const modify = new Modify({ source: source, style: modifyStyle });
 
 const styleFunction = (feature, segments, drawType, tip) => {
   //drawing lines for measuring tools
-  const styles = [style];
+ const styles = [style];
+ const finishedStyle = [completeStyle];
+  if(segments){
+    const styles = [completeStyle];
+    console.log("complete style");
+  }
+  
   const geometry = feature.getGeometry();
   const type = geometry.getType();
   let point, label, line;
@@ -42,24 +66,25 @@ const styleFunction = (feature, segments, drawType, tip) => {
     }
   }
   if (segments && line) {
-    let count = 0;
-    line.forEachSegment(function (a, b) {
-      const segment = new LineString([a, b]);
-      const label = formatLength(segment);
-      if (segmentStyles.length - 1 < count) {
-        segmentStyles.push(segmentStyle.clone());
-      }
-      const segmentPoint = new Point(segment.getCoordinateAt(0.5));
-      segmentStyles[count].setGeometry(segmentPoint);
-      segmentStyles[count].getText().setText(label);
-      styles.push(segmentStyles[count]);
-      count++;
-    });
+    // let count = 0;
+    // line.forEachSegment(function (a, b) {
+    //   const segment = new LineString([a, b]);
+    //   const label = formatLength(segment);
+    //   if (segmentStyles.length - 1 < count) {
+    //     segmentStyles.push(segmentStyle.clone());
+    //   }
+    //   const segmentPoint = new Point(segment.getCoordinateAt(0.5));
+    //   segmentStyles[count].setGeometry(segmentPoint);
+    //   segmentStyles[count].getText().setText(label);
+    //   finishedStyle.push(segmentStyles[count]);
+    //   count++;
+   // });
   }
   if (label) {
     labelStyle.setGeometry(point);
     labelStyle.getText().setText(label);
     styles.push(labelStyle);
+    finishedStyle.push(labelStyle);
   }
   if (
     tip &&
@@ -69,6 +94,9 @@ const styleFunction = (feature, segments, drawType, tip) => {
     tipPoint = geometry;
     tipStyle.getText().setText(tip);
     styles.push(tipStyle);
+  }
+  if(segments){
+  return finishedStyle; //returns style for a finished route
   }
   return styles;
 };
@@ -82,17 +110,13 @@ const MapComponent = () => {
     const vector = new VectorLayer({
       source: source,
       style: function (feature) {
-        return styleFunction(feature, false); //false for no segments
+        return styleFunction(feature, true); //happens when measure is over
       },
     });
     const _map = new Map({
       target: mapElement.current,
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-        vector,
-      ],
+      layers: [raster,vector],
+     // target:'_map',
       view: new View({
         center: fromLonLat([-86.8027, 36.1447]), // long, lat of Vanderbilt
         zoom: 15, //zoom level

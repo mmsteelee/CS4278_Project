@@ -28,6 +28,26 @@ export const style = new Style({
   }),
 });
 
+export const completeStyle = new Style({ //style for line that is finished being traced
+  fill: new Fill({
+    color: "rgba(255, 255, 255, 0.2)",
+  }),
+  stroke: new Stroke({
+    color: "rgba(189, 150, 23, 1.0)", //color of  line
+    //lineDash: [10, 10],
+    width: 4,
+  }),
+  image: new CircleStyle({
+    radius: 5,
+    stroke: new Stroke({
+      color: "rgba(0, 0, 0, 0.7)",
+    }),
+    fill: new Fill({
+      color: "rgba(255, 255, 255, 0.2)",
+    }),
+  }),
+});
+
 export const labelStyle = new Style({
   text: new Text({
     font: "14px Calibri,sans-serif",
