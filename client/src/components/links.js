@@ -1,10 +1,13 @@
 import React from 'react'
 // //import { Link } from "react-router-dom";
-import NavBar from './NavBar.js'
+import NavBar from '../components/NavBar-component/NavBar'
+import Header from '../components/header-component/header'
 
 const Links = () => {
     return (
-      <div>
+      
+        <div class= "main-wrapper">
+        <Header></Header>
         <NavBar/>
     
       <div className='container'>
@@ -12,6 +15,7 @@ const Links = () => {
         <h1>Links</h1>
       </div>
       </div>
+  
     );
   };
     

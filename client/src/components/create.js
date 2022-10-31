@@ -1,6 +1,6 @@
 import React from 'react'
 // //import { Link } from "react-router-dom";
-import NavBar from './NavBar.js'
+import NavBar from '../components/NavBar-component/NavBar.js'
 
 const CreateARun = () => {
     return (
