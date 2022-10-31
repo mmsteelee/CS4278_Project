@@ -9,30 +9,20 @@
 
 
   .links thead {
-    background-color: red;
     width: 100vw;
     text-align: center;
     font-size: 30px; 
   }
-
  
   .links tbody tr{
-    border: 1px solid; 
-    height: 6vh;
-
-  }
-
-  .links tbody td {
+    padding-top: 40px;
     font-size: 20px;
-    height: 6vh;
-    /* margin-top: 15px;
-    margin-bottom: 15px; */
   }
 
   .links table {
+    border-collapse: separate;
+    border-spacing: 0px 30px;
     width: 100%;
-    background-color: aqua;
-    border: 1px solid;
     text-align: center;
     margin-top: 35px;
   }
@@ -40,4 +30,5 @@
   .links a{
     text-decoration: none;
     color: #1c1c1c;
+    padding: 40px;
   }
