@@ -12,6 +12,7 @@ import FindARun from './pages/find.js';
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';
+import Logout from './components/logout-component/logout';
 
 import {user as tokenLogin, exp} from './api/auth'
 import { useInsertionEffect } from 'react';
@@ -24,7 +25,7 @@ export const CookieContext = createContext(null)
 
 export default function App() {
   const [user, setUser] = useState(null)
-  const [cookies, setCookie] = useCookies(['name'])
+  const [cookies, setCookie, removeCookie] = useCookies(['name'])
   const [openDialog, setOpenDialog]   = useState(false)
   const [loading, setLoading]         = useState(true)
   
@@ -60,6 +61,7 @@ export default function App() {
   // }, [user])
 
   function logout() {
+    removeCookie('token')
     setUser(null)
     setOpenDialog(false)
   }
@@ -70,16 +72,21 @@ export default function App() {
       <UserContext.Provider value={{user, setUser}}>
         { loading ? 
           <LoadingAnimation /> :
+          <>
+          { user &&
+            <Logout handleClick={logout} />
+          }
           <Routes>
-            <Route exact path="/" element={user ? <HomePage/> : <Navigate to="/auth"/>}></Route>
-            <Route exact path="/auth" element={<Auth/>}></Route>
-            <Route exact path="/links" element={user ? <Links/> : <Navigate to="/auth"/>}></Route>
-            <Route exact path="/findyourrun" element={user ? <FindYourRun/> : <Navigate to="/auth"/>}></Route>
-            <Route exact path="/meettheteam" element={user ? <MeetTheTeam/> : <Navigate to="/auth"/>}></Route>
-            <Route exact path="/createarun" element={user ? <CreateARun/> : <Navigate to="/auth"/>}></Route>
-            <Route exact path="/findarun" element={user ? <FindARun/> : <Navigate to="/auth"/>}></Route>
-            <Route exact path="/auth/logout" element={<Auth/>}></Route>
+            <Route exact path="/auth" element={<Auth />}></Route>
+            <Route exact path="/" element={user ? <HomePage /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/links" element={user ? <Links /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/findyourrun" element={user ? <FindYourRun /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/meettheteam" element={user ? <MeetTheTeam /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/createarun" element={user ? <CreateARun /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/findarun" element={user ? <FindARun /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/auth/logout" element={<Auth />}></Route>
           </Routes>
+          </>
         }
         <PopUpDialog
           message={`Session Expired. Please log back in.`} 
