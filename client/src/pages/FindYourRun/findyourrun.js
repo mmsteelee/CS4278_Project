@@ -1,11 +1,11 @@
 
 import React from 'react';
-import NavBar from '../components/NavBar-component/NavBar.js'
+import NavBar from '../../components/NavBar-component/NavBar'
 
-import MapComponent from "./Map/MapComponent";
+import MapComponent from "../../components/Map/MapComponent";
 import "ol/ol.css";
 import "./findyourrun.css";
-import Header from '../components/header-component/header'
+import Header from '../../components/header-component/header'
 
 const FindYourRun = () => {
   

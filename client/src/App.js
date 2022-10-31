@@ -4,11 +4,11 @@ import { useCookies } from 'react-cookie';
 
 import HomePage from './pages/home'
 import Auth from './pages/Auth/Auth'
-import Links from './components/links'
-import FindYourRun from './components/findyourrun.js';
-import MeetTheTeam from './components/meetTheTeam.js';
-import CreateARun from './components/create.js';
-import FindARun from './components/find.js';
+import Links from './pages/Links/links'
+import FindYourRun from './pages/FindYourRun/findyourrun.js';
+import MeetTheTeam from './pages/meetTheTeam.js';
+import CreateARun from './pages/create.js';
+import FindARun from './pages/find.js';
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';

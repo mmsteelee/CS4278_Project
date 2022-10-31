@@ -1,9 +1,9 @@
 import React from 'react'
 // //import { Link } from "react-router-dom";
-import NavBar from '../components/NavBar-component/NavBar'
-import Header from '../components/header-component/header'
-import Logout from './logout-component/logout';
-import '../components/links.css'
+import NavBar from '../../components/NavBar-component/NavBar.js'
+import Header from '../../components/header-component/header.js'
+import Logout from '../../components/logout-component/logout';
+import './links.css'
 
 const Links = () => {
     return (
@@ -12,7 +12,7 @@ const Links = () => {
         <div className= "main-wrapper">
           <Header></Header>
           <NavBar/>
-          <div className='container'>
+          <div className='links'>
             <h1>Click on these links for our other websites!</h1>
           <table>
             <div className = 'tr'>
