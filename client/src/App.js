@@ -15,7 +15,7 @@ import LoadingAnimation from './components/loading-animation/loading-animation';
 import Logout from './components/logout-component/logout';
 
 import {user as tokenLogin, exp} from './api/auth'
-import { useInsertionEffect } from 'react';
+
 // import Create from './components/create';
 // import FindARun from './components/find.js';
 // import CreateARun from './components/create.js';

@@ -10,6 +10,6 @@ router.get('/', getBios)
 
 router.post('/new', adminAuth, newBio)
 
-router.post('/delete/:id', adminAuth, deleteBio)
+router.delete('/delete/:id', adminAuth, deleteBio)
 
 module.exports = router
