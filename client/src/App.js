@@ -14,6 +14,7 @@ import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';
 
 import {user as tokenLogin, exp} from './api/auth'
+import { useInsertionEffect } from 'react';
 // import Create from './components/create';
 // import FindARun from './components/find.js';
 // import CreateARun from './components/create.js';
@@ -50,6 +51,14 @@ export default function App() {
     timeout()
   }, [user])
 
+  // useEffect(() => {
+  //   async function logout(){
+  //     setUser(null);
+  //     setOpenDialog(false);
+  //   }
+  //   logout()
+  // }, [user])
+
   function logout() {
     setUser(null)
     setOpenDialog(false)
@@ -69,6 +78,7 @@ export default function App() {
             <Route exact path="/meettheteam" element={user ? <MeetTheTeam/> : <Navigate to="/auth"/>}></Route>
             <Route exact path="/createarun" element={user ? <CreateARun/> : <Navigate to="/auth"/>}></Route>
             <Route exact path="/findarun" element={user ? <FindARun/> : <Navigate to="/auth"/>}></Route>
+            <Route exact path="/auth/logout" element={<Auth/>}></Route>
           </Routes>
         }
         <PopUpDialog

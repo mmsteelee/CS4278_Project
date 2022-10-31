@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import useStyles from './styles';
 import { login } from "../../api/auth";
+import {logout} from "../../api/auth";
 
-import {useGoogleLogin} from '@react-oauth/google';
+import {useGoogleLogin, useGoogleLogout} from '@react-oauth/google';
 import { Navigate } from "react-router-dom"
 
 

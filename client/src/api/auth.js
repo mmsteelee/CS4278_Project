@@ -15,6 +15,14 @@ export async function login(accessToken) {
     })
 }
 
+export async function logout(accessToken) {
+    return await axios({
+        method: "POST",
+        url: "/auth/logout",
+        data: {accessToken}
+    })
+}
+
 export async function exp() {
     return await axios({
         method: "GET",
