@@ -11,14 +11,16 @@ const Links = () => {
           <Header></Header>
           <NavBar/>
           <div className='links'>
-            <h1>Click on these links for our other websites!</h1>
           <table>
-            <div className = 'tr'>
-              <a href="https://groupme.com/join_group/88408537/MKZan3OD"> GroupMe </a>
-              <a href="https://docs.google.com/spreadsheets/d/1EDIrVz3ZESnqif_Kfs86KTd_whF9-cg_210EIRAJ2dU/edit"> Practice Signups </a>
-              <a href="https://www.instagram.com/vandyrunclub/?hl=en"> Instagram Page </a>
-              <a href="https://anchorlink.vanderbilt.edu/organization/runningclub"> Join the AnchorLink </a>
-            </div>
+            <thead><tr><th>Click on these links for our other websites!</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><a href="https://groupme.com/join_group/88408537/MKZan3OD"> GroupMe </a></td>
+                <td><a href="https://docs.google.com/spreadsheets/d/1EDIrVz3ZESnqif_Kfs86KTd_whF9-cg_210EIRAJ2dU/edit"> Practice Signups </a></td>
+                <td><a href="https://www.instagram.com/vandyrunclub/?hl=en"> Instagram Page </a></td>
+                <td><a href="https://anchorlink.vanderbilt.edu/organization/runningclub"> Join the AnchorLink </a></td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
