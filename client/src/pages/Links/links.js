@@ -2,13 +2,11 @@ import React from 'react'
 // //import { Link } from "react-router-dom";
 import NavBar from '../../components/NavBar-component/NavBar.js'
 import Header from '../../components/header-component/header.js'
-import Logout from '../../components/logout-component/logout';
 import './links.css'
 
 const Links = () => {
     return (
       <div>
-        <Logout></Logout>
         <div className= "main-wrapper">
           <Header></Header>
           <NavBar/>

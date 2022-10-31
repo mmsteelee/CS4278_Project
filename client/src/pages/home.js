@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { ReactEmbeddedGoogleCalendar } from 'react-embedded-google-calendar'
 import NavBar from '../components/NavBar-component/NavBar.js'
 import Header from '../components/header-component/header'
-import Logout from '../components/logout-component/logout.js'
 // import Navigation from '../components/NavBar.js'
 
 // import Nav from 'react-bootstrap/Nav';
@@ -23,7 +22,6 @@ const HomePage = () => {
 
   return (
     <div>
-   <Logout></Logout>
       <div class= "main-wrapper">
         
         <Header></Header>
