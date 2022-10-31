@@ -14,6 +14,7 @@ const MeetTheTeam = () => {
       <div className='container'>
         
         <h1>Meet the Team</h1>
+        
       </div>
       </div>
    
