@@ -4,11 +4,11 @@ const {changeBio, getBios, newBio, deleteBio} = require('../controllers/bio')
 
 const router = express.Router()
 
-router.post('/:id', adminAuth, changeBio)
+router.post('/new', adminAuth, newBio)
 
 router.get('/', getBios)
 
-router.post('/new', adminAuth, newBio)
+router.post('/update/:id', adminAuth, changeBio)
 
 router.delete('/delete/:id', adminAuth, deleteBio)
 

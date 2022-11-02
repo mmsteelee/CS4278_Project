@@ -3,8 +3,8 @@ import {api as axios} from '../utils/axios'
 export async function updateBio(bio) {
     return await axios({
         method: "POST",
-        url: `/bio/${bio.id}`,
-        data: bio.data
+        url: `/bio/update/${bio._id}`,
+        data: bio
     })
 }
 
@@ -19,13 +19,13 @@ export async function addNewBio(bio) {
     return await axios({
         method: "POST",
         url: '/bio/new',
-        data: bio.data
+        data: bio
     })
 }
 
 export async function deleteBio(bio) {
     return await axios({
         method: "DELETE",
-        url: `/bio/delete/${bio.id}`,
+        url: `/bio/delete/${bio._id}`,
     })
 }
