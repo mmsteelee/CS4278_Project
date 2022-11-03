@@ -15,8 +15,13 @@ const getBios = async (req, res) => {
 }
 
 const newBio = async (req, res) => {
-    const result = await Bio.create(req.body).catch(err => res.status(400).send(err))
-    res.status(200).send(result)
+    const count = await Bio.count()
+    if (count > 10) {
+        res.status(400).send('Cannot add another Bio')
+    } else {
+        const result = await Bio.create(req.body).catch(err => res.status(400).send(err))
+        res.status(200).send(result)
+    }
 }
 
 const deleteBio = async (req, res) => {
