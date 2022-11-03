@@ -35,10 +35,9 @@ export default function App() {
       await tokenLogin()
         .then(resUser => setUser(resUser.data))
         .catch(err => console.log("ERROR: ", err.json))    
+      setLoading(false)
     }
-    if (cookies.token) 
-      auth()
-    setTimeout(() => setLoading(false), 1000) 
+    auth()
   }, [])
 
   useEffect(()=>{

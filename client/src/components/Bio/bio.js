@@ -58,7 +58,7 @@ const Bio = ({bio}) => {
     return(
         <div className = 'tasks-container'>
             {isEditing ? 
-                <form onSubmit={handleSubmit} onAbort={handleDelete}>
+                <form onSubmit={handleSubmit}>
                 <input type='text' defaultValue={bio.name} placeholder='Name' onChange={e => setfname(e.target.value)}/>
                 <input type='text' defaultValue={bio.title} placeholder='Exec Title' onChange={e => setftitle(e.target.value)}/>
                 <input type='text' defaultValue={bio.text} placeholder='Bio' onChange={e => setftext(e.target.value)}/>
