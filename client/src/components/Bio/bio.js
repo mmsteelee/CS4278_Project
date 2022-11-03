@@ -2,6 +2,7 @@ import {useContext, useEffect, useState} from "react"
 
 import { UserContext } from '../../App'
 import { updateBio, deleteBio } from "../../api/bios"
+import '../Bio/bio.css';
 
 const Bio = ({bio}) => {
     const {user} = useContext(UserContext)
@@ -14,6 +15,8 @@ const Bio = ({bio}) => {
     const [ftext, setftext] = useState(bio.text)
     const [isValid, setValid] = useState(false)
 
+    const email = "mailto:" + bio.email;
+
     useEffect(() => {
         setisAdmin(user.role === 'admin')
     }, [])
@@ -23,6 +26,7 @@ const Bio = ({bio}) => {
                ftitle.length && ftext.length && 
                (fname !== bio.name || femail !== bio.email ||
                 ftitle !== bio.title || ftext !== bio.text)
+                
     }
 
     useEffect(() => {
@@ -55,6 +59,8 @@ const Bio = ({bio}) => {
         }
     }
 
+    
+
     return(
         <div className = 'tasks-container'>
             {isEditing ? 
@@ -68,13 +74,26 @@ const Bio = ({bio}) => {
                 <button type="button" onClick={() => setIsEditing(false)}>Cancel Edit</button>
                 </form>
                 : 
-                <div onDoubleClick ={handleEditAttempt}>
-                    <h1>{bio.name}</h1>
-                    <h2>{bio.title}</h2>
-                    <p>{bio.text}</p>
-                    <h5>{bio.email}</h5>
+                <div className = 'bioView' onDoubleClick ={handleEditAttempt}>
+                    <table>
+                    <tbody>
+                    <tr>
+                        <td className= 'bioInfo'>
+                            <h1>{bio.name}</h1>
+                            <div>{bio.title}</div>
+                            <div>
+                                <a href= {bio.email}> email {bio.name} </a> 
+                                {/* <a href="mailto:drechsler.lina@gmail.com"> email lina </a>  */}
+                            </div>
+                        </td>
+                        <td classname = 'bioText'>
+                            <p>{bio.text}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
                 </div>
-            }
+            }           
         </div>
     )
 

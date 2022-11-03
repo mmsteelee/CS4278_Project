@@ -9,6 +9,7 @@ import LoadingAnimation from '../../components/loading-animation/loading-animati
 import { getBios } from '../../api/bios';
 
 import { UserContext } from '../../App';
+import './meetTheTeam.css'
 
 const MeetTheTeam = () => {
     const [bios, setBios] = useState([])
@@ -29,8 +30,12 @@ const MeetTheTeam = () => {
         { loading ?  
           <LoadingAnimation />
           :
-          <div className='container'>
-            <h1>Meet the Team</h1>  
+          <div className='container' >
+            <div className='pageCover'>
+
+              <h1>Meet the Team</h1>  
+            </div>
+      
             {bios.map(bio => <Bio
               bio={bio}
             />)}
