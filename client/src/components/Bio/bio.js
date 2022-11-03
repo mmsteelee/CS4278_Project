@@ -63,6 +63,7 @@ const Bio = ({bio}) => {
                 <input type='text' defaultValue={bio.title} placeholder='Exec Title' onChange={e => setftitle(e.target.value)}/>
                 <input type='text' defaultValue={bio.text} placeholder='Bio' onChange={e => setftext(e.target.value)}/>
                 <input type = 'text' defaultValue = {bio.email} placeholder='Email' onChange={e => setfemail(e.target.value)}/>
+                <input type = 'file' accept=".png, .jpg, .jpeg"  onChange={e => console.log(e)}/>
                 <button type="submit" disabled={!isValid}>Update Bio</button> 
                 <button type="button" onClick={handleDelete}>Delete Bio</button>
                 <button type="button" onClick={() => setIsEditing(false)}>Cancel Edit</button>
