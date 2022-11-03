@@ -23,7 +23,7 @@ const changeBio = async (req, res) => {
     }
 
     Bio.findByIdAndUpdate(req.params.id, updatedBio)
-    .then(res.status(200).send('Updated Bio successfully'))
+    .then(res.status(200).send(updatedBio))
     .catch(err => res.status(400).send(err))
 }
 

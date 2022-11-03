@@ -39,7 +39,8 @@ const Bio = ({bio}) => {
         setValid(isValid);
     }, [newBio]);
 
-    const handleSubmit = async (e)=>{    
+    const handleSubmit = async (e)=>{
+        e.preventDefault()    
         const formData = new FormData()
         
         formData.append('name', newBio.name);
@@ -52,6 +53,12 @@ const Bio = ({bio}) => {
         }
 
         await updateBio(formData, bio._id)
+            .then(res => {
+                bio = res.data
+                setimageURL(`${BACKEND_URL}/image/${bio.picture}`)
+                setnewBio(bio)
+                setIsEditing(false)
+            })
             .catch(err => console.log(err))
     }    
 
@@ -67,7 +74,6 @@ const Bio = ({bio}) => {
 
     const handlePhoto = (e) => {
         setnewBio({...newBio, photo: e.target.files[0]});
-        console.log(e.target.files[0])
     }
 
 
