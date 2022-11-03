@@ -22,11 +22,19 @@ Install all dependencies
 npm install
 ```
 
+
+Install OpenLayers
+
+```
+npm install ol --save
+```
+
 Run server and client
 
 ```
 npm start
 ```
+
 
 which will launch the client code in the browser. Put http://localhost:3000 into the browser to access.
 
