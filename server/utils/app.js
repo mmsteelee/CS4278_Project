@@ -2,7 +2,6 @@ const express = require('express') // Backend App (server)
 const cors = require('cors') // HTTP headers (enable requests)
 const getBaseUrl = require('../middlewares/getBaseUrl')
 const cookieParser  = require('cookie-parser')
-
 // initialize app
 const app = express()
 

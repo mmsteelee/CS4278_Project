@@ -28,7 +28,8 @@ const NewBioPopup = ({message, open, handleClose}) => {
         name: fname,
         email: femail,
         title: ftitle,
-        text: ftext
+        text: ftext,
+        picture: 'logo.jpeg'
     } 
 
     addNewBio(bio)

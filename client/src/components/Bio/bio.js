@@ -1,45 +1,55 @@
-import {useContext, useEffect, useState} from "react"
+import React, {useContext, useEffect, useState} from "react"
 
 import { UserContext } from '../../App'
 import { updateBio, deleteBio } from "../../api/bios"
+import { BACKEND_URL } from "../../constants"
+import Logout from "../logout-component/logout"
 
 const Bio = ({bio}) => {
     const {user} = useContext(UserContext)
     const [isEditing, setIsEditing] = useState(false)
     const [isAdmin, setisAdmin] = useState(false)
-
-    const [fname, setfname] = useState(bio.name)
-    const [femail, setfemail] = useState(bio.email)
-    const [ftitle, setftitle] = useState(bio.title)
-    const [ftext, setftext] = useState(bio.text)
     const [isValid, setValid] = useState(false)
+    const [imageURL, setimageURL] = useState(`${BACKEND_URL}/image/${bio.picture}`)
+    
+    const [newBio, setnewBio] = useState(
+        {
+            name: bio.name,
+            title: bio.title,
+            email: bio.email,
+            text: bio.text,
+            photo: '',
+            _id: bio._id
+        }
+    );
 
     useEffect(() => {
         setisAdmin(user.role === 'admin')
     }, [])
 
     const validate = () => {
-        return fname.length && femail.length && 
-               ftitle.length && ftext.length && 
-               (fname !== bio.name || femail !== bio.email ||
-                ftitle !== bio.title || ftext !== bio.text)
+        return newBio.name && newBio.title && 
+               newBio.email && newBio.text
     }
 
     useEffect(() => {
         const isValid = validate();
         setValid(isValid);
-    }, [fname, femail, ftitle, ftext]);
+    }, [newBio]);
 
-    const handleSubmit = (e)=>{        
-        let newBio = {
-            name: e.target[0].value,
-            title: e.target[1].value,
-            text: e.target[2].value,
-            email: e.target[3].value,
-            _id: bio._id
+    const handleSubmit = async (e)=>{    
+        const formData = new FormData()
+        
+        formData.append('name', newBio.name);
+        formData.append('title', newBio.title);
+        formData.append('email', newBio.email);
+        formData.append('text', newBio.text);
+        if (newBio.photo) {
+            let photo = newBio.photo
+            formData.append('photo', photo);
         }
 
-        updateBio(newBio)
+        await updateBio(formData, bio._id)
             .catch(err => console.log(err))
     }    
 
@@ -48,6 +58,16 @@ const Bio = ({bio}) => {
             .catch(err => console.log(err))
         window.location.reload();
     }
+
+    const handleChange = (e) => {
+        setnewBio({...newBio, [e.target.name]: e.target.value});
+    }
+
+    const handlePhoto = (e) => {
+        setnewBio({...newBio, photo: e.target.files[0]});
+        console.log(e.target.files[0])
+    }
+
 
     const handleEditAttempt = () => {
         if (isAdmin) {
@@ -58,12 +78,12 @@ const Bio = ({bio}) => {
     return(
         <div className = 'tasks-container'>
             {isEditing ? 
-                <form onSubmit={handleSubmit}>
-                <input type='text' defaultValue={bio.name} placeholder='Name' onChange={e => setfname(e.target.value)}/>
-                <input type='text' defaultValue={bio.title} placeholder='Exec Title' onChange={e => setftitle(e.target.value)}/>
-                <input type='text' defaultValue={bio.text} placeholder='Bio' onChange={e => setftext(e.target.value)}/>
-                <input type = 'text' defaultValue = {bio.email} placeholder='Email' onChange={e => setfemail(e.target.value)}/>
-                <input type = 'file' accept=".png, .jpg, .jpeg"  onChange={e => console.log(e)}/>
+                <form onSubmit={handleSubmit} encType='multipart/form-data'>
+                <input type='text' name='name' defaultValue={bio.name} placeholder='Name' onChange={handleChange}/>
+                <input type='text' name='title' defaultValue={bio.title} placeholder='Exec Title' onChange={handleChange}/>
+                <input type='text' name='text' defaultValue={bio.text} placeholder='Bio' onChange={handleChange}/>
+                <input type = 'text' name='email' defaultValue = {bio.email} placeholder='Email' onChange={handleChange}/>
+                <input type = 'file' name='photo' accept=".png, .jpg, .jpeg"  onChange={handlePhoto}/>
                 <button type="submit" disabled={!isValid}>Update Bio</button> 
                 <button type="button" onClick={handleDelete}>Delete Bio</button>
                 <button type="button" onClick={() => setIsEditing(false)}>Cancel Edit</button>
@@ -74,6 +94,7 @@ const Bio = ({bio}) => {
                     <h2>{bio.title}</h2>
                     <p>{bio.text}</p>
                     <h5>{bio.email}</h5>
+                    <img src={imageURL}></img>
                 </div>
             }
         </div>

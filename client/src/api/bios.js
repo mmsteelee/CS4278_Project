@@ -1,9 +1,9 @@
 import {api as axios} from '../utils/axios'
 
-export async function updateBio(bio) {
+export async function updateBio(bio, id) {
     return await axios({
         method: "POST",
-        url: `/bio/update/${bio._id}`,
+        url: `/bio/update/${id}`,
         data: bio
     })
 }
