@@ -1,4 +1,6 @@
 /* from github */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 .page{
     position: relative;
     width: 100vw;
@@ -73,9 +75,9 @@ body {
 
 .main-section {
   padding-top: 10%;
-  margin-bottom: 5vh;;
+  margin-bottom: 5vh;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Montserrat, Times, serif;
 }
 
 /* Things Anneliese is adding */

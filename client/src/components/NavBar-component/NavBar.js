@@ -6,24 +6,14 @@ import '../NavBar-component/navbar.css';
 import Button from '@material-ui/core/Button';
 
 
-// const Logout = ({handleClick}) => {
-//   return (
-//     <div className = "logout">
-//         <Button onClick={handleClick} color="primary">
-//           Logout
-//         </Button>
-//     </div>
-//   )
-// }
-
-
 const NavBar = ({handleClick}) => {
   return (
     <div className = "navbar">
       <div className="left-side">
-        <a href="/">Vanderbilt Run Club</a> 
+        <a href="/">VANDERBILT RUN CLUB</a> 
       </div>
       <div className = "text">
+        <a href="/calendar">SCHEDULE</a>
         <a href="/meettheteam">MEET THE TEAM</a>
         <a href="/findyourrun">FIND YOUR RUN</a>
         <a href="/links">LINKS</a>
