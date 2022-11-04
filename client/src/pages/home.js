@@ -24,8 +24,8 @@ const HomePage = () => {
     <div>
       <div class= "main-wrapper">
         
-        <Header></Header>
-        <NavBar/>
+        {/* <Header></Header> */}
+        {/* <NavBar/> */}
         <div className="main-section">
           <h1 className="cover-heading">Welcome to the Vandy Run Club!</h1>
           <p className="check-text">Check the calendar below for upcoming events!</p>

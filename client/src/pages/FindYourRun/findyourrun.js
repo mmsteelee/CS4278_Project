@@ -13,8 +13,7 @@ return (
   
   
   <div className= "main-wrapper">
-    <Header></Header>
-    <NavBar/> 
+     
 
     <div className = "map">
       <MapComponent />

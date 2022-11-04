@@ -10,8 +10,7 @@ const Links = () => {
     return (
       <div>
         <div className= "main-wrapper">
-          <Header></Header>
-          <NavBar/>
+          
           <div className='links'>
           <table>
             <thead> Click on these links to further connect with us!</thead>

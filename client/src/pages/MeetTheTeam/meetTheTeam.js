@@ -25,8 +25,7 @@ const MeetTheTeam = () => {
 
     return (
       <div className= "main-wrapper">
-        <Header/>
-        <NavBar/>
+        
         { loading ?  
           <LoadingAnimation />
           :

@@ -12,9 +12,10 @@ import FindARun from './pages/find.js';
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';
-import Logout from './components/logout-component/logout';
+// import Logout from './components/logout-component/logout';
 
 import {user as tokenLogin, exp} from './api/auth'
+import NavBar from './components/NavBar-component/NavBar';
 
 // import Create from './components/create';
 // import FindARun from './components/find.js';
@@ -72,9 +73,11 @@ export default function App() {
         { loading ? 
           <LoadingAnimation /> :
           <>
+          <div className='main-wrapper'>
           { user &&
-            <Logout handleClick={logout} />
+            <NavBar handleClick={logout} />
           }
+          </div>
           <Routes>
             <Route exact path="/auth" element={<Auth />}></Route>
             <Route exact path="/" element={user ? <HomePage /> : <Navigate to="/auth" />}></Route>
