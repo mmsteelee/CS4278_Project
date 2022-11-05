@@ -21,6 +21,9 @@ Install all dependencies
 ```
 npm install
 ```
+```
+npm install multer
+```
 
 
 Install OpenLayers
