@@ -4,7 +4,7 @@ import { login } from "../../api/auth";
 import {logout} from "../../api/auth";
 
 import {useGoogleLogin, useGoogleLogout} from '@react-oauth/google';
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 import { Avatar, Button, Paper, Typography, Container } from '@material-ui/core';
@@ -18,6 +18,8 @@ const Auth = () => {
     const {user, setUser} = useContext(UserContext)
     const {cookies, setCookie} = useContext(CookieContext)
     const [signInText, setsignInText] = useState('Sign in with your vanderbilt.edu Email')
+
+    const navigate = useNavigate();
 
     async function handleGoogleLoginSuccess(tokenResponse) {
         const accessToken = tokenResponse.access_token;
@@ -33,14 +35,17 @@ const Auth = () => {
                 setCookie('token', res.data.token, {path:'/'})
                 setUser(res.data.result)
             }  
+            navigate(-1)
         })
-        .catch(err => console.log("ERROR: ", err.json))
+        .catch(err => {
+            setsignInText('We ran into an issue logging you in. Try again later')
+            console.log("ERROR: ", err.json)
+        })
     }
     const googleLogin = useGoogleLogin({onSuccess: handleGoogleLoginSuccess})
 
     return(
         <div>
-            {user ? <Navigate to="/"/> : 
             <Container component="main" maxwidth="xs"> 
             <Paper className={classes.paper} elevation={3}>
                 <Avatar>
@@ -51,9 +56,9 @@ const Auth = () => {
                 </Typography>
                 <Button fullWidth variant="contained" className={classes.googleButton} color="primary" onClick={() => googleLogin()}>
                     Google Sign In
-                 </Button>
+                </Button>
             </Paper>
-        </Container>}
+            </Container>
         </div>
     )
 }
