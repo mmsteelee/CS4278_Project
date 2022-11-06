@@ -9,6 +9,7 @@ import FindYourRun from './pages/FindYourRun/findyourrun.js';
 import MeetTheTeam from './pages/MeetTheTeam/meetTheTeam.js';
 import CreateARun from './pages/create.js';
 import FindARun from './pages/find.js';
+import Calendar from './pages/Calendar/calendar';
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
 import LoadingAnimation from './components/loading-animation/loading-animation';
@@ -86,6 +87,7 @@ export default function App() {
             <Route exact path="/meettheteam" element={user ? <MeetTheTeam /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/createarun" element={user ? <CreateARun /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/findarun" element={user ? <FindARun /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/calendar" element={user ? <Calendar /> : <Navigate to="/calendar" />}></Route>
             <Route exact path="/auth/logout" element={<Auth />}></Route>
           </Routes>
           </>

@@ -84,13 +84,15 @@ body {
 .main-section .cover-heading {
   /* text-align: center;
   font-family: 'Times New Roman', Times, serif; */
-  color: #1c1c1c;
+  color: rgb(74, 47, 3);
   font-size: 9vh;
+  text-shadow: none;
 }
 
 .main-section .check-text{
   font-size: 5vh;
-  color: #1c1c1c;
+  color: rgb(74, 47, 3);
+  text-shadow: none;
 }
 .main-section .calendar {
   border: solid 0px #777;
