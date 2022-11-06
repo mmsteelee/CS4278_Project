@@ -34,8 +34,8 @@ const Auth = () => {
             } else {
                 setCookie('token', res.data.token, {path:'/'})
                 setUser(res.data.result)
+                navigate(-1)
             }  
-            navigate(-1)
         })
         .catch(err => {
             setsignInText('We ran into an issue logging you in. Try again later')
