@@ -7,7 +7,7 @@ import Auth from './pages/Auth/Auth'
 import Links from './pages/Links/links'
 import FindYourRun from './pages/FindYourRun/findyourrun.js';
 import MeetTheTeam from './pages/MeetTheTeam/meetTheTeam.js';
-import CreateARun from './pages/create.js';
+import CreateARun from './pages/Create/create.js';
 import FindARun from './pages/find.js';
 import Calendar from './pages/Calendar/calendar';
 
@@ -87,7 +87,9 @@ export default function App() {
             <Route exact path="/meettheteam" element={user ? <MeetTheTeam /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/createarun" element={user ? <CreateARun /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/findarun" element={user ? <FindARun /> : <Navigate to="/auth" />}></Route>
-            <Route exact path="/calendar" element={user ? <Calendar /> : <Navigate to="/calendar" />}></Route>
+            <Route exact path="/calendar" element={user ? <Calendar /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/create" element={user ? <CreateARun /> : <Navigate to="/auth" />}></Route>
+            <Route exact path="/find" element={user ? <FindARun /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/auth/logout" element={<Auth />}></Route>
           </Routes>
           </>

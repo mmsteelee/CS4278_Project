@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar-component/NavBar'
 const FindARun = () => {
     return (
       <div>
-        <NavBar/>
+       
     
       <div className='container'>
         

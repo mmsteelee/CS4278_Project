@@ -1,11 +1,9 @@
 
 import React from 'react';
-import NavBar from '../../components/NavBar-component/NavBar'
+//import NavBar from '../../components/NavBar-component/NavBar'
 
-import MapComponent from "../../components/Map/MapComponent";
-import "ol/ol.css";
 import "./findyourrun.css";
-import Header from '../../components/header-component/header'
+
 
 const FindYourRun = () => {
   
@@ -16,11 +14,10 @@ return (
      
 <div className = "links">
 
-  
+< a href= "/create">Create A Run</a>
+< a href= "/find">Find A Run</a>
 </div>
-    <div className = "map">
-      <MapComponent />
-    </div>   
+
   </div>
   
   );
