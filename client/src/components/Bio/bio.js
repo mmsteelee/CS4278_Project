@@ -84,7 +84,6 @@ const Bio = ({bio}) => {
     }
 
     
-
     return(
         <div className = 'tasks-container'>
             {isEditing ? 
@@ -100,24 +99,28 @@ const Bio = ({bio}) => {
                 </form>
                 : 
                 <div className = 'bioView' onDoubleClick ={handleEditAttempt}>
+                    <img src={imageURL}></img>
                     <table>
                     <tbody>
                     <tr>
                         <td className= 'bioInfo'>
                             <h1>{bio.name}</h1>
-                            <div>{bio.title}</div>
-                            <div>
-                                <a href= {bio.email}> email {bio.name} </a> 
+                            <div className="exec-title">
+                                <h1>{bio.title}</h1>
+                            </div>
+                            <div className = 'email'>
+                                <a href= {bio.email}> email: {bio.name} </a> 
                                 {/* <a href="mailto:drechsler.lina@gmail.com"> email lina </a>  */}
                             </div>
-                        </td>
-                        <td classname = 'bioText'>
                             <p>{bio.text}</p>
                         </td>
+                        {/* <td classname = 'bioText'>
+                            <p>{bio.text}</p>
+                        </td> */}
                     </tr>
                     </tbody>
                     </table>
-                    <img src={imageURL}></img>
+                    
                 </div>
             }           
         </div>

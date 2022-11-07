@@ -13,13 +13,13 @@ const Links = () => {
           
           <div className='links'>
           <table>
-            <thead> Click on these links to further connect with us!</thead>
+            <thead> Want to further connect with us? Click on the links below!</thead>
             <tbody>
               <tr>
-                <a href="https://groupme.com/join_group/88408537/MKZan3OD"> GroupMe </a>
-                <a href="https://docs.google.com/spreadsheets/d/1EDIrVz3ZESnqif_Kfs86KTd_whF9-cg_210EIRAJ2dU/edit"> Practice Signups </a>
-                <a href="https://www.instagram.com/vandyrunclub/?hl=en"> Instagram Page </a>
-                <a href="https://anchorlink.vanderbilt.edu/organization/runningclub"> Join the AnchorLink </a>
+                <a href="https://groupme.com/join_group/88408537/MKZan3OD"> GROUPME </a>
+                <a href="https://docs.google.com/spreadsheets/d/1EDIrVz3ZESnqif_Kfs86KTd_whF9-cg_210EIRAJ2dU/edit"> PRACTICE SIGNUPS </a>
+                <a href="https://www.instagram.com/vandyrunclub/?hl=en"> INSTAGRAM </a>
+                <a href="https://anchorlink.vanderbilt.edu/organization/runningclub"> ANCHORLINK </a>
               </tr>
             </tbody>
           </table>

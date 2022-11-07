@@ -1,17 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Work Sans&display=swap');
+
 .bioView{
     vertical-align: center;
     padding: 15px;
     size: 100%;
+    background: rgba(255, 251, 251, 0.5);
+    display: flex;
+    text-shadow: none;
+    font-family: Work Sans, Helvetica, sans-serif;
+}
+
+
+.bioInfo img {
+    flex: 15%;
+    padding: 15px;
+    max-height: 75px;
+    max-width: auto;
+    
 }
 
 .bioInfo{
-    text-align: center;
+    flex: 75%;
+    vertical-align: text-top;
     padding: 15px;
 }
 
-.bioParagraph{
+.bioInfo h1 {
+    align-items: top;
+    /* text-transform: uppercase; */
+    font-size: 30px;
+    margin: 0px;
+}
+
+.bioInfo .exec-title h1{
+    font-style:italic;
+    font-size: 17px;
+    margin: 0px;
+}
+
+.bioView .bioInfo .email a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+
+.bioInfo p{
+    font-size: 17px;
+    margin: 0px;
+}
+
+/* .bioParagraph{
     margin-left: 10px;
     text-align: center;
     padding: 15px;
+    background-color: black;
     
-}
+} */
