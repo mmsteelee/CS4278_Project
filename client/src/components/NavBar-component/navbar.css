@@ -28,8 +28,12 @@
     font-size: 30px;
 }
 
-.navbar .left-side button {
+.navbar .right-side .dropdown-button button {
   display: none;
+}
+
+.navbar .text #hidden {
+  display:flex;
 }
 
 
@@ -59,21 +63,67 @@
 }
 
 
+  @media only screen and (max-width: 1200px) {
+
+    .navbar .left-side {
+      flex: 30%;
+    }
+
+    .navbar .left-side a {
+      font-size: 25px;
+    }
+
+    .navbar .text a{
+      font-size: 12px;
+    }
+
+    .navbar .text button {
+      font-size: 12px;
+    }
+  }
+
   @media only screen and (max-width: 950px) {
-    .navbar .left-side{
-      flex: 100%
-    }
-    .navbar .left-side a{
-      flex: 50%
-    }
-    .navbar .left-side button{
+
+    /* .navbar .left-side{
       display: flex;
-      flex: 50%;
+    }
+    .navbar .left-side a {
+      flex: 30%
+    } */
+
+    .navbar .right-side .dropdown-button button{
+      display: flex;
+      flex: 70%;
       justify-content: right;
       padding-right: 30px;
     }
 
-    .navbar .text {
+    .navbar .right-side .text {
       display: none;
+    }
+    
+    .navbar .right-side #hidden {
+      position: absolute;
+      justify-content: right;
+      /* align-items: right; */
+      right: 0px;
+      top: 12vh;
+      height: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 251, 251, 0.5)
+     
+    }
+
+    .navbar .right-side #hidden a{
+      padding: 2px;
+      
+      font-size: 15px;
+    }
+
+    .navbar .right-side #hidden button {
+      padding: 2px;
+      font-size: 15px;
     }
   }
