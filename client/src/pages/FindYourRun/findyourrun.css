@@ -11,7 +11,34 @@
     margin: 20px auto;
   }
   
-  .reset-button {
+  .main-wrapper{
+    display: flex;
+  }
+  .main-wrapper .create{
+    flex: 50%;
+    height: 80px;
+    padding-top: 8vh;
+    padding-right: 50px;
+    padding-left: 25px;
+  }
+  .main-wrapper .find {
+    flex: 50%;
+    height: 80px;
+    padding-top: 8vh;
+    padding-right: 25px;
+    padding-left: 50px;
+  }
+  .create button{
+    border: none;
+    text-decoration: none;
+    font-size: large;
+    color: white;
+    background-color: #6bb8d1;
+    cursor: pointer;
+    transition-duration: 0.4s;
+  }
+
+  .find button{
     border: none;
     text-decoration: none;
     font-size: large;

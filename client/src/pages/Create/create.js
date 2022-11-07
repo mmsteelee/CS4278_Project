@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar-component/NavBar'
 import MapComponent from "../../components/Map/MapComponent";
 import "ol/ol.css";
 import "./create.css";
-import Header from '../../components/header-component/header'
+// import Header from '../../components/header-component/header'
 
 const CreateARun = () => {
   
