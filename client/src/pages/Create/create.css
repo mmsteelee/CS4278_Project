@@ -1,14 +1,17 @@
 .map-container {
     height: calc(100vh - 90px);
-    width: 100vw;
+    width: 85vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
     margin-left: 5vw;
     margin-right: 5vw;
+    padding-top: 20px;
+    padding-left: 35px;
   }
   
   .measuring-tool {
     margin: 20px auto;
+    padding-left: 100px;
   }
   
   .reset-button {
@@ -21,6 +24,7 @@
     background-color: #6bb8d1;
     cursor: pointer;
     transition-duration: 0.4s;
+    
   }
   
   .reset-button:hover {

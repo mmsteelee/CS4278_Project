@@ -1,7 +1,7 @@
 import React from 'react'
 // //import { Link } from "react-router-dom";
 import NavBar from '../../components/NavBar-component/NavBar.js'
-import Header from '../../components/header-component/header.js'
+
 import Logout from '../../components/logout-component/logout.js'
 
 import './links.css'

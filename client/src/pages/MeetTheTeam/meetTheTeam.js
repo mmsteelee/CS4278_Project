@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 // //import { Link } from "react-router-dom";
-import NavBar from '../../components/NavBar-component/NavBar'
-import Header from '../../components/header-component/header.js';
 import Bio from '../../components/Bio/bio';
 import NewBioPopup from '../../components/Bio/popup';
 import LoadingAnimation from '../../components/loading-animation/loading-animation';
