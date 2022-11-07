@@ -14,7 +14,10 @@ return (
   
   <div className= "main-wrapper">
      
+<div className = "links">
 
+  
+</div>
     <div className = "map">
       <MapComponent />
     </div>   
