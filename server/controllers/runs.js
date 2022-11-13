@@ -15,8 +15,8 @@ const searchRuns = async (req, res) => {
     const query = req.body
 
     if (query.distance && query.tags) {
+        // calculate ratings for each run
         for (let i = 0; i < runs.length; ++i) {
-            // calculate rating
             run = runs[i]
             let rating = {score: 0, id: i}
             
@@ -33,6 +33,7 @@ const searchRuns = async (req, res) => {
         })
         
         result = []
+        // packaging best rated runs into response result 
         for (let i = 0; i < MAX_RUNS_SHOWN && i < ratings.length; ++i){
             rating = ratings[i]
             result.push(runs[rating.id])

@@ -6,7 +6,7 @@ const authRoutes = require('./routes/auth')
 const bioRoutes = require('./routes/bio')
 const adminRoutes = require('./routes/admin')
 const imageRoutes = require('./routes/images')
-const runRoutes = require('../routes/runs')
+const runRoutes = require('./routes/runs')
 
 async function bootstrap() {
   await mongo.connect()

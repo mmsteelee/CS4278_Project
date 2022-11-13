@@ -2,6 +2,7 @@
 
 const express = require('express')
 const {auth}  = require('../middlewares/auth')
+const {getRun, searchRuns, makeRun} = require('../controllers/runs')
 
 const router = express.Router()
 
