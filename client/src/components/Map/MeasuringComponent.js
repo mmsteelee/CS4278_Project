@@ -138,20 +138,36 @@ export const segmentStyle = new Style({
 
 export const formatLength = function (line) {
   const length = getLength(line);
+  let kmLength;
+  let mileLength;
+  let meterLength;
+  let feetLength;
   let output;
   if (length > 100) {
-    output = Math.round((length / 1000) * 100) / 100 + " km";
+    kmLength =(length / 1000);
+    mileLength = Math.round((kmLength / 1.609)*100)/ 100;
+    //output = Math.round((length / 1000) * 100) / 100 + " km";
+    output = mileLength + " mi";
   } else {
-    output = Math.round(length * 100) / 100 + " m";
+    meterLength = length;
+    feetLength = Math.round((meterLength * 3.281)* 100) /100;
+    //output = Math.round(length * 100) / 100 + " m";
+    output = feetLength + " ft";
   }
   return output;
 };
 
 export const formatArea = function (polygon) {
   const area = getArea(polygon);
+  let kmArea;
+  let mileArea;
   let output;
   if (area > 10000) {
-    output = Math.round((area / 1000000) * 100) / 100 + " km\xB2";
+    kmArea =Math.round((area / 1000000) * 100) / 100;
+    mileArea = Math.round(kmArea / 0.609);
+
+   // output = Math.round((area / 1000000) * 100) / 100 + " km\xB2";
+     output = mileArea + " mi\xB2";
   } else {
     output = Math.round(area * 100) / 100 + " m\xB2";
   }

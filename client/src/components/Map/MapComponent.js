@@ -191,9 +191,11 @@ const MapComponent = () => {
     <>
       <div ref={mapElement} className="map-container"></div>
       <div className="measuring-tool">
+      {/* <h1>Your run is BLANK miles long</h1> */}
         <button className="reset-button" onClick={removeLines}>
           Start Over
         </button>
+       
       </div>
     </>
   );
