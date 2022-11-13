@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth')
 const bioRoutes = require('./routes/bio')
 const adminRoutes = require('./routes/admin')
 const imageRoutes = require('./routes/images')
+const runRoutes = require('../routes/runs')
 
 async function bootstrap() {
   await mongo.connect()
@@ -16,6 +17,7 @@ async function bootstrap() {
   app.use('/bio', bioRoutes)
   app.use('/admin', adminRoutes)
   app.use('/image', imageRoutes)
+  app.use('/runs', runRoutes)
 
   app.listen(PORT, () => {
     console.log(`✅ Server is listening on port: ${PORT}`)
