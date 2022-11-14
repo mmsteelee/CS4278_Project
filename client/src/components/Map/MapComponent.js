@@ -8,6 +8,8 @@ import { Draw, Modify } from "ol/interaction";
 import { LineString, Point } from "ol/geom";
 import { OSM, Vector as VectorSource } from "ol/source";
 import { Vector as VectorLayer } from "ol/layer";
+import GeoJSON from 'ol/format/GeoJSON';
+
 import {
   formatArea,
   formatLength,
@@ -18,12 +20,15 @@ import {
   labelStyle,
   tipStyle,
 } from "./MeasuringComponent";
+import { makeRun } from "../../api/runs";
 
 const raster = new TileLayer({
   source: new OSM(),
 });
 
-const source = new VectorSource();
+const source = new VectorSource({
+  format: new GeoJSON(),
+});
 
 const vector = new VectorLayer({
   source: source,
@@ -128,9 +133,7 @@ const MapComponent = () => {
 
     const addInteraction = () => {
       const drawType = 'LineString';//draws lines
-      const activeTip =
-        "Click to continue drawing the " +
-        (drawType === "Polygon" ? "polygon" : "line");
+      const activeTip = "Double click to stop drawing the run";
       const idleTip = "Click to start measuring";
       let tip = idleTip;
       draw = new Draw({
@@ -187,16 +190,27 @@ const MapComponent = () => {
     source.clear();
   };
 
+  const submit = async () =>{
+    let features = source.getFeatures()
+
+    features.forEach((feature) => {
+      console.log(feature.getCoordinates());
+  });
+
+    //makeRun().catch(err => console.log(err))
+  }
+
   return (
     <>
       <div ref={mapElement} className="map-container"></div>
       <div className="measuring-tool">
-      {/* <h1>Your run is BLANK miles long</h1> */}
         <button className="reset-button" onClick={removeLines}>
           Start Over
         </button>
-       
       </div>
+      <button className="reset-button" onClick={submit}>
+          Submit
+      </button>
     </>
   );
 };
