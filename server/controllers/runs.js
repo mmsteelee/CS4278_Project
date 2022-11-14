@@ -40,7 +40,6 @@ const searchRuns = async (req, res) => {
         }
 
         res.status(200).send(result)
-
     } else {
         res.status(400).json({message: 'Search query incomplete'})
     }
@@ -53,11 +52,12 @@ const makeRun = async (req, res) => {
     // create run components
     if (runMeta && runData) {
         const result = await RunData.create(runData)
-            .catch(err => res.status(400).send(err))
+            .catch(err => res.status(400).send('Cannot create run data record'))
+        
         runMeta.data_id = result.id
         RunMeta.create(runMeta)
-            .then(res.res.status(200).send())
-            .catch(err => res.status(400).send(err))
+            .then(res.status(200).send())
+            .catch(err => res.status(400).send('Cannot create run meta record'))
     } else {
         res.status(400).json({message: 'Submitted run not complete'})
     }

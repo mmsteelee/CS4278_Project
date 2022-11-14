@@ -195,19 +195,23 @@ const MapComponent = () => {
   };
 
   const uploadMap = () => {
-    
-
     console.log(distance);
+
+    let runData = map.getAllLayers()[1].getSource()
+                     .getFeatures()[0].getGeometry()
+                     .getCoordinates()
     source.clear();
+    let runMeta = {name: 'Test Name',
+                   distance: distance,
+                   tags: ['tag1, tag2']}
+    let run = {meta: runMeta, data: {coordinates: JSON.stringify(runData)}}
 
-    let features = source.getFeatures()
-
-    features.forEach((feature) => {
-      console.log(feature.getCoordinates());
-    });
+    makeRun(run)
+      .then(console.log('Successfull upload'))
+      .catch(err => console.log(err))
     //Add in whatever should happen when you upload here
   };
-  
+
   const getRouteDistance = () => {
    
     console.log(distance);

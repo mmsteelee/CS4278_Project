@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const instance = new mongoose.Schema(
     {
-        geo_json: {
+        coordinates: {
             type: String,
             required: true
         }

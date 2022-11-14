@@ -15,7 +15,7 @@ const instance = new mongoose.Schema(
             required: true,
         },
         data_id: {
-            type: Number,
+            type: String,
             required: true
         }
     }
