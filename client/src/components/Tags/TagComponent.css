@@ -1,25 +1,26 @@
 
-  .main-wrapper{
+  .tag-wrapper{
     display: flex;
-    padding-top: 20px;
   }
   
-  .main-wrapper .shady{
-    flex: 50%;
-    height: 80px;
-    padding-top: 8px;
-    padding-right: 8px;
-    padding-left: 8px;
-    background-color: purple;
+  .tag-wrapper button{
+    height: 40px;
+    margin: 5px;
+    border-radius: 20px;
+    padding-top: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+
   }
 
-  .main-wrapper button-selected{
-    flex: 50%;
-    height: 80px;
-    color: red;
-    padding-top: 8px;
-    padding-right: 8px;
-    padding-left: 8px;
+  #clear {
+    margin-left:30px;
+    
   }
+
   
  

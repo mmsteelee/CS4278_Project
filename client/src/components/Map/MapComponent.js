@@ -227,7 +227,7 @@ const MapComponent = () => {
           Start Over
         </button>
         <button className="upload-button" onClick={uploadMap}>
-          Upload
+          Upload Route
         </button>
        
       </div>

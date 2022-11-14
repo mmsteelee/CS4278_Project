@@ -1,3 +1,16 @@
+.main-wrapper{
+  display: flex;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.tags{
+
+  background-color: aqua;
+}
+
 .map-container {
     height: calc(100vh - 90px);
     width: 85vw;
@@ -5,7 +18,7 @@
     margin-bottom: 5vh;
     margin-left: 5vw;
     margin-right: 5vw;
-    padding-top: 20px;
+    padding-top: 1px;
     padding-left: 35px;
   }
   
@@ -19,9 +32,11 @@
     text-decoration: none;
     font-size: large;
     color: white;
+    margin:5px;
     border-radius: 5px;
     padding: 15px 30px;
-    background-color: #6bb8d1;
+    /* background-color: #6bb8d1; */
+    background-color: black;
     cursor: pointer;
     transition-duration: 0.4s;
     
@@ -30,22 +45,42 @@
   .upload-button {
     border: none;
     text-decoration: none;
+    margin:5px;
     font-size: large;
     color: white;
     border-radius: 5px;
     padding: 15px 30px;
-    background-color: #6bb8d1;
+    background-color: black;
     cursor: pointer;
     transition-duration: 0.4s;
     
   }
   
   .upload-button:hover {
-    background-color: #437e91;
+    /* background-color: #437e91; */
+    background-color: darkgoldenrod;
   }
 
   .reset-button:hover {
-    background-color: #437e91;
+    background-color: darkgoldenrod;
   }
 
+  #tagsText{
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    color:black;
+    padding-bottom: 0px;
+    padding-left: 200px;
+  }
+
+  .tagButtons{
+ 
+    padding-left: 200px;
+   
+  }
+
+  .map{
+   
+  }
  
