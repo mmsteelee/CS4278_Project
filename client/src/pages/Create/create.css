@@ -26,7 +26,24 @@
     transition-duration: 0.4s;
     
   }
+
+  .upload-button {
+    border: none;
+    text-decoration: none;
+    font-size: large;
+    color: white;
+    border-radius: 5px;
+    padding: 15px 30px;
+    background-color: #6bb8d1;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    
+  }
   
+  .upload-button:hover {
+    background-color: #437e91;
+  }
+
   .reset-button:hover {
     background-color: #437e91;
   }
