@@ -17,8 +17,9 @@ import {
   completeStyle,
   labelStyle,
   tipStyle,
+  getDistance
 } from "./MeasuringComponent";
-
+let distance = 0.0;
 const raster = new TileLayer({
   source: new OSM(),
 });
@@ -62,6 +63,8 @@ const styleFunction = (feature, segments, drawType, tip) => {
     } else if (type === 'LineString') {
       point = new Point(geometry.getLastCoordinate());
       label = formatLength(geometry);
+      distance = getDistance(geometry);
+      //console.log(distance);
       line = geometry;
     }
   }
@@ -187,6 +190,20 @@ const MapComponent = () => {
     source.clear();
   };
 
+  const uploadMap = () => {
+    
+
+    console.log(distance);
+    source.clear();
+    //Add in whatever should happen when you upload here
+  };
+  const getRouteDistance = () => {
+   
+    console.log(distance);
+    //return distance
+
+  };
+
   return (
     <>
       <div ref={mapElement} className="map-container"></div>
@@ -194,6 +211,9 @@ const MapComponent = () => {
       {/* <h1>Your run is BLANK miles long</h1> */}
         <button className="reset-button" onClick={removeLines}>
           Start Over
+        </button>
+        <button className="upload-button" onClick={uploadMap}>
+          Upload
         </button>
        
       </div>
