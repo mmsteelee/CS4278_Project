@@ -157,6 +157,15 @@ export const formatLength = function (line) {
   return output;
 };
 
+export const getDistance = function (line) {
+  const length = getLength(line);
+  let kmLength;
+  let mileLength;
+    kmLength =(length / 1000);
+    mileLength = Math.round((kmLength / 1.609)*100)/ 100;
+  
+  return mileLength;
+};
 export const formatArea = function (polygon) {
   const area = getArea(polygon);
   let kmArea;
