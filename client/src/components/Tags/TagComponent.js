@@ -5,8 +5,8 @@ import './TagComponent.css';
 let pressedArray = new Array(0,0,0,0,0,0);
 let selectedTagsArray = [];
 const Tags = () => {
-    const buttonBackgroundColor = "white";
-    const clickedButtonColor = "CornflowerBlue";
+    const buttonBackgroundColor = "black";
+    const clickedButtonColor = "DarkGoldenRod";
     const [ShadyButtonColor, setShadyButtonColor] = useState(buttonBackgroundColor);
     const [HillsButtonColor,setHillsButtonColor ] = useState(buttonBackgroundColor);
     const [PedButtonColor,setPedButtonColor ] = useState(buttonBackgroundColor);
@@ -14,9 +14,7 @@ const Tags = () => {
     const [MediumButtonColor,setMediumButtonColor ] = useState(buttonBackgroundColor);
     const [LongButtonColor,setLongButtonColor ] = useState(buttonBackgroundColor);
   
-   //array of tags that have been selected
-    //Do I need to add something to ignore multiple presses?
-    //Have button change color once pressed
+
     const selectShady = () => {
  
         if (pressedArray[0] === 0){
@@ -110,29 +108,29 @@ const Tags = () => {
       }
 
     return(
-        <div className= "main-wrapper">
+        <div className= "tag-wrapper">
            
          
-            <button className="shady" onClick={selectShady}style={{ background: ShadyButtonColor }}>
+            <button id="shady" onClick={selectShady}style={{ background: ShadyButtonColor }}>
                 Shady
             </button>
-            <button className="hills" onClick={selectHills}style={{ background: HillsButtonColor }}>
+            <button id="hills" onClick={selectHills}style={{ background: HillsButtonColor }}>
                 Hills
             </button>
            
-            <button className="pedestrian" onClick={selectPedestrian}style={{ background: PedButtonColor }}>
+            <button id="pedestrian" onClick={selectPedestrian}style={{ background: PedButtonColor }}>
                 Pedestrian Friendly
             </button>
-            <button className="short" onClick={selectShort}style={{ background: ShortButtonColor }}>
+            <button id="short" onClick={selectShort}style={{ background: ShortButtonColor }}>
                 Short
             </button>
-            <button className="medium" onClick={selectMedium}style={{ background: MediumButtonColor }}>
+            <button id="medium" onClick={selectMedium}style={{ background: MediumButtonColor }}>
                 Medium
             </button>
-            <button className="long" onClick={selectLong}style={{ background: LongButtonColor }}>
+            <button id="long" onClick={selectLong}style={{ background: LongButtonColor }}>
                 Long
             </button>
-            <button className="clear" onClick={selectClear}>
+            <button id="clear" onClick={selectClear}>
                 Clear Selection
             </button>
         </div>
