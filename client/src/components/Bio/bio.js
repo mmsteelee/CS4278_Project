@@ -26,6 +26,7 @@ const Bio = ({bio}) => {
     const email = "mailto:" + bio.email;
 
     useEffect(() => {
+        bio.name = 'Matt'
         setisAdmin(user.role === 'admin')
     }, [])
 

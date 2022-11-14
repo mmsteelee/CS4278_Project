@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
@@ -21,7 +21,6 @@ import {
   tipStyle,
   getDistance
 } from "./MeasuringComponent";
-import { makeRun } from "../../api/runs";
 
 let distance = 0.0;
 const raster = new TileLayer({
@@ -110,11 +109,29 @@ const styleFunction = (feature, segments, drawType, tip) => {
   return styles;
 };
 
-const MapComponent = () => {
+const MapComponent = forwardRef(({updateMap}, ref) => {
   const [map, setMap] = useState();
   const mapElement = useRef();
-  const mapRef = useRef();
-  mapRef.current = map;
+
+  useImperativeHandle(ref, () => ({
+    reset() {
+      source.clear()
+    },
+    submit() {
+      if (map?.getAllLayers()[1]?.getSource()
+      ?.getFeatures()[0]) {
+        let runData = map.getAllLayers()[1].getSource()
+                         .getFeatures()[0].getGeometry()
+                         .getCoordinates()
+        source.clear()
+        updateMap(runData, distance)
+      } 
+    }
+  }))
+
+  useEffect(() => {  
+  })
+
   useEffect(() => {
     const vector = new VectorLayer({
       source: source,
@@ -165,8 +182,6 @@ const MapComponent = () => {
     };
     addInteraction();
 
-    
-
     var canvas = document.createElement("canvas");
     canvas.id = "a_boat";
     canvas.width = 20;
@@ -182,58 +197,16 @@ const MapComponent = () => {
       autoPan: true,
       offset: [-10, -10],
     });
-
-    
-   
-    
    
     setMap(_map);
   }, []);
 
-  const removeLines = () => {
-    source.clear();
-  };
-
-  const uploadMap = () => {
-    console.log(distance);
-
-    let runData = map.getAllLayers()[1].getSource()
-                     .getFeatures()[0].getGeometry()
-                     .getCoordinates()
-    source.clear();
-    let runMeta = {name: 'Test Name',
-                   distance: distance,
-                   tags: ['tag1, tag2']}
-    let run = {meta: runMeta, data: {coordinates: JSON.stringify(runData)}}
-
-    makeRun(run)
-      .then(console.log('Successfull upload'))
-      .catch(err => console.log(err))
-    //Add in whatever should happen when you upload here
-  };
-
-  const getRouteDistance = () => {
-   
-    console.log(distance);
-    //return distance
-
-  };
-
   return (
     <>
       <div ref={mapElement} className="map-container"></div>
-      <div className="measuring-tool">
-        <button className="reset-button" onClick={removeLines}>
-          Start Over
-        </button>
-        <button className="upload-button" onClick={uploadMap}>
-          Upload Route
-        </button>
-       
-      </div>
     </>
   );
-};
+})
 
 export default MapComponent;
 

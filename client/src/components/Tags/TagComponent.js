@@ -1,4 +1,5 @@
-import React from "react"
+import { reset } from "ol/transform";
+import React, { forwardRef, useImperativeHandle } from "react"
 import { useState } from "react";
 import './TagComponent.css';
 
@@ -6,8 +7,7 @@ let pressedArray = new Array(0,0,0,0,0,0);
 //let selectedTagsArray = [];
 //array of selected tags
 
-const Tags = () => {
-
+const Tags = forwardRef(({updateTags}, ref) => {
     //set button colors and selected colors
     const buttonBackgroundColor = "black";
     const clickedButtonColor = "DarkGoldenRod";
@@ -21,7 +21,15 @@ const Tags = () => {
     //array of selected tags
     const[selectedArray,setSelectedArray] = useState([]);
    
-    ;
+    useImperativeHandle(ref, () => ({
+      submit() {
+        updateTags(selectedArray)
+      },
+      clear() {
+        selectClear()
+      }
+    }))
+
     const selectShady = () => {
  
         if (pressedArray[0] === 0){
@@ -162,6 +170,6 @@ const Tags = () => {
             </button>
         </div>
     )
-}
+})
 
 export default Tags
