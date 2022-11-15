@@ -6,10 +6,10 @@ const {getRun, searchRuns, makeRun} = require('../controllers/runs')
 
 const router = express.Router()
 
-router.get('/:id', getRun)
-
-router.get('/search', searchRuns)
+router.get('/find', searchRuns)
 
 router.post('/new', auth ,makeRun)
+
+router.get('/:id', getRun)
 
 module.exports = router

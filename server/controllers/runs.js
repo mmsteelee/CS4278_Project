@@ -11,27 +11,27 @@ const getRun = async (req, res) => {
 
 const searchRuns = async (req, res) => {
     const runs = await RunMeta.find({})
-    let ratings = []
-    const query = req.body
-
+    const query = req.query
+    
     if (query.distance && query.tags) {
+        let ratings = []
         // calculate ratings for each run
         for (let i = 0; i < runs.length; ++i) {
             run = runs[i]
             let rating = {score: 0, id: i}
             
             let intersection = query.tags.filter(x => run.tags.includes(x))
-            rating += intersection.length
-            
-            rating += 2 / Math.abs(run.distance - query.distance)
+            rating.score += intersection.length
+            console.log(rating)
+            rating.score += 2 / Math.abs(run.distance - query.distance)
     
             ratings.push(rating)
         }
 
         ratings.sort((a,b) => {
-            return a.score - b.score
+            return b.score - a.score
         })
-        
+
         result = []
         // packaging best rated runs into response result 
         for (let i = 0; i < MAX_RUNS_SHOWN && i < ratings.length; ++i){

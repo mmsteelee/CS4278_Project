@@ -1,26 +1,66 @@
-import React, { useState } from 'react'
-import { search } from '../api/runs';
+import React, { useEffect, useRef, useState } from 'react'
+import { search as searchAPI } from '../api/runs';
 import RunDescription from '../components/RunDescription/run-description';
+import Tags from '../components/Tags/TagComponent';
 
 const FindARun = () => {
   const [runs, setRuns] = useState([]);
+  const [query, setQuery] = useState({
+    distance: 0,
+    tags: []
+  })
+  
+  const tagsRef = useRef()
 
-  async function search(query) {
-    await search(query)
-      .then(res => setRuns(res))
-      .catch(err => console.log(err))
+  async function search() {
+    tagsRef.current.submit()
+    let searchable = query.distance !== 0 && !isNaN(query.distance) && query.tags.length > 0
+    if (searchable) {
+      console.log('query: ', query)
+      await searchAPI(query)
+        .then(res => setRuns(res.data))
+        .catch(err => console.log(err))
+    } else {
+      // TODO prompt why not seqarchable
+    }
   }
   
+  const updateTags = (tags) => {
+    let tmp = query
+    tmp.tags = tags
+    setQuery(tmp)
+  }
+
+  const handleChange = event => {
+    const result = event.target.value
+
+    if (!result || result.match(/^\d{1,}(\.\d{0,4})?$/)) {
+      let tmp = query
+      tmp.distance = parseFloat(result)
+      setQuery(tmp)
+    } else {
+      // TODO prompt user to input numbers only
+    }
+  };
+
+
   return (
       <div>
-       
-    
       <div className='container'>
-        
         <h1>Find a run </h1>
+        <Tags ref={tagsRef} updateTags={updateTags}/>
+        <input
+          type="text"
+          placeholder={query.distance}
+          onChange={handleChange}
+        />
+        <div>
         {runs.map(run => <RunDescription
           description={run}
+          key={run.name}
         />)}
+        </div>
+        <button onClick={search} >Search</button>
       </div>
       </div>
     );

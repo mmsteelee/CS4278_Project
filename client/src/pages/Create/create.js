@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import NavBar from '../../components/NavBar-component/NavBar'
 
 import MapComponent from "../../components/Map/MapComponent";
@@ -8,13 +8,11 @@ import "./create.css";
 import { makeRun } from '../../api/runs';
 // import Header from '../../components/header-component/header'
 
-export const SubmitContext = createContext(null)
-
 const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
   const [mapContext, setMapContext] = useState({
-    name: 'Test',
+    name: 'Test2',
     distance: 0,
     tags: [],
     coordinates: [],

@@ -14,8 +14,8 @@ export async function getRun(id) {
 export async function search(query) {
     return await axios({
         method: "GET",
-        url: `/runs/search`,
-        data: query
+        url: `/runs/find`,
+        params: query
     })
 }
 
