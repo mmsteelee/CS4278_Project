@@ -21,32 +21,16 @@ import {
   tipStyle,
   getDistance
 } from "./MeasuringComponent";
+import { Feature } from "ol";
 
 let distance = 0.0;
 const raster = new TileLayer({
   source: new OSM(),
 });
 
-const source = new VectorSource({
-  format: new GeoJSON(),
-});
-
-const vector = new VectorLayer({
-  source: source,
-  style: {
-    'fill-color': 'rgba(255, 255, 255, 0.2)',
-    'stroke-color': '#ffcc33',
-    'stroke-width': 2,
-    'circle-radius': 7,
-    'circle-fill-color': '#ffcc33',
-  },
-});
-
 let tipPoint;
 
 const segmentStyles = [segmentStyle];
-
-const modify = new Modify({ source: source, style: modifyStyle });
 
 const styleFunction = (feature, segments, drawType, tip) => {
   //drawing lines for measuring tools
@@ -54,7 +38,6 @@ const styleFunction = (feature, segments, drawType, tip) => {
  const finishedStyle = [completeStyle];
   if(segments){
     const styles = [completeStyle];
-    console.log("complete style");
   }
   
   const geometry = feature.getGeometry();
@@ -96,8 +79,8 @@ const styleFunction = (feature, segments, drawType, tip) => {
   }
   if (
     tip &&
-    type === "Point" &&
-    !modify.getOverlay().getSource().getFeatures().length
+    type === "Point" 
+    // && !modify.getOverlay().getSource().getFeatures().length
   ) {
     tipPoint = geometry;
     tipStyle.getText().setText(tip);
@@ -109,30 +92,29 @@ const styleFunction = (feature, segments, drawType, tip) => {
   return styles;
 };
 
-const MapComponent = forwardRef(({updateMap}, ref) => {
+const MapComponent = forwardRef(({updateMap, width, length, editable=true, points=[]}, ref) => {
   const [map, setMap] = useState();
-  const mapElement = useRef();
+  const mapElement = useRef()
+  const [source, setSource] = useState(
+    new VectorSource({
+      format: new GeoJSON(),
+    }
+  ))
 
   useImperativeHandle(ref, () => ({
     reset() {
       source.clear()
-    },
-    submit() {
-      if (map?.getAllLayers()[1]?.getSource()
-      ?.getFeatures()[0]) {
-        let runData = map.getAllLayers()[1].getSource()
-                         .getFeatures()[0].getGeometry()
-                         .getCoordinates()
-        source.clear()
-        updateMap(runData, distance)
-      } 
     }
   }))
 
-  useEffect(() => {  
-  })
-
   useEffect(() => {
+    let coords = new LineString(points)
+    const startRouteFeature = new Feature({
+      name: 'Line',
+      geometry: coords
+    })
+    source.addFeature(startRouteFeature)
+
     const vector = new VectorLayer({
       source: source,
       style: function (feature) {
@@ -149,7 +131,9 @@ const MapComponent = forwardRef(({updateMap}, ref) => {
       }),
     });
 
-    _map.addInteraction(modify);
+    const submit = (coords) => {
+      updateMap(coords, distance)
+    }
     let draw;
 
     const addInteraction = () => {
@@ -166,37 +150,32 @@ const MapComponent = forwardRef(({updateMap}, ref) => {
       });
       draw.on("drawstart", function () {
         source.clear();
-        modify.setActive(false);
+        // modify.setActive(false);
         tip = activeTip;
       });
-      draw.on("drawend", function () {
+      draw.on("drawend", function (event) {
         modifyStyle.setGeometry(tipPoint);
-        modify.setActive(true);
+        // modify.setActive(true);
         _map.once("pointermove", function () {
           modifyStyle.setGeometry();
         });
+        submit(event.feature.getGeometry().getCoordinates())
         tip = idleTip;
       });
-      modify.setActive(true);
+      // modify.setActive(true);
       _map.addInteraction(draw);
     };
-    addInteraction();
+    if (editable)
+      addInteraction();
 
     var canvas = document.createElement("canvas");
     canvas.id = "a_boat";
-    canvas.width = 20;
-    canvas.height = 20;
+    canvas.width = width
+    canvas.height = length
     canvas.style.zIndex = 1;
     canvas.style.position = "absolute";
-    canvas.style.border = "1px solid";
+    canvas.style.border = "10px solid";
     document.body.appendChild(canvas);
-    const markerOverlay = new Overlay({
-      element: canvas,
-      positioning: "center-center",
-      stopEvent: false,
-      autoPan: true,
-      offset: [-10, -10],
-    });
    
     setMap(_map);
   }, []);

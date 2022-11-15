@@ -8,11 +8,15 @@ import "./create.css";
 import { makeRun } from '../../api/runs';
 // import Header from '../../components/header-component/header'
 
+const defaultRun = [[-9663637.587241087,4320771.237232724],[-9663603.951528002,4320545.008367784],[-9663744.135997927,4319719.678623604],[-9662611.727172734,4319566.732425637],[-9662454.287134558,4321015.849989433],[-9662666.139601596,4321341.993847092],[-9663635.87530196,4320763.105521869]]
+const mWidth = 20
+const mLength = 20
+
 const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
   const [mapContext, setMapContext] = useState({
-    name: 'Test2',
+    name: 'Campus Loop',
     distance: 0,
     tags: [],
     coordinates: [],
@@ -32,10 +36,13 @@ const CreateARun = () => {
   }
 
   const uploadMap = () => {
-    mapRef.current.submit()
+    mapRef.current.reset()
     tagsRef.current.submit()
     let runMeta = {name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags}
-    let run = {meta: runMeta, data: {coordinates: JSON.stringify(mapContext.coordinates)}}
+    let run = {
+                meta: runMeta, 
+                data: {coordinates: mapContext.coordinates.map(String)}
+              }
 
     if (!mapContext.coordinates.length) {
       // TDOO prompt user to draw a route before submittign
@@ -72,7 +79,12 @@ const CreateARun = () => {
      <Tags ref={tagsRef} updateTags={updateTags}/>
      </div>
      <div className='map'>
-     <MapComponent ref={mapRef} updateMap={updateMap}/>
+     <MapComponent 
+        ref={mapRef}
+        width={mWidth}
+        length={mLength} 
+        updateMap={updateMap} 
+        points={defaultRun}/>
      <div className="measuring-tool">
         <button className="reset-button" onClick={removeLines}>
           Start Over

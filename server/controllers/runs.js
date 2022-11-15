@@ -5,7 +5,7 @@ const MAX_RUNS_SHOWN = 10
 
 const getRun = async (req, res) => {
     RunData.findById(req.params.id)
-        .then(run => res.status(200).send(run))
+        .then(run => res.status(200).send(run.coordinates))
         .catch(err => res.status(400).send(err))
 }
 
@@ -22,7 +22,6 @@ const searchRuns = async (req, res) => {
             
             let intersection = query.tags.filter(x => run.tags.includes(x))
             rating.score += intersection.length
-            console.log(rating)
             rating.score += 2 / Math.abs(run.distance - query.distance)
     
             ratings.push(rating)

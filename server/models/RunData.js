@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const instance = new mongoose.Schema(
     {
         coordinates: {
-            type: String,
+            type: [String],
             required: true
         }
     }

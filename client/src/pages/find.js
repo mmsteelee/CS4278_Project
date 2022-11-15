@@ -16,7 +16,6 @@ const FindARun = () => {
     tagsRef.current.submit()
     let searchable = query.distance !== 0 && !isNaN(query.distance) && query.tags.length > 0
     if (searchable) {
-      console.log('query: ', query)
       await searchAPI(query)
         .then(res => setRuns(res.data))
         .catch(err => console.log(err))
@@ -54,13 +53,13 @@ const FindARun = () => {
           placeholder={query.distance}
           onChange={handleChange}
         />
+        <button onClick={search} >Search</button>
         <div>
         {runs.map(run => <RunDescription
           description={run}
           key={run.name}
         />)}
         </div>
-        <button onClick={search} >Search</button>
       </div>
       </div>
     );
