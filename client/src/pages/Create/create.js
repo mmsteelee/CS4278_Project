@@ -18,25 +18,50 @@ const defaultRun = [[-86.81009726157794,36.146299217317576],
 const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
+  const[routeDrawn, setDrawn] = useState(true); //indicates if route has been drawn
   const [mapContext, setMapContext] = useState({
-    name: 'Big Run',
+    name: "",
     distance: 0,
     tags: [],
     coordinates: [],
   })
+  const handleChange = (event) => {
+
+    if(routeDrawn){
+    setMapContext({ ...mapContext, [event.target.name]: event.target.value });
+    }
+    else{
+      //mapContext.name= "Please Draw a Route";
+      console.log("draw route first");
+      setMapContext({ ...mapContext, [event.target.name]: "Please Draw a Route" });
+    }
+  };
+
+ 
+  // useEffect(()=>{
+  //   drawnRoute = mapContext.coordinates.length > 0
+  // }, [mapContext]);
 
   const updateMap = (runData, distance) => {
-    let tmp = mapContext
-    tmp.coordinates = runData
-    tmp.distance = distance
-    setMapContext(tmp)
+    setDrawn(true);
+    console.log(mapContext.name);
+    let tmp = mapContext;
+    tmp.name = mapContext.name;
+    tmp.coordinates = runData;
+    tmp.distance = distance;
+    setMapContext(tmp);
+    console.log("updateMap");
   }
 
+  //Why are these the same?
   const updateTags = (tags_) => {
-    let tmp = mapContext
-    tmp.tags = tags_
-    setMapContext(tmp)
+    console.log(mapContext.name);
+    let tmp = mapContext;
+    tmp.tags = tags_;
+    setMapContext(tmp);
+    console.log("updateTags");
   }
+
 
   const uploadMap = () => {
     mapRef.current.reset()
@@ -55,16 +80,22 @@ const CreateARun = () => {
       // TDOO prompt user to enter tags before submittign
       return
     }
-    makeRun(run)
-      .then(console.log('Successfull upload'))
-      .catch(err => console.log(err))
+    // makeRun(run)
+
+    //   .then(console.log('Successfull upload'))
+    //   .catch(err => console.log(err))
+    console.log(mapContext);
   };
 
   const removeLines = () => {
-    mapRef.current.reset()
-    tagsRef.current.clear()
+    console.log(mapContext.name);
+    mapRef.current.reset();
+    tagsRef.current.clear();
+    setDrawn(false);
+    //setMapContext({ ...mapContext, name: "Please Draw a Route" });
     setMapContext({
-      name: mapContext.name,
+     // name: mapContext.name,
+     name: "Please Draw a Route",
       distance: 0,
       tags: [],
       coordinates: [],
@@ -76,7 +107,7 @@ const CreateARun = () => {
   <div className= "main-wrapper">
      <div className= "main-wrapper">
      <div className = "createFeatures">
-     
+
      <div className='tagButtons'>
      <h1 id ="tagsText">Select the tags that apply to your run</h1>
      <Tags ref={tagsRef} updateTags={updateTags}/>
@@ -86,6 +117,10 @@ const CreateARun = () => {
         ref={mapRef}
         updateMap={updateMap} 
         points={defaultRun}/>
+        <div className = "name">
+          {/* placeholder='Name Your Run' */}
+             <input id = "namebox" type='text' name='name'placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
+             </div>
      <div className="measuring-tool">
         <button className="reset-button" onClick={removeLines}>
           Start Over

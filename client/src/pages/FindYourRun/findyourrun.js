@@ -24,10 +24,10 @@ return (
      
     <div className = "links">
 
-      <button className="create" onClick={navigateToCreate}>
+      <button id="create" onClick={navigateToCreate}>
           Create A Run
       </button>
-      <button className="find" onClick={navigateToFind}>
+      <button id="find" onClick={navigateToFind}>
           Find A Run
       </button>
     </div>
