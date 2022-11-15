@@ -15,16 +15,15 @@
     "install": "concurrently \"cd ./server && npm i\" \"cd ./client && npm i\"",
     "start": "concurrently \"cd ./server && npm start\" \"cd ./client && npm start\"",
     "delete-modules": "rm -r ./node_modules && cd ./server && rm -r ./node_modules && cd ../client && rm -r ./node_modules"
-
   },
   "devDependencies": {
     "concurrently": "^6.3.0"
-
   },
   "dependencies": {
     "-": "^0.0.1",
     "@material-ui/core": "^4.12.4",
     "bootstrap": "^5.2.2",
+    "i": "^0.3.7",
     "jwt-decode": "^3.1.2",
     "multer": "^1.4.5-lts.1",
     "ol": "^7.1.0",
