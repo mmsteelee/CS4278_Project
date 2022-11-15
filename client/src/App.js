@@ -8,7 +8,7 @@ import Links from './pages/Links/links'
 import FindYourRun from './pages/FindYourRun/findyourrun.js';
 import MeetTheTeam from './pages/MeetTheTeam/meetTheTeam.js';
 import CreateARun from './pages/Create/create.js';
-import FindARun from './pages/find.js';
+import FindARun from './pages/Find/find.js';
 import Calendar from './pages/Calendar/calendar';
 
 import PopUpDialog from './components/popup-dialog/popup-dialog';
