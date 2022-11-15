@@ -41,6 +41,22 @@ npm start
 
 which will launch the client code in the browser. Put http://localhost:3000 into the browser to access.
 
+# Testing info
+
+Install Testing suite - jest 
+```
+npm install --save-dev jest
+```
+In order to run tests:
+1. cd into the testing directory from command line
+2. run the following command: 
+```
+npm test
+```
+IF THIS DOES NOT WORK
+1. go to package.json 
+2. in the "scripts" section, add: "test": "jest"
+3. make sure to save all files before running
 
 ## Useful Links
 [MERN full tutorial](https://blog.logrocket.com/mern-stack-tutorial/)
