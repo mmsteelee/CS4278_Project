@@ -8,15 +8,18 @@ import "./create.css";
 import { makeRun } from '../../api/runs';
 // import Header from '../../components/header-component/header'
 
-const defaultRun = [[-9663637.587241087,4320771.237232724],[-9663603.951528002,4320545.008367784],[-9663744.135997927,4319719.678623604],[-9662611.727172734,4319566.732425637],[-9662454.287134558,4321015.849989433],[-9662666.139601596,4321341.993847092],[-9663635.87530196,4320763.105521869]]
-const mWidth = 20
-const mLength = 20
+const defaultRun = [[-86.81009726157794,36.146299217317576],
+                    [-86.80131438406454,36.15044574144105],
+                    [-86.7992112393866,36.14801580890686],
+                    [-86.80075254366587,36.13742787171793],
+                    [-86.81087733379613,36.13868784177623],
+                    [-86.8098680396668,36.14635011068731]]
 
 const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
   const [mapContext, setMapContext] = useState({
-    name: 'Campus Loop',
+    name: 'Big Run',
     distance: 0,
     tags: [],
     coordinates: [],
@@ -81,8 +84,6 @@ const CreateARun = () => {
      <div className='map'>
      <MapComponent 
         ref={mapRef}
-        width={mWidth}
-        length={mLength} 
         updateMap={updateMap} 
         points={defaultRun}/>
      <div className="measuring-tool">

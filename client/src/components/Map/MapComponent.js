@@ -3,7 +3,7 @@ import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
 import Overlay from "ol/Overlay";
-import { transform, fromLonLat } from "ol/proj";
+import { transform, fromLonLat, toLonLat } from "ol/proj";
 import { Draw, Modify } from "ol/interaction";
 import { LineString, Point } from "ol/geom";
 import { OSM, Vector as VectorSource } from "ol/source";
@@ -24,9 +24,6 @@ import {
 import { Feature } from "ol";
 
 let distance = 0.0;
-const raster = new TileLayer({
-  source: new OSM(),
-});
 
 let tipPoint;
 
@@ -92,7 +89,7 @@ const styleFunction = (feature, segments, drawType, tip) => {
   return styles;
 };
 
-const MapComponent = forwardRef(({updateMap, width, length, editable=true, points=[]}, ref) => {
+const MapComponent = forwardRef(({updateMap, editable=true, points=[]}, ref) => {
   const [map, setMap] = useState();
   const mapElement = useRef()
   const [source, setSource] = useState(
@@ -107,12 +104,30 @@ const MapComponent = forwardRef(({updateMap, width, length, editable=true, point
     }
   }))
 
+  const getCentroid = () => {
+    if (points.length === 0) {
+      return fromLonLat([-86.8027, 36.1447])
+    }
+
+    let x_sum = 0
+    let y_sum = 0
+    for (let x in points) {
+      x_sum += points[x][0]
+      y_sum += points[x][1]
+    }
+
+    return fromLonLat([x_sum / points.length, y_sum / points.length])
+  }
+
   useEffect(() => {
-    let coords = new LineString(points)
+    let coords = new LineString(points.map(x => fromLonLat(x)))
     const startRouteFeature = new Feature({
       name: 'Line',
       geometry: coords
     })
+    const raster = new TileLayer({
+      source: new OSM(),
+    });
     source.addFeature(startRouteFeature)
 
     const vector = new VectorLayer({
@@ -121,17 +136,21 @@ const MapComponent = forwardRef(({updateMap, width, length, editable=true, point
         return styleFunction(feature, true); //happens when measure is over
       },
     });
+    let centroid = getCentroid()
     const _map = new Map({
       target: mapElement.current,
       layers: [raster,vector],
      // target:'_map',
       view: new View({
-        center: fromLonLat([-86.8027, 36.1447]), // long, lat of Vanderbilt
+        center: centroid, // long, lat of Vanderbilt
         zoom: 15, //zoom level
       }),
     });
+    _map.getView().fit(source.getExtent(), _map.getSize());
+
 
     const submit = (coords) => {
+      coords = coords.map(x => toLonLat(x))
       updateMap(coords, distance)
     }
     let draw;
@@ -165,18 +184,20 @@ const MapComponent = forwardRef(({updateMap, width, length, editable=true, point
       // modify.setActive(true);
       _map.addInteraction(draw);
     };
-    if (editable)
+
+    if (editable) {
       addInteraction();
+    } else {
+      _map.getInteractions().forEach(x => x.setActive(false))
+    }
 
     var canvas = document.createElement("canvas");
     canvas.id = "a_boat";
-    canvas.width = width
-    canvas.height = length
     canvas.style.zIndex = 1;
     canvas.style.position = "absolute";
     canvas.style.border = "10px solid";
     document.body.appendChild(canvas);
-   
+
     setMap(_map);
   }, []);
 

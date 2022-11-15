@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { search as searchAPI } from '../api/runs';
+import LoadingAnimation from '../components/loading-animation/loading-animation';
 import RunDescription from '../components/RunDescription/run-description';
 import Tags from '../components/Tags/TagComponent';
 
 const FindARun = () => {
   const [runs, setRuns] = useState([]);
+  const [loading, setLoading] = useState(false)
   const [query, setQuery] = useState({
     distance: 0,
     tags: []
@@ -13,11 +15,15 @@ const FindARun = () => {
   const tagsRef = useRef()
 
   async function search() {
+    setLoading(true)
     tagsRef.current.submit()
     let searchable = query.distance !== 0 && !isNaN(query.distance) && query.tags.length > 0
     if (searchable) {
       await searchAPI(query)
-        .then(res => setRuns(res.data))
+        .then(res => {
+          setRuns(res.data)
+          setLoading(false)
+        })
         .catch(err => console.log(err))
     } else {
       // TODO prompt why not seqarchable
@@ -55,10 +61,14 @@ const FindARun = () => {
         />
         <button onClick={search} >Search</button>
         <div>
-        {runs.map(run => <RunDescription
+        {loading ? 
+        <LoadingAnimation />
+        :
+        runs.map(run => <RunDescription
           description={run}
           key={run.name}
-        />)}
+        />)
+        }
         </div>
       </div>
       </div>

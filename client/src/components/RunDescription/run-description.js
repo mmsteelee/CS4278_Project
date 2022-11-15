@@ -2,9 +2,7 @@
 import React, { useEffect, useState } from "react"
 import MapComponent from "../Map/MapComponent"
 import {getRun} from "../../api/runs"
-
-const mWidth = 5
-const mLength = 5
+import LoadingAnimation from "../loading-animation/loading-animation"
 
 const RunDescription = ({description}) => {
     const [points, setPoints] = useState([])
@@ -28,10 +26,9 @@ const RunDescription = ({description}) => {
             <h1>{description.name}</h1>
             <p>Distance: {description.distance}</p>
             <p>Tags: {description.tags}</p>
-            { !loading &&
+            { loading ?
+            <LoadingAnimation /> :
             <MapComponent
-                width={mWidth}
-                length={mLength} 
                 points={points}
                 editable={false}
             />
