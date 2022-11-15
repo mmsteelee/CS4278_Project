@@ -146,8 +146,9 @@ const MapComponent = forwardRef(({updateMap, editable=true, points=[]}, ref) => 
         zoom: 15, //zoom level
       }),
     });
-    _map.getView().fit(source.getExtent(), _map.getSize());
 
+    _map.getView().fit(source.getExtent(), _map.getSize());
+    _map.getView().setZoom(_map.getView().getZoom() - 0.5);
 
     const submit = (coords) => {
       coords = coords.map(x => toLonLat(x))
