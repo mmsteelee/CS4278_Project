@@ -80,10 +80,9 @@ const CreateARun = () => {
       // TDOO prompt user to enter tags before submittign
       return
     }
-    // makeRun(run)
-
-    //   .then(console.log('Successfull upload'))
-    //   .catch(err => console.log(err))
+    makeRun(run)
+      .then(console.log('Successfull upload'))
+      .catch(err => console.log(err))
     console.log(mapContext);
   };
 
