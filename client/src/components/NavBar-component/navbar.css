@@ -6,7 +6,7 @@
   height: 7vh;
   font-family: 'Times New Roman', Times, serif;
   display: flex;
-
+  
 }
 
 .navbar .left-side {
@@ -19,7 +19,8 @@
     padding-left: 5%;
     align-items: center;
     text-shadow: none;
-    
+    /* background: rgba(255, 251, 251, 0.5); */
+    font-weight: bold;
 }
 
 .navbar .left-side a{
@@ -34,6 +35,11 @@
 
 .navbar .text #hidden {
   display:flex;
+}
+
+.navbar .right-side{
+  /* background: rgba(255, 251, 251, 0.5); */
+  font-weight: bold;
 }
 
 
@@ -60,6 +66,7 @@
     margin-left: 20px;
     font-family: Montserrat, Helvetica, sans-serif;
     padding: 0px;
+    font-weight: bold;
 }
 
 
