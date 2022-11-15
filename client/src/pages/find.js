@@ -66,7 +66,7 @@ const FindARun = () => {
         :
         runs.map(run => <RunDescription
           description={run}
-          key={run.name}
+          key={run.data_id}
         />)
         }
         </div>
