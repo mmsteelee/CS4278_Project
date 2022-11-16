@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react"
 import MapComponent from "../Map/MapComponent"
 import {getRun} from "../../api/runs"
 import LoadingAnimation from "../loading-animation/loading-animation"
+import './run-description.css'
 
 const RunDescription = ({description}) => {
     const [points, setPoints] = useState([])
     const [loading, setLoading] = useState(true)
 
+    var tags = description.tags;
+    var tagsToString = tags.join(',           ');
+
     useEffect(() => {
+        
         getRun(description.data_id)
             .then(res => {
                 let data = res.data
@@ -22,17 +27,26 @@ const RunDescription = ({description}) => {
     }, []) 
 
     return(
-        <div>
-            <h1>{description.name}</h1>
-            <p>Distance: {description.distance}</p>
-            <p>Tags: {description.tags}</p>
-            { loading ?
-            <LoadingAnimation /> :
-            <MapComponent
-                points={points}
-                editable={false}
-            />
-            }
+        <div className="run-returns">
+            <div className="description">
+                <h1>{description.name}</h1>
+                <p>Distance: {description.distance}</p>
+                <div className="array">
+                  
+                    {/* <p>Tags: {tags}</p> */}
+                    {/* <p>Tags: {description.tags}</p> */}
+                    <p>Tags: {tagsToString}</p>
+                </div>
+            </div>
+            <div className="map-picture">
+                { loading ?
+                <LoadingAnimation /> :
+                <MapComponent
+                    points={points}
+                    editable={false}
+                />
+                }
+            </div>
         </div>
     )
 }
