@@ -65,15 +65,16 @@ const exp = (req, res) => {
 
     if(!token){
         res.status(401).json({msg: "Access denied. No token provided"})
-    }
-    try{
-        const decodedUser = jwt.verify(token, process.env.JWT_SECRET)
-        let exp = decodedUser.exp
-        let timeRemaining = Math.floor(exp - Date.now()/1000)
-        res.json({exp: timeRemaining})
-    }catch(err){
-        res.clearCookie("token")
-        res.status(400).send("Token is not valid")
+    } else {
+      try{
+          const decodedUser = jwt.verify(token, process.env.JWT_SECRET)
+          let exp = decodedUser.exp
+          let timeRemaining = Math.floor(exp - Date.now()/1000)
+          res.json({exp: timeRemaining})
+      }catch(err){
+          res.clearCookie("token")
+          res.status(400).send("Token is not valid")
+      }
     }
 }
 
