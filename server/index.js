@@ -1,4 +1,5 @@
-require('dotenv').config({ path: "./config.env" }) // Secures variables
+require('dotenv').config({ path: "./config.env" }) // Secures variable
+const express = require('express')
 const path = require("path");
 const app = require('./utils/app') // Backend App (server)
 const mongo = require('./utils/mongo') // MongoDB (database)
