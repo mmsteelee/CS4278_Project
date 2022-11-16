@@ -11,6 +11,7 @@ import "./findyourrun.css";
 
 
 const FindYourRun = () => {
+  const [runFindError, setFindText] = useState('Fill all required fields before submitting')
   //const mapRef = useRef()
   const navigate = useNavigate();
 
