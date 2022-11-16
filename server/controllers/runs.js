@@ -12,8 +12,10 @@ const getRun = async (req, res) => {
 const searchRuns = async (req, res) => {
     const runs = await RunMeta.find({})
     const query = req.query
+
+  
     
-    if (query.distance && query.tags) {
+    if (query.minDistance && query.maxDistance && query.tags) {
         let ratings = []
         // calculate ratings for each run
         for (let i = 0; i < runs.length; ++i) {
@@ -22,9 +24,17 @@ const searchRuns = async (req, res) => {
             
             let intersection = query.tags.filter(x => run.tags.includes(x))
             rating.score += intersection.length
-            rating.score += 2 / Math.abs(run.distance - query.distance)
+            //rating.score += 2 / Math.abs(run.distance - query.distance)
+
+            //doesn't push if route is out of range indicated in query
+            if ((query.minDistance <= run.distance) && (query.maxDistance >= run.distance)){
+                ratings.push(rating);
+            }
+
+            //2^number of matching tags
+            //distance is range -- limit to distance slider
     
-            ratings.push(rating)
+         
         }
 
         ratings.sort((a,b) => {
