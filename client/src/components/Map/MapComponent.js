@@ -192,13 +192,6 @@ const MapComponent = forwardRef(({updateMap, editable=true, points=[]}, ref) => 
       _map.getInteractions().forEach(x => x.setActive(false))
     }
 
-    var canvas = document.createElement("canvas");
-    canvas.id = "a_boat";
-    canvas.style.zIndex = 1;
-    canvas.style.position = "absolute";
-    canvas.style.border = "10px solid";
-    document.body.appendChild(canvas);
-
     setMap(_map);
   }, []);
 
