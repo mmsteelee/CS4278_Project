@@ -18,6 +18,8 @@ const defaultRun = [[-86.81009726157794, 36.146299217317576],
 const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
+  //declare a run route handler
+  const [runRouteError, setRouteText] = useState('Fill all required fields before submitting')
   const [routeDrawn, setDrawn] = useState(true); //indicates if route has been drawn
   const [mapContext, setMapContext] = useState({
     name: "",
@@ -72,16 +74,24 @@ const CreateARun = () => {
       data: { coordinates: mapContext.coordinates.map(String) }
     }
 
+
     if (!mapContext.coordinates.length) {
       // TDOO prompt user to draw a route before submittign
-      return
+      setRouteText('Please draw a map before attempting to upload')
     }
     if (!mapContext.tags.length) {
       // TDOO prompt user to enter tags before submittign
-      return
+      setRouteText('Please select tags before uploading a map')
     }
+    if (!mapContext.name.length) {
+      // TDOO prompt user to name their route
+      setRouteText('Please name your route before uploading')  
+    }
+
     makeRun(run)
-      .then(console.log('Successfull upload'))
+      .then(console.log('Successfull upload'),
+            setRouteText('Successfully uploaded run!')  
+            )
       .catch(err => console.log(err))
     console.log(mapContext);
     setMapContext({
@@ -138,6 +148,9 @@ const CreateARun = () => {
               <button className="upload-button" onClick={uploadMap}>
                 Upload Route
               </button>
+              <div>
+                <h1 id="routeErrText">{runRouteError}</h1>
+                </div>
             </div>
           </div>
 

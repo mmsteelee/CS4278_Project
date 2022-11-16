@@ -77,6 +77,15 @@
     padding-left: 200px;
   }
 
+  #routeErrText{
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    color:white;
+    padding-bottom: 0px;
+    padding-left: 200px;
+  }
+
   .tagButtons{
  
     padding-left: 200px;
