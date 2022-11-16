@@ -1,4 +1,5 @@
 require('dotenv').config({ path: "./config.env" }) // Secures variables
+const path = require("path");
 const app = require('./utils/app') // Backend App (server)
 const mongo = require('./utils/mongo') // MongoDB (database)
 const {PORT} = require('./constants')
@@ -11,7 +12,7 @@ const runRoutes = require('./routes/runs')
 async function bootstrap() {
   await mongo.connect()
 
-  app.get('/', (req, res) => res.status(200).json({message: 'Hello World!'}))
+  app.get('/', (req, res) => res.sendFile(path.join(__dirname, "build")))
   app.get('/healthz', (req, res) => res.status(200).send())
   app.use('/auth', authRoutes)
   app.use('/bio', bioRoutes)
