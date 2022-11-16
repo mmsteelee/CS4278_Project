@@ -34,7 +34,7 @@ const searchRuns = async (req, res) => {
         result = []
         // packaging best rated runs into response result 
         for (let i = 0; i < MAX_RUNS_SHOWN && i < ratings.length; ++i){
-            rating = ratings[i]
+            let rating = ratings[i]
             result.push(runs[rating.id])
         }
 
