@@ -16,4 +16,4 @@ jobs:
           heroku_app_name: "vurunclub" #Must be unique in Heroku
           heroku_email: "vurunclubapplication@gmail.com"
           appdir: "server" # <- This will point to the api folder in your project
-          procfile: "web:node backend/server.js"
+          procfile: "web:node server/index.js"
