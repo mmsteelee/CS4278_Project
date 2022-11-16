@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "start": "env-cmd -f config.env react-scripts start",
-    "build": "env-cmd -f config.env react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -19,7 +19,7 @@
     "@mui/material": "^5.0.6",
     "@react-oauth/google": "^0.2.8",
     "axios": "^0.24.0",
-    "env-cmd": "^10.1.0",
+    "dotenv": "^16.0.3",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",

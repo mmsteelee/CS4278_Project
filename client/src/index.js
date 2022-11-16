@@ -12,7 +12,7 @@ import {BrowserRouter} from 'react-router-dom'
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-      <GoogleOAuthProvider clientId='573133251068-e1fd6sb5g36l0ktfd5t8ok00kremvo9i.apps.googleusercontent.com'>
+      <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <CookiesProvider>
         <CssBaseline />
         <App />

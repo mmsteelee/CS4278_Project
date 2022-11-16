@@ -4,7 +4,7 @@ logs
 npm-debug.log*
 
 # Env Data
-.env
+#.env
 
 # Runtime data
 pids
