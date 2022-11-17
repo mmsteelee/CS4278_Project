@@ -30,14 +30,14 @@ const [runFindError, setFindText] = useState('Fill all required fields before su
   } 
 
   async function search() {
-    setSearchable(validate)
-    if (searchable) {
+    console.log(query)
+    if (validate()) {
       setLoading(true)
       await searchAPI(query)
         .then(res => {
-          setRuns(res.data)
           setLoading(false)
           setFindText(`Found ${runs.length} runs`)
+          setRuns(res.data)
         })
         .catch(err => {
           setFindText('Error Finding Run: ' + err.message)
