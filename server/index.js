@@ -15,7 +15,12 @@ async function bootstrap() {
 
   app.use(express.static(path.join(__dirname, 'build')));
 
-  app.get('/*', function (req, res) {
+  let clientPagePaths = 
+    ['/', '/auth', '/links', '/findyourrun', 
+     '/meettheteam', '/createarun', '/findarun',
+     '/calendar', '/create', '/find']
+
+  app.get(clientPagePaths, function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });  
   app.get('/healthz', (req, res) => res.status(200).send())

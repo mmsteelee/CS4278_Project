@@ -90,7 +90,6 @@ export default function App() {
             <Route exact path="/calendar" element={user ? <Calendar /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/create" element={user ? <CreateARun /> : <Navigate to="/auth" />}></Route>
             <Route exact path="/find" element={user ? <FindARun /> : <Navigate to="/auth" />}></Route>
-            <Route exact path="/auth/logout" element={<Auth />}></Route>
           </Routes>
           </>
         }
