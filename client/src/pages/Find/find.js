@@ -9,10 +9,12 @@ const FindARun = () => {
 
  
 const [minValue, setMinValue] = useState(0);
-
+const [runFindError, setFindText] = useState('Fill all required fields before submitting')
 
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(false)
+  //controll if search should be an option
+  const  [searchable , setSearchable ] = useState(false)
   const [query, setQuery] = useState({
     minDistance:0,
     maxDistance:100,
@@ -27,7 +29,7 @@ const [minValue, setMinValue] = useState(0);
     console.log(query);
     setLoading(true)
     tagsRef.current.submit()
-    let searchable = query.maxDistance !== 0 && !isNaN(query.maxDistance) && !isNaN(query.minDistance) && query.tags.length > 0
+    setSearchable = query.maxDistance !== 0 && !isNaN(query.maxDistance) && !isNaN(query.minDistance) && query.tags.length > 0
     if (searchable) {
       await searchAPI(query)
         .then(res => {
@@ -36,7 +38,9 @@ const [minValue, setMinValue] = useState(0);
         })
         .catch(err => console.log(err))
     } else {
+     
       // TODO prompt why not seqarchable
+      setFindText('Please input distances and tags before searching')
     }
   }
   
@@ -61,24 +65,26 @@ const [minValue, setMinValue] = useState(0);
   const handleMin = event => {
     const result = event.target.value
 
-    if (!result || result.match(/^\d{1,}(\.\d{0,4})?$/)) {
+    if (result.match(/^\d{1,}(\.\d{0,4})?$/)) {
       let tmp = query
       tmp.minDistance = parseFloat(result)
       setQuery(tmp)
     } else {
       // TODO prompt user to input numbers only
+      setFindText('Please input ONLY numbers for the distance field')
     }
   };
 
   const handleMax = event => {
     const result = event.target.value
 
-    if (!result || result.match(/^\d{1,}(\.\d{0,4})?$/)) {
+    if (result.match(/^\d{1,}(\.\d{0,4})?$/)) {
       let tmp = query
       tmp.maxDistance = parseFloat(result)
       setQuery(tmp)
     } else {
       // TODO prompt user to input numbers only
+      setFindText('Please input ONLY numbers for the distance field')
     }
   };
 
@@ -112,8 +118,13 @@ const [minValue, setMinValue] = useState(0);
           placeholder={query.maxDistance}
           onChange={handleMax}
         />
-      
-        <button onClick={search} >Search</button>
+
+        <button 
+          onClick={search} 
+          disabled={searchable ? true : false}
+          >Search
+        </button>
+        <h1 id="findErrText">{runFindError}</h1>
         </div>
         <div>
         {loading ? 

@@ -12,6 +12,15 @@
     padding-left: 250px;
   }
 
+  #findErrText{
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    color:white;
+    padding-bottom: 0px;
+    padding-left: 200px;
+  }
+
   .tags-find{
     padding-bottom: 1px;
   }
