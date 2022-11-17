@@ -4,17 +4,17 @@ const {auth}  = require('../middlewares/auth')
 
 const router = express.Router()
 
-// @route       POST auth/login
+// @route       POST account/login
 // @desc        Post user google data
 // @access      Public
 router.post('/login', login)
 
-// @route       GET auth/user
+// @route       GET account/user
 // @desc        Get user data
 // @access      Private
 router.get('/user', auth, user)
 
-// @route       GET auth/exp
+// @route       GET account/exp
 // @desc        Get token expiration time
 // @access      Public
 router.get('/exp', exp)

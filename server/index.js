@@ -19,7 +19,7 @@ async function bootstrap() {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });  
   app.get('/healthz', (req, res) => res.status(200).send())
-  app.use('/auth', authRoutes)
+  app.use('/account', authRoutes)
   app.use('/bio', bioRoutes)
   app.use('/admin', adminRoutes)
   app.use('/image', imageRoutes)
