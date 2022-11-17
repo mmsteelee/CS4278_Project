@@ -1,5 +1,4 @@
-import { reset } from "ol/transform";
-import React, { forwardRef, useImperativeHandle } from "react"
+import React, { forwardRef, useEffect, useImperativeHandle } from "react"
 import { useState } from "react";
 import './TagComponent.css';
 
@@ -22,13 +21,14 @@ const Tags = forwardRef(({updateTags}, ref) => {
     const[selectedArray,setSelectedArray] = useState([]);
    
     useImperativeHandle(ref, () => ({
-      submit() {
-        updateTags(selectedArray)
-      },
       clear() {
         selectClear()
       }
     }))
+
+    useEffect(() => {
+      updateTags(selectedArray)
+    }, [selectedArray])
 
     const selectShady = () => {
  

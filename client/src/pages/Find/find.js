@@ -9,10 +9,12 @@ const FindARun = () => {
 
  
 const [minValue, setMinValue] = useState(0);
-
+const [runFindError, setFindText] = useState('Fill all required fields before submitting')
 
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(false)
+  //controll if search should be an option
+  const  [searchable , setSearchable ] = useState(false)
   const [query, setQuery] = useState({
     minDistance:0,
     maxDistance:100,
@@ -23,20 +25,27 @@ const [minValue, setMinValue] = useState(0);
   
   const tagsRef = useRef()
 
+  const validate = () => {
+    return query.maxDistance !== 0 && !isNaN(query.maxDistance) && !isNaN(query.minDistance) && query.tags.length > 0
+  } 
+
   async function search() {
-    console.log(query);
-    setLoading(true)
-    tagsRef.current.submit()
-    let searchable = query.maxDistance !== 0 && !isNaN(query.maxDistance) && !isNaN(query.minDistance) && query.tags.length > 0
+    setSearchable(validate)
     if (searchable) {
+      setLoading(true)
       await searchAPI(query)
         .then(res => {
           setRuns(res.data)
           setLoading(false)
+          setFindText(`Found ${runs.length} runs`)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          setFindText('Error Finding Run: ' + err.message)
+          setLoading(false)
+        })
     } else {
       // TODO prompt why not seqarchable
+      setFindText('Please input distances and tags before searching')
     }
   }
   
@@ -58,28 +67,20 @@ const [minValue, setMinValue] = useState(0);
   //   }
   // };
 
-  const handleMin = event => {
+  const handleMin = (event) => {
     const result = event.target.value
 
-    if (!result || result.match(/^\d{1,}(\.\d{0,4})?$/)) {
-      let tmp = query
-      tmp.minDistance = parseFloat(result)
-      setQuery(tmp)
-    } else {
-      // TODO prompt user to input numbers only
-    }
+    let tmp = query
+    tmp.minDistance = parseFloat(result)
+    setQuery(tmp)
   };
 
-  const handleMax = event => {
+  const handleMax = (event) => {
     const result = event.target.value
 
-    if (!result || result.match(/^\d{1,}(\.\d{0,4})?$/)) {
-      let tmp = query
-      tmp.maxDistance = parseFloat(result)
-      setQuery(tmp)
-    } else {
-      // TODO prompt user to input numbers only
-    }
+    let tmp = query
+    tmp.maxDistance = parseFloat(result)
+    setQuery(tmp)
   };
 
 
@@ -103,17 +104,21 @@ const [minValue, setMinValue] = useState(0);
           Min Distance:
          <input
           type="text"
-          placeholder={query.minDistance}
+          placeholder='0'
           onChange={handleMin}
         />
         Max Distance:
          <input
           type="text"
-          placeholder={query.maxDistance}
+          placeholder='inf'
           onChange={handleMax}
         />
-      
-        <button onClick={search} >Search</button>
+
+        <button 
+          onClick={search} 
+          >Search
+        </button>
+        <h1 disabled ={!searchable} id="findErrText">{runFindError}</h1>
         </div>
         <div>
         {loading ? 
@@ -121,7 +126,7 @@ const [minValue, setMinValue] = useState(0);
         :
         runs.map(run => <RunDescription
           description={run}
-          key={run.name}
+          key={run.data_id}
         />)
         }
         </div>

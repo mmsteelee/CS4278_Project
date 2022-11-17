@@ -39,6 +39,22 @@ const CreateARun = () => {
     }
   };
 
+  const validate = () => {
+    if (!mapContext.coordinates.length) {
+      setRouteText('Please draw a route on the map')
+      return false
+    }
+    if (!mapContext.tags.length) {
+      setRouteText('Please select tags')
+      return false
+    }
+    if (!mapContext.name.length) {
+      setRouteText('Please name your route')
+      return false
+    }
+    return true
+  }
+
 
   // useEffect(()=>{
   //   drawnRoute = mapContext.coordinates.length > 0
@@ -66,7 +82,6 @@ const CreateARun = () => {
 
 
   const uploadMap = () => {
-    mapRef.current.reset()
     tagsRef.current.submit()
     let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
     let run = {
@@ -74,35 +89,22 @@ const CreateARun = () => {
       data: { coordinates: mapContext.coordinates.map(String) }
     }
 
-
-    if (!mapContext.coordinates.length) {
-      // TDOO prompt user to draw a route before submittign
-      setRouteText('Please draw a map before attempting to upload')
-    }
-    if (!mapContext.tags.length) {
-      // TDOO prompt user to enter tags before submittign
-      setRouteText('Please select tags before uploading a map')
-    }
-    if (!mapContext.name.length) {
-      // TDOO prompt user to name their route
-      setRouteText('Please name your route before uploading')  
-    }
-
-    makeRun(run)
+    if (validate()) {
+      makeRun(run)
       .then(console.log('Successfull upload'),
             setRouteText('Successfully uploaded run!')  
             )
       .catch(err => console.log(err))
-    console.log(mapContext);
-    setMapContext({
-      // name: mapContext.name,
-      name: "Please Draw a Route",
-      distance: 0,
-      tags: [],
-      coordinates: [],
-    })
-    //setMapContext({ ...mapContext, [event.target.name]: "Please Draw a Route" });
-    setDrawn(false);
+
+      mapRef.current.reset();
+      setMapContext({
+        // name: mapContext.name,
+        name: '',
+        distance: 0,
+        tags: [],
+        coordinates: [],
+      })
+    } 
   };
 
   const removeLines = () => {

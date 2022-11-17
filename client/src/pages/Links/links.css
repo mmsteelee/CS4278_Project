@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 .links {
-    padding-top: 8%;
+    /* padding-top: 2%; */
     width: 100%;
     height: 100vh;
     font-family: Montserrat, Helvetica, sans-serif;
@@ -21,7 +21,7 @@
   }
  
   .links tbody tr{
-    padding-top: 40px;
+    padding-top: 30px;
     font-size: 20px;
   }
 
