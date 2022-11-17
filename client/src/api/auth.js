@@ -3,14 +3,14 @@ import {api as axios} from '../utils/axios'
 export async function user() {
     return await axios({
         method: "GET",
-        url: "/auth/user"
+        url: "/account/user"
     })
 }
 
 export async function login(accessToken) {
     return await axios({
         method: "POST",
-        url: "/auth/login",
+        url: "/account/login",
         data: {accessToken}
     })
 }
@@ -18,7 +18,7 @@ export async function login(accessToken) {
 export async function exp() {
     return await axios({
         method: "GET",
-        url: "/auth/exp"
+        url: "/account/exp"
     })
 }
 
