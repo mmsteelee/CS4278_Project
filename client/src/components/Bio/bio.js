@@ -109,7 +109,7 @@ const Bio = ({bio}) => {
                                 <h1>{bio.title}</h1>
                             </div>
                             <div className = 'email'>
-                                <a href= {bio.email}> email: {bio.name} </a> 
+                                <p>`email: ${bio.email}`</p>
                                 {/* <a href="mailto:drechsler.lina@gmail.com"> email lina </a>  */}
                             </div>
                             <p>{bio.text}</p>
