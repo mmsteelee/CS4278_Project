@@ -24,18 +24,26 @@
   .tags-find{
     padding-bottom: 1px;
   }
+.distance-range{
+  background-color: aqua;
+ 
+}
+ .slider{
 
-  .distance-range input{
-    margin:5px;
-    width:50px;
+  
 
-  }
+ }
 
-  .distance-range button{
+ .search{
+  
+  
+ }
+  .search button{
     border: none;
     text-decoration: none;
-    margin:5px;
+   
     margin-left: 20px;
+    margin-right: 20px;
     font-size: small;
     color: white;
     border-radius: 5px;
