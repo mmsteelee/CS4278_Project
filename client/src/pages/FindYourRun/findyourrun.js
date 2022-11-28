@@ -11,6 +11,10 @@ import "./findyourrun.css";
 
 
 const FindYourRun = () => {
+
+ 
+
+
   
   //const mapRef = useRef()
   const navigate = useNavigate();
@@ -35,6 +39,7 @@ return (
       <button id="find" onClick={navigateToFind}>
           Find A Run
       </button>
+     
 
     </div>
   </div>
