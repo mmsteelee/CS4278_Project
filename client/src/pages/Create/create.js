@@ -79,6 +79,7 @@ const CreateARun = () => {
 
 
   const uploadMap = () => {
+    tagsRef.current.submit()
     let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
     let run = {
       meta: runMeta,
