@@ -301,7 +301,7 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
   return (
     <>
       <div ref={mapElement} className="map-container"></div>
-      <button onClick={undo}>undo</button>
+      <button onClick={undo} disabled={!editable}>undo</button>
     </>
   );
 })
