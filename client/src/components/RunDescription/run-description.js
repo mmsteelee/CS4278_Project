@@ -6,7 +6,7 @@ import LoadingAnimation from "../loading-animation/loading-animation"
 import './run-description.css'
 
 const RunDescription = ({description}) => {
-    const [points, setPoints] = useState([])
+    const [mapData, setMapData] = useState([])
     const [loading, setLoading] = useState(true)
 
     var tags = description.tags;
@@ -16,12 +16,17 @@ const RunDescription = ({description}) => {
         
         getRun(description.data_id)
             .then(res => {
-                let data = res.data
-                data = data.map(point => {
-                    let nums = point.split(',')
-                    return [parseFloat(nums[0]), parseFloat(nums[1])]
-                })
-                setPoints(data)
+                let data = {
+                    route: res.data.route.map(
+                        nums => [parseFloat(nums[0]), parseFloat(nums[1])]
+                    ),
+                    waypoints: res.data.waypoints.map(
+                        nums => [parseFloat(nums[0]), parseFloat(nums[1])] 
+                    ),
+                    distance: description.distance
+                }
+
+                setMapData(data)
                 setLoading(false)
             })
     }, []) 
@@ -42,7 +47,7 @@ const RunDescription = ({description}) => {
                 { loading ?
                 <LoadingAnimation /> :
                 <MapComponent
-                    points={points}
+                    mapData={mapData}
                     editable={false}
                 />
                 }

@@ -8,12 +8,7 @@ import "./create.css";
 import { makeRun } from '../../api/runs';
 // import Header from '../../components/header-component/header'
 
-const defaultRun = [[-86.81009726157794, 36.146299217317576],
-[-86.80131438406454, 36.15044574144105],
-[-86.7992112393866, 36.14801580890686],
-[-86.80075254366587, 36.13742787171793],
-[-86.81087733379613, 36.13868784177623],
-[-86.8098680396668, 36.14635011068731]]
+
 
 const CreateARun = () => {
   const mapRef = useRef()
@@ -25,7 +20,7 @@ const CreateARun = () => {
     name: "",
     distance: 0,
     tags: [],
-    coordinates: [],
+    data: null,
   })
   const handleChange = (event) => {
 
@@ -40,7 +35,7 @@ const CreateARun = () => {
   };
 
   const validate = () => {
-    if (!mapContext.coordinates.length) {
+    if (!mapContext.data?.route.length) {
       setRouteText('Please draw a route on the map')
       return false
     }
@@ -60,15 +55,17 @@ const CreateARun = () => {
   //   drawnRoute = mapContext.coordinates.length > 0
   // }, [mapContext]);
 
-  const updateMap = (runData, distance) => {
+  const updateMap = (route, waypoints, distance) => {
     setDrawn(true);
-    console.log(mapContext.name);
+
     let tmp = mapContext;
     tmp.name = mapContext.name;
-    tmp.coordinates = runData;
+    tmp.data = {
+      route: route,
+      waypoints: waypoints
+    } 
     tmp.distance = distance;
     setMapContext(tmp);
-    console.log("updateMap");
   }
 
   //Why are these the same?
@@ -85,7 +82,7 @@ const CreateARun = () => {
     let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
     let run = {
       meta: runMeta,
-      data: { coordinates: mapContext.coordinates.map(String) }
+      data: mapContext.data
     }
 
     if (validate()) {
@@ -135,8 +132,7 @@ const CreateARun = () => {
             <div className ='mapBox'>
             <MapComponent
               ref={mapRef}
-              updateMap={updateMap}
-              points={defaultRun} />
+              updateMap={updateMap} />
               </div>
             <div className="name">
               {/* placeholder='Name Your Run' */}

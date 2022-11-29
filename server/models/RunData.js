@@ -2,8 +2,12 @@ const mongoose = require('mongoose')
 
 const instance = new mongoose.Schema(
     {
-        coordinates: {
-            type: [String],
+        route: {
+            type: Array,
+            required: true
+        },
+        waypoints: {
+            type: Array,
             required: true
         }
     }
