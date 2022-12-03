@@ -3,6 +3,7 @@
   padding-top: 40px;
   padding-left: 10px;
   padding-right: 20px;
+  background-color: yellow;
 
 
 
@@ -34,9 +35,12 @@
   padding-top:35px;
 }
 
+
 .navButtons{
   padding-left: 30px;
 }
+
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -62,9 +66,6 @@
 
   }
 
-#routeErrText{
-  color:black;
-}
   
   #create{
     height: 80px;
@@ -183,9 +184,10 @@
     font-family: Montserrat, Helvetica, sans-serif;
     font-weight: bold;
     font-size: medium;
-    color:white;
-    padding-bottom: 0px;
-    padding-left: 200px;
+    color:black;
+    padding-right: 45px;
+   
+
   }
 
   .tagButtons{
