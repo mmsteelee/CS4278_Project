@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import'../styles/index.css';
 import '../NavBar-component/navbar.css';
 import Button from '@material-ui/core/Button';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 
 
 const NavBar = ({handleClick}) => {
@@ -24,7 +25,7 @@ const NavBar = ({handleClick}) => {
           <Button onClick={handleClick}>Logout</Button>
         </div>
         <div className = "dropdown-button">
-          <Button onClick={()=> setShowLinks(!showLinks)}>Open</Button>
+          <Button onClick={()=> setShowLinks(!showLinks)}>Menu<KeyboardArrowDown /></Button>
         </div>
      
       </div>

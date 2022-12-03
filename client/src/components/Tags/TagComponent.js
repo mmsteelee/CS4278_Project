@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from "react"
 import { useState } from "react";
 import './TagComponent.css';
-import { components } from "react-select";
+// import { components } from "react-select";
 
 let pressedArray = new Array(0,0,0,0,0,0);
 //let selectedTagsArray = [];

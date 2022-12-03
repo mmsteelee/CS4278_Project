@@ -1,9 +1,10 @@
 import React from 'react'
 import '../styles/home.css'
+import Button from '@material-ui/core/Button';
+import {useNavigate} from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { ReactEmbeddedGoogleCalendar } from 'react-embedded-google-calendar'
 
 // import Navigation from '../components/NavBar.js'
 
@@ -19,17 +20,20 @@ import { ReactEmbeddedGoogleCalendar } from 'react-embedded-google-calendar'
 
 const HomePage = () => {
 
+  const navigate = useNavigate();
+
+  const navigateToMeetTheTeam = () => {
+    navigate('/meettheteam');
+  }
+
   return (
     <div>
       <div class= "main-wrapper">
-        
-        {/* <Header></Header> */}
-        {/* <NavBar/> */}
         <div className="main-section">
-          <h1 className="cover-heading">Welcome to the Vandy Run Club!</h1>
-          {/* <p className="check-text">Check the calendar below for upcoming events!</p> */}
-          <div className="calendar">
-          
+          <h1 className="cover-heading">WELCOME TO THE VANDY RUN CLUB</h1>
+          <h1 className="come-run">Come run with us. No experience required.</h1>
+          <div className="meet-exec">
+            <Button onClick={navigateToMeetTheTeam}>Meet Our Exec Board</Button>
           </div>
         </div>
       </div>
