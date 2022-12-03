@@ -157,18 +157,18 @@ const CreateARun = () => {
 
           </div>
           <div className="column right">
-          <div className='navButtons'>
-            <button id="create" onClick={navigateToCreate}>
-              Create A Run
-            </button>
-            <button id="find" onClick={navigateToFind}>
-              Find A Run
-            </button>
-          </div>
-              <Dropdown
-                ref={tagsRef} updateTags={updateTags}
-              />
-           
+            <div className='navButtons'>
+              <button id="create" onClick={navigateToCreate}>
+                Create A Run
+              </button>
+              <button id="find" onClick={navigateToFind}>
+                Find A Run
+              </button>
+            </div>
+            <Dropdown
+              ref={tagsRef} updateTags={updateTags}
+            />
+
             <div className="name">
               <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
             </div>
@@ -177,9 +177,10 @@ const CreateARun = () => {
               <button className="upload-button" onClick={uploadMap}>
                 Upload Route
               </button>
-              <div>
-                <h1 id="routeErrText">{runRouteError}</h1>
-              </div>
+
+            </div>
+            <div className='error'>
+              <h1 id="routeErrText">{runRouteError}</h1>
             </div>
           </div>
 
