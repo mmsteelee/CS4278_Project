@@ -1,14 +1,15 @@
 import React, { useRef, useState } from 'react';
-//import NavBar from '../../components/NavBar-component/NavBar'
+import { useNavigate } from 'react-router-dom';
 import MapComponent from "../../components/Map/MapComponent";
-//import Tags from "../../components/Tags/TagComponent";
 import Dropdown from '../../components/Dropdown/DropdownComponent';
 import "ol/ol.css";
 import "./create.css";
 import { makeRun } from '../../api/runs';
-import { StyledEngineProvider } from '@mui/material/styles';
-import Demo from './Demo';
-// import Header from '../../components/header-component/header'
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
+
 
 
 
@@ -25,7 +26,15 @@ const CreateARun = () => {
     data: null,
   })
 
+  const navigate = useNavigate();
 
+  const navigateToCreate = () => {
+    navigate('/create');
+  }
+
+  const navigateToFind = () => {
+    navigate('/find');
+  }
   const handleChange = (event) => {
 
     if (routeDrawn) {
@@ -54,10 +63,6 @@ const CreateARun = () => {
     return true
   }
 
-
-  // useEffect(()=>{
-  //   drawnRoute = mapContext.coordinates.length > 0
-  // }, [mapContext]);
 
   const updateMap = (route, waypoints, distance) => {
     setDrawn(true);
@@ -124,41 +129,51 @@ const CreateARun = () => {
     })
   };
 
+  const undoLines = () => {
+    console.log(mapContext.name);
+    mapRef.current.undoLine();
+
+  };
+
   return (
 
     <div >
       <div className="main-wrapper-create">
-        <div className="createFeatures">
+        <div className='row'>
 
-          {/* <div className='tagButtons'>
-          <h1 id="tagsText">Select the tags that apply to your run</h1>
-            <Tags ref={tagsRef} updateTags={updateTags} />
+          <div className="column left">
+            <MapComponent
+              ref={mapRef}
+              updateMap={updateMap} />
 
-      
-          </div> */}
-          <div className='dropdown'>
-        
-          <Dropdown
-              ref={tagsRef} updateTags={updateTags}
-            />
-           
-
-         
-          </div>
-          <div className='map'>
-            <div className='mapBox'>
-              <MapComponent
-                ref={mapRef}
-                updateMap={updateMap} />
-            </div>
-            <div className="name">
-              {/* placeholder='Name Your Run' */}
-              <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
-            </div>
-            <div className="measuring-tool">
+            <div className="mapButtons">
+              <button className="undo-button" onClick={undoLines}>
+                Undo
+              </button>
               <button className="reset-button" onClick={removeLines}>
                 Start Over
               </button>
+            </div>
+
+          </div>
+          <div className="column right">
+          <div className='navButtons'>
+            <button id="create" onClick={navigateToCreate}>
+              Create A Run
+            </button>
+            <button id="find" onClick={navigateToFind}>
+              Find A Run
+            </button>
+          </div>
+              <Dropdown
+                ref={tagsRef} updateTags={updateTags}
+              />
+           
+            <div className="name">
+              <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
+            </div>
+            <div className="measuring-tool">
+
               <button className="upload-button" onClick={uploadMap}>
                 Upload Route
               </button>
@@ -168,14 +183,8 @@ const CreateARun = () => {
             </div>
           </div>
 
-        </div>
-        {/* <div className = "map">
-      <MapComponent />
-    </div>   
 
-    <div className = "tags">
-    <Tags/>
-    </div> */}
+        </div>
       </div>
     </div>
 

@@ -1,52 +1,150 @@
 .main-wrapper-create{
   display: flex;
   padding-top: 40px;
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 20px;
+
 
 
 }
 
-.tags{
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
 
+.left {
+  width: 65%;
 
+  padding-left: 0px;
+}
+
+.mapButtons {
+  padding-left:0px;
+  padding-top: 0px;
+ float:right;
+
+}
+
+.right {
+  width: 35%;
+
+  padding-left: 30px;
+  padding-top:35px;
+}
+
+.navButtons{
+  padding-left: 30px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .map-container {
     height: calc(100vh - 90px);
-    width: 85vw;
+    width: 60vw;
     margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-bottom: 1vh;
     margin-left: 5vw;
     margin-right: 5vw;
     padding-top: 1px;
-    padding-left: 35px;
+    padding-left: 0px;
 
   }
   
   .measuring-tool {
     margin: 20px auto;
-    padding-left: 100px;
+    padding-left: 70px;
 
   }
+
+#routeErrText{
+  color:black;
+}
   
+  #create{
+    height: 80px;
+    width: 130px;
+    margin: 0px;
+    border-radius: 0px;
+    padding-top: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color:black;
+    cursor: pointer;
+    transition-duration: 0.4s;
+
+  }
+
+  #find{
+    height: 80px;
+    width: 130px;
+    margin: 0px;
+    margin-left: 0px;
+    border-radius: 0px;
+    padding-top: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-family: Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    transition-duration: 0.4s;
+
+  }
+
+  #create:hover {
+    background-color:black;
+  }
+
+  #find:hover {
+    background-color:#CFAE70;
+  }
+
   .reset-button {
-    border: none;
+    border-color:black;
+    width: 100px;
     text-decoration: none;
     font-size: large;
     color: white;
     margin:5px;
     border-radius: 5px;
-    padding: 15px 30px;
+  
     /* background-color: #6bb8d1; */
-    background-color: black;
+    color:black;
+    background-color: white;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    
+  }
+
+  .undo-button {
+    border-color:black;
+    width: 60px;
+    text-decoration: none;
+    font-size: large;
+    color: white;
+    margin:5px;
+    border-radius: 5px;
+  
+    /* background-color: #6bb8d1; */
+    color:black;
+    background-color: white;
     cursor: pointer;
     transition-duration: 0.4s;
     
   }
 
   .upload-button {
-    border: none;
+   border:none;
     text-decoration: none;
     margin:5px;
     font-size: large;
@@ -65,7 +163,11 @@
   }
 
   .reset-button:hover {
-    background-color: darkgoldenrod;
+    background-color: #CFAE70;
+  }
+
+  .undo-button:hover {
+    background-color: #CFAE70;
   }
 
   #tagsText{
@@ -91,24 +193,17 @@
     padding-left: 200px;
    
   }
-
-  .mapBox{
+.name{
+  padding-left: 9px;
+}
+ 
+  .name input{
+    border-radius: 5px;
+    padding-left: 0px;
+    width: 300px;
+    color:black;
+    border-color: black;
     
   }
-
-  .map{
-
-  }
-
-  .createFeatures{
-
-  }
-  .name{
-    
-    padding-left: 100px;
-    
-  }
-  .map{
-   
-  }
+  
  
