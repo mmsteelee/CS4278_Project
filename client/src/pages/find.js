@@ -3,6 +3,7 @@ import { search as searchAPI } from '../api/runs';
 import LoadingAnimation from '../components/loading-animation/loading-animation';
 import RunDescription from '../components/RunDescription/run-description';
 import Tags from '../components/Tags/TagComponent';
+import Dropdown from '../components/Dropdown/DropdownComponent';
 
 const FindARun = () => {
   const [runs, setRuns] = useState([]);
@@ -54,6 +55,7 @@ const FindARun = () => {
       <div className='container'>
         <h1>Find a run </h1>
         <Tags ref={tagsRef} updateTags={updateTags}/>
+        <Dropdown/>
         <input
           type="text"
           placeholder={query.distance}

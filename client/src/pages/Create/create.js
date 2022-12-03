@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
-import NavBar from '../../components/NavBar-component/NavBar'
-
+//import NavBar from '../../components/NavBar-component/NavBar'
 import MapComponent from "../../components/Map/MapComponent";
-import Tags from "../../components/Tags/TagComponent";
+//import Tags from "../../components/Tags/TagComponent";
+import Dropdown from '../../components/Dropdown/DropdownComponent';
 import "ol/ol.css";
 import "./create.css";
 import { makeRun } from '../../api/runs';
+import { StyledEngineProvider } from '@mui/material/styles';
+import Demo from './Demo';
 // import Header from '../../components/header-component/header'
 
 
@@ -22,6 +24,8 @@ const CreateARun = () => {
     tags: [],
     data: null,
   })
+
+
   const handleChange = (event) => {
 
     if (routeDrawn) {
@@ -63,7 +67,7 @@ const CreateARun = () => {
     tmp.data = {
       route: route,
       waypoints: waypoints
-    } 
+    }
     tmp.distance = distance;
     setMapContext(tmp);
   }
@@ -74,6 +78,7 @@ const CreateARun = () => {
     let tmp = mapContext;
     tmp.tags = tags_;
     setMapContext(tmp);
+    console.log(tags_);
     console.log("updateTags");
   }
 
@@ -88,10 +93,10 @@ const CreateARun = () => {
 
     if (validate()) {
       makeRun(run)
-      .then(console.log('Successfull upload'),
-            setRouteText('Successfully uploaded run!')  
-            )
-      .catch(err => console.log(err))
+        .then(console.log('Successfull upload'),
+          setRouteText('Successfully uploaded run!')
+        )
+        .catch(err => console.log(err))
 
       mapRef.current.reset();
       setMapContext({
@@ -101,7 +106,7 @@ const CreateARun = () => {
         tags: [],
         coordinates: [],
       })
-    } 
+    }
   };
 
   const removeLines = () => {
@@ -125,16 +130,27 @@ const CreateARun = () => {
       <div className="main-wrapper-create">
         <div className="createFeatures">
 
-          <div className='tagButtons'>
-            <h1 id="tagsText">Select the tags that apply to your run</h1>
+          {/* <div className='tagButtons'>
+          <h1 id="tagsText">Select the tags that apply to your run</h1>
             <Tags ref={tagsRef} updateTags={updateTags} />
+
+      
+          </div> */}
+          <div className='dropdown'>
+        
+          <Dropdown
+              ref={tagsRef} updateTags={updateTags}
+            />
+           
+
+         
           </div>
           <div className='map'>
-            <div className ='mapBox'>
-            <MapComponent
-              ref={mapRef}
-              updateMap={updateMap} />
-              </div>
+            <div className='mapBox'>
+              <MapComponent
+                ref={mapRef}
+                updateMap={updateMap} />
+            </div>
             <div className="name">
               {/* placeholder='Name Your Run' */}
               <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
@@ -148,7 +164,7 @@ const CreateARun = () => {
               </button>
               <div>
                 <h1 id="routeErrText">{runRouteError}</h1>
-                </div>
+              </div>
             </div>
           </div>
 
