@@ -48,7 +48,39 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
   useImperativeHandle(ref, () => ({
     reset() {
       source.clear()
-    }
+    },
+
+    undoLine(){
+      
+        let startPt = source.getFeatureById(endptFeatureID)?.getGeometry().getCoordinates()
+        let waypts = source.getFeatureById(wayptFeatureID)?.getGeometry().getCoordinates()
+        totalRoute.pop()
+        totalWaypts.pop()
+    
+        submit(totalRoute, totalWaypts)
+    
+        if (!startPt) {
+          return
+        } 
+        if (startPt.length < 2) {
+          source.removeFeature(source.getFeatureById(endptFeatureID))
+          return
+        } else if (!waypts) {
+          source.getFeatureById(endptFeatureID).setGeometry(new MultiPoint([startPt[0]]))
+        } else  {
+          source.getFeatureById(endptFeatureID).setGeometry(new MultiPoint([startPt[0], waypts[waypts.length-1]]))
+          if (waypts.length > 1) {
+            waypts.pop()
+            source.getFeatureById(wayptFeatureID).setGeometry(new MultiPoint(waypts))
+          } else {
+            source.removeFeature(source.getFeatureById(wayptFeatureID))
+          }
+        }
+        const routeID = routeIDStack.pop()
+        source.removeFeature(source.getFeatureById(routeID))
+      }
+    
+    
   }))
 
   const calcDistance = () => {
@@ -301,7 +333,7 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
   return (
     <>
       <div ref={mapElement} className="map-container"></div>
-      <button onClick={undo} disabled={!editable}>undo</button>
+      {/* <button onClick={undo} disabled={!editable}>undo</button> */}
     </>
   );
 })
