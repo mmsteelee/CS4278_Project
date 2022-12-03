@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import LoadingAnimation from '../../components/loading-animation/loading-animation';
 import RunDescription from '../../components/RunDescription/run-description';
 import Tags from '../../components/Tags/TagComponent';
-import MultiRangeSlider from '../../components/rangeSlider/MultiRangeSlider';
+import MultiRangeSlider from '../../components/rangeSlider/MultiRangeSlider'
+import Dropdown from '../../components/Dropdown/DropdownComponent';
 import "./find.css";
 
 const FindARun = () => {
@@ -24,6 +25,7 @@ const FindARun = () => {
     tags: []
   })
 
+  
 
   const tagsRef = useRef()
 
@@ -79,6 +81,7 @@ const FindARun = () => {
         <div className='tags-find'>
 
           <Tags ref={tagsRef} updateTags={updateTags} />
+
         </div>
         {/* <input
           type="text"
