@@ -3,9 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { search as searchAPI } from '../../api/runs';
 import LoadingAnimation from '../../components/loading-animation/loading-animation';
 import RunDescription from '../../components/RunDescription/run-description';
-import Tags from '../../components/Tags/TagComponent';
 import MultiRangeSlider from '../../components/rangeSlider/MultiRangeSlider'
 import Dropdown from '../../components/Dropdown/DropdownComponent';
+import { Avatar, Button, Paper, Typography, Container } from '@material-ui/core';
+import ArrowBack from '@material-ui/icons/ArrowBackIos';
+import ArrowForward from '@material-ui/icons/ArrowForwardIos';
+import IconButton from '@mui/material/IconButton';
+
 import "./find.css";
 
 const FindARun = () => {
@@ -81,64 +85,70 @@ const FindARun = () => {
   //   }
   // };
   return (
-    
-      <div className='main-wrapper'>
-        <div className='row'>
-          <div className="column-find left-find">
-            <h1 id="title">Find a run </h1>
+
+    <div className='main-wrapper'>
+      <div className='row'>
+        <div className="column-find left-find">
+          <h1 id="title">Find a run </h1>
+          <IconButton id = "back" aria-label="delete">
+           <ArrowBack/>
+          </IconButton>
+          <IconButton id = "next" aria-label="delete">
+           <ArrowForward/>
+          </IconButton>
+        </div>
+        <div className="column-find right-find">
+          <div className='navButtons-find'>
+            <button id="create-find" onClick={navigateToCreate}>
+              Create A Run
+            </button>
+            <button id="find-find" onClick={navigateToFind}>
+              Find A Run
+            </button>
           </div>
-          <div className="column-find right-find">
-            <div className='navButtons-find'>
-              <button id="create-find" onClick={navigateToCreate}>
-                Create A Run
-              </button>
-              <button id="find-find" onClick={navigateToFind}>
-                Find A Run
-              </button>
-            </div>
 
-            <Dropdown
-              ref={tagsRef} updateTags={updateTags}
-            />
+          <Dropdown
+            ref={tagsRef} updateTags={updateTags}
+          />
 
-            <div className='slider'>
-              <MultiRangeSlider
-                min={0}
-                max={100}
-                onChange={({ min, max }) => {
-                  let tmp = query;
-                  tmp.minDistance = parseFloat(min);
-                  tmp.maxDistance = parseFloat(max);
-                  setQuery(tmp);
-                  //console.log(query);
-                }} />
+          <div className='slider'>
+            <MultiRangeSlider
+              min={0}
+              max={100}
+              onChange={({ min, max }) => {
+                let tmp = query;
+                tmp.minDistance = parseFloat(min);
+                tmp.maxDistance = parseFloat(max);
+                setQuery(tmp);
+                //console.log(query);
+              }} />
 
-            </div>
-
-            <div className='search'>
-              <button id='search-button'
-                onClick={search}
-              >Search
-              </button>
-            </div>
-            <div className='error'>
-              <h1 disabled={!searchable} id="findErrText">{runFindError}</h1>
-            </div>
-    
           </div>
-          <div>
-            {loading ?
-              <LoadingAnimation />
-              :
-              runs.map(run => <RunDescription
-                description={run}
-                key={run.data_id}
-              />)
-            }
+
+          <div className='search'>
+            <button id='search-button'
+              onClick={search}
+            >Search
+            </button>
           </div>
+          <div className='error'>
+            <h1 disabled={!searchable} id="findErrText">{runFindError}</h1>
+          </div>
+
+        </div>
+        <div>
+          {loading ?
+            <LoadingAnimation />
+            :
+            runs.map(run => <RunDescription
+              description={run}
+              key={run.data_id}
+            />)
+          }
         </div>
       </div>
-    
+    </div>
+
   );
 };
 
