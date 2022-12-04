@@ -131,15 +131,18 @@
   }
 
   .reset-button {
-    border-color:black;
-    width: 100px;
+    border: none;
+    width: 35px;
+    height: 35px;
     text-decoration: none;
     font-size: large;
     color: white;
     margin:5px;
-    border-radius: 15px;
+    border-radius: 50%;
     font-family: 'Heebo', 'Times New Roman', Times, serif;
-  
+    justify-content: center;
+    align-items: center;
+    margin-left: 2px;
     /* background-color: #6bb8d1; */
     color:black;
     background-color: white;
@@ -149,7 +152,6 @@
   }
 
   .undo-button {
-    /* border-color:black; */
     border: none;
     width: 35px;
     height: 35px;
@@ -157,14 +159,15 @@
     /* font-size: 6px; */
     color: white;
     margin:5px;
+    margin-right: 2px;
+    margin-left: 2px;
     border-radius: 50%;
-  
-    /* background-color: #6bb8d1; */
+    justify-content: center;
+    align-items: center;
     color:black;
     background-color: white;
     cursor: pointer;
-    transition-duration: 0.4s;
-    
+    transition-duration: 0.4s;   
   }
 
   .upload-button {
@@ -234,5 +237,180 @@
     font-family: 'heebo', 'Times New Roman', Times, serif;
     
   }
+
+  .hidden-when-big {
+    display: none;
+  }
+
+
+
+  @media only screen and (max-width: 950px) {
+
+    .create-header{
+      display:none;
+    }
+
+    .main-wrapper-create{
+      display: none;
+    }
+
+    /* .main-wrapper-create{
+      display: flex;
+      padding-top: 30px;
+      padding-left: 10px;
+      padding-right: 20px;
+      background-color: rgb(255, 255, 255);
+    }
+    */
+
+    .hidden-when-big{
+      /* position: absolute; */
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      background-color: white;
+    }
+
+    .hidden-when-big .create-header-hidden{
+      width: 100%;
+      height: 70px;
+      padding-top: 17px;
+      display: flex;
+      justify-content: center;
+      font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
+      background-color: white;
+    }
+
+    .hidden-when-big .create-header-hidden .lets-create-hidden {
+      display: flex;
+      font-size: 45px;
+      font-weight: bold;
+      color:#1c1c1c;
+      text-shadow: none;
+    }
+
+    .hidden-when-big .navButtons-hidden {
+      margin-top: 70px;
+      position: absolute;
+      width: 100%;
+      height: 70px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Heebo', Helvetica, sans-serif;
+    }
+
+    #create-hidden{
+      display: flex;
+      width: 170px;
+      height: 50px;
+      align-items: center;
+      margin-left: 8px;
+      margin-right: 1.5px;
+      justify-content: center;
+      font-weight: bold;
+      background-color:#CFAE70;
+      border: none;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      color: white;
+    }
+
+    #find-hidden{
+      display:flex;
+      width: 170px;
+      height: 50px;
+      align-items: center;
+      margin-right: 8px;
+      margin-left: 1.5px;
+      justify-content: center;
+      background-color: white;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      border: none;
+      color: #1c1c1c;
+      font-weight: bold;
+    }
+
+    #find-hidden:hover{
+      background-color: rgba(223, 184, 111, 0.75);
+    }
+
+    .hidden-when-big .mapButtons-hidden {
+      display:flex;
+      position: absolute;
+      width: 100%;
+      height: 35px;
+      margin-top: 140px;
+      align-items: center;
+      font-family: 'Heebo', 'Times New Roman', Times, serif;
+    }
+
+    .hidden-when-big .mapButtons-hidden .undo-button-hidden {
+      display:flex;
+      justify-content: left;
+      border: none;
+      width: 30px;
+      height: 30px;
+      text-decoration: none;
+      color: white;
+      /* margin:5px; */
+      border-radius: 50%;
+      color:black;
+      background-color: white;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      justify-content: center;
+      align-items: center;
+      margin-left: 13px;
+    }
+
+    .hidden-when-big .mapButtons-hidden .reset-button-hidden {
+      display:flex;
+      justify-content: left;
+      margin-left: 5px;
+      border-radius: 15px;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      width: 30px;
+      height: 30px;
+      text-decoration: none;
+      color: white;
+      border-radius: 50%;
+      color:black;
+      background-color: white;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+
+
+
+
+    .hidden-map{
+      display:none;
+    }
+
+    /* .hidden-map{
+      /* width: 100%;
+      display:block; */
+      /* position: absolute;
+      margin-top: 10px;
+    } */
+
+    /* .map-container {
+      height: calc(100vh - 70px);
+      width: 60vw;
+      margin-top: 5vh;
+      margin-bottom: 1vh;
+      margin-left: 1.8vw;
+      margin-right: 5vw;
+      padding-top: 1px;
+      padding-left: 0px;
   
- 
+    } */ 
+
+
+  
+  }

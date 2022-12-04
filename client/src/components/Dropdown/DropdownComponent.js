@@ -132,9 +132,11 @@ const Dropdown = forwardRef(({ updateTags }, ref) => {
             MenuProps={MenuProps}
             inputProps={{ 'aria-label': 'Without label' }}
           >
+
             <MenuItem disabled value="">
               <em>Select Tags</em>
             </MenuItem>
+            
             {tags.map((name) => (
               <MenuItem
                 key={name}

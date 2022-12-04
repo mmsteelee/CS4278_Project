@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Undo from '@material-ui/icons/Undo';
 import Create from '@material-ui/icons/Create';
 import Search from '@material-ui/icons/Search';
+import Delete from '@material-ui/icons/Delete';
 
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
@@ -29,6 +30,7 @@ const CreateARun = () => {
     tags: [],
     data: null,
   })
+  const [showInfo, setShowInfo] = useState(false);
 
   const navigate = useNavigate();
 
@@ -140,7 +142,9 @@ const CreateARun = () => {
   };
 
   return (
+    // make a whole new set of things and make them all hidden
     <div >
+      <div className="hidden-part">
       <div className="create-header">
         <h1 className='lets-create'>Create Your Run!</h1>
         {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
@@ -148,55 +152,97 @@ const CreateARun = () => {
       {/* end create-header */}
 
       <div className="main-wrapper-create">
-        <div className='row'>
-          <div className="column left">
-            <div className="mapButtons">
-              <button className="reset-button" onClick={removeLines}>Start Over</button>
-              <button className="undo-button" onClick={undoLines}><Undo /></button>
-            </div>
-            {/* end map buttons */}
-            <MapComponent
-              ref={mapRef}
-              updateMap={updateMap} /> 
-            {/* end map component */}
-          </div>
-          {/* end left column */}
-
-          <div className="column right">
-
-            <div className='navButtons'>
-              <button id="create" onClick={navigateToCreate}><Create />   Create A Run</button>
-              <button id="find" onClick={navigateToFind}><Search />   Find A Run</button>
-            </div>
-            {/* end navButtons */}
-
-            <Dropdown
-              ref={tagsRef} updateTags={updateTags}
-            />
-            {/* end dropdown */}
-           
-            <div className="name">
-              <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
-            </div>
-            {/* end name */}
-
-            <div className="measuring-tool">
-              <button className="upload-button" onClick={uploadMap}>Upload Route</button>
-              <div>
-                <h1 id="routeErrText">{runRouteError}</h1>
+        
+          <div className='row'>
+            <div className="column left">
+              {/* id={showInfo ? "hidden" : ""} */}
+              <div className="mapButtons">
+                <button className="undo-button" onClick={undoLines}><Undo /></button>
+                <button className="reset-button" onClick={removeLines}><Delete /></button>
               </div>
-              {/* end h1 */}
+              {/* end map buttons */}
+              <MapComponent
+                ref={mapRef}
+                updateMap={updateMap} /> 
+              {/* end map component */}
             </div>
-            {/* end measuring-tool */}
+            {/* end left column */}
+
+            <div className="column right">
+            {/* id={showInfo ? "hidden" : ""} */}
+              <div className='navButtons'>
+                <button id="create" onClick={navigateToCreate}><Create /> Create A Run</button>
+                <button id="find" onClick={navigateToFind}><Search /> Find A Run</button>
+              </div>
+              {/* end navButtons */}
+
+              <Dropdown
+                ref={tagsRef} updateTags={updateTags}
+              />
+              {/* end dropdown */}
+           
+              <div className="name">
+                <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
+              </div>
+              {/* end name */}
+
+              <div className="measuring-tool">
+                <button className="upload-button" onClick={uploadMap}>Upload Route</button>
+                <div>
+                  <h1 id="routeErrText">{runRouteError}</h1>
+                </div>
+                {/* end h1 */}
+              </div>
+              {/* end measuring-tool */}
+
+            </div>
+            {/* end column right */}
+
 
           </div>
-          {/* end column right */}
+          {/* end row div */}
+
+
+
+
+
+
+          {/* WORK HERE */}
+          
 
 
         </div>
-        {/* end row div */}
+        {/* end hidden div */}
       </div>
       {/* end main wrapper create */}
+      <div className="hidden-when-big">
+
+        {/*           HEADER DIV             */}
+        <div className="create-header-hidden">
+          <h1 className='lets-create-hidden'>Create Your Run!</h1>
+        {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
+        </div>
+
+        {/*            NAVBUTTONS DIV          */}
+        <div className='navButtons-hidden'>
+          <button id="create-hidden" onClick={navigateToCreate}><Create /> Create A Run</button>
+          <button id="find-hidden" onClick={navigateToFind}><Search /> Find A Run</button>
+        </div>
+
+        {/*            UNDO AND REDO BUTTONS         */}
+        <div className="mapButtons-hidden">
+        <button className="undo-button-hidden" onClick={undoLines}><Undo /></button>
+          <button className="reset-button-hidden" onClick={removeLines}><Delete /></button>
+          
+        </div>
+
+            <div className="hidden-map">
+              <MapComponent
+                ref={mapRef}
+                updateMap={updateMap} 
+              /> 
+            </div>
+          </div>
     </div>
     // end big div
 
