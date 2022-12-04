@@ -286,6 +286,7 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
   }
 
   useEffect(() => {
+    source.clear()
     const raster = new TileLayer({
       source: new OSM(),
     });
@@ -328,6 +329,16 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
 
     setMap(_map);
   }, []);
+
+  useEffect(() => {
+    if (!editable && map) {
+      source.clear()
+      introduceData()
+      map.getView().fit(source.getExtent(), map.getSize());
+      map.getView().setZoom(map.getView().getZoom() - 0.5);
+      map.getInteractions().forEach(x => x.setActive(false))
+    }
+  }, [mapData])
   
 
   return (
