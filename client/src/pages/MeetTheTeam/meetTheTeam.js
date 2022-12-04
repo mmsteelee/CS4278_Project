@@ -33,7 +33,7 @@ const MeetTheTeam = () => {
             </div>
       
             {bios.map(bio => <Bio
-              key={bio}
+              key={bio._id}
               bio={bio}
             />)}
             {

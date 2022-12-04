@@ -1,26 +1,9 @@
-const fs = require('fs')
-
 const Bio = require('../models/Bio')
 
-const defaultPicture = 'logo.jpeg'
+const defaultPicture = 'https://res.cloudinary.com/dalnl907c/image/upload/v1670189450/ccixonlndrey3n0rnpxa.jpg'
 
 const changeBio = async (req, res) => {
-    const oldBio = await Bio.findById(req.params.id)
     updatedBio = req.body
-    
-    // Need to delete old image since the new one has been uploaded
-    if (req.file && oldBio.picture != defaultPicture) {
-        fs.unlink('./images/'+oldBio.picture, (err) => {
-            if (err) {
-                console.error(err)
-        }})
-    }
-        
-    if (req.file) {
-        updatedBio.picture = req.file.filename
-    } else {
-        updatedBio.picture = oldBio.picture
-    }
 
     Bio.findByIdAndUpdate(req.params.id, updatedBio)
     .then(res.status(200).send(updatedBio))
@@ -35,26 +18,22 @@ const getBios = async (req, res) => {
 
 const newBio = async (req, res) => {
     const count = await Bio.count()
+    let bio = req.body
+    bio.picture = defaultPicture
 
     if (count > 10) {
         res.status(400).send('Cannot add another Bio')
     } else {
-        const result = await Bio.create(req.body).catch(err => res.status(400).send(err))
+        const result = await Bio.create(bio).catch(err => res.status(400).send(err))
         res.status(200).send(result)
     }
 }
 
 const deleteBio = async (req, res) => {
     Bio.findByIdAndDelete(req.params.id)
-        .then( oldBio => {
-            if (oldBio.picture != defaultPicture) {
-                fs.unlink('./images/'+oldBio.picture, (err) => {
-                    if (err) {
-                        console.error(err)
-                }})
-            }
+        .then( oldBio =>
             res.send(`Successfully deleted Bio ${oldBio.id}`)
-        })  
+        )  
         .catch(err => res.status(404).send(err))
 }  
 
