@@ -99,7 +99,8 @@ const Bio = ({bio}) => {
                 </form>
                 : 
                 <div className = 'bioView' onDoubleClick ={handleEditAttempt}>
-                    <img src={imageURL}></img>
+                    
+                    <img className = 'image' src={imageURL}></img>
                     <table>
                     <tbody>
                     <tr>
