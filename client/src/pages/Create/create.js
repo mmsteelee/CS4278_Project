@@ -6,9 +6,13 @@ import "ol/ol.css";
 import "./create.css";
 import { makeRun } from '../../api/runs';
 import IconButton from '@mui/material/IconButton';
+// import UndoIcon from '@mui/icons-material/Undo';
 // import DeleteIcon from '@mui/icons-material/Delete';
+import Undo from '@material-ui/icons/Undo';
+import Create from '@material-ui/icons/Create';
+import Search from '@material-ui/icons/Search';
 
-
+// import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
 
 
@@ -136,58 +140,65 @@ const CreateARun = () => {
   };
 
   return (
-
     <div >
+      <div className="create-header">
+        <h1 className='lets-create'>Create Your Run!</h1>
+        {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
+      </div>
+      {/* end create-header */}
+
       <div className="main-wrapper-create">
         <div className='row'>
-
           <div className="column left">
+            <div className="mapButtons">
+              <button className="reset-button" onClick={removeLines}>Start Over</button>
+              <button className="undo-button" onClick={undoLines}><Undo /></button>
+            </div>
+            {/* end map buttons */}
             <MapComponent
               ref={mapRef}
-              updateMap={updateMap} />
-
-            <div className="mapButtons">
-              <button className="undo-button" onClick={undoLines}>
-                Undo
-              </button>
-              <button className="reset-button" onClick={removeLines}>
-                Start Over
-              </button>
-            </div>
-
+              updateMap={updateMap} /> 
+            {/* end map component */}
           </div>
+          {/* end left column */}
+
           <div className="column right">
+
             <div className='navButtons'>
-              <button id="create" onClick={navigateToCreate}>
-                Create A Run
-              </button>
-              <button id="find" onClick={navigateToFind}>
-                Find A Run
-              </button>
+              <button id="create" onClick={navigateToCreate}><Create />   Create A Run</button>
+              <button id="find" onClick={navigateToFind}><Search />   Find A Run</button>
             </div>
+            {/* end navButtons */}
+
             <Dropdown
               ref={tagsRef} updateTags={updateTags}
             />
-
+            {/* end dropdown */}
+           
             <div className="name">
               <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
             </div>
+            {/* end name */}
+
             <div className="measuring-tool">
-
-              <button className="upload-button" onClick={uploadMap}>
-                Upload Route
-              </button>
-
+              <button className="upload-button" onClick={uploadMap}>Upload Route</button>
+              <div>
+                <h1 id="routeErrText">{runRouteError}</h1>
+              </div>
+              {/* end h1 */}
             </div>
-            <div className='error'>
-              <h1 id="routeErrText">{runRouteError}</h1>
-            </div>
+            {/* end measuring-tool */}
+
           </div>
+          {/* end column right */}
 
 
         </div>
+        {/* end row div */}
       </div>
+      {/* end main wrapper create */}
     </div>
+    // end big div
 
   );
 }

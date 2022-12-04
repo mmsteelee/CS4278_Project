@@ -29,7 +29,6 @@ const MeetTheTeam = () => {
           :
           <div className='container' >
             <div className='pageCover'>
-
               <h1>MEET THE TEAM!</h1>  
             </div>
       

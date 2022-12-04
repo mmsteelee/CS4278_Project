@@ -1,33 +1,55 @@
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import url('https://fonts.cdnfonts.com/css/heebo');
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+
 .main-wrapper-create{
   display: flex;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-left: 10px;
   padding-right: 20px;
+  background-color: rgb(255, 255, 255);
+}
 
+.create-header{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding-top: 35px;
+  font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
+  margin-bottom: 0%;
+  height: 65px;
+}
+
+.create-header .lets-create {
+  color: #1c1c1c;
+  text-shadow: none;
+  font-weight: bold;
+  font-size: 9vh;
+  margin-bottom: 0%;
+  padding-bottom: 0%;
+  
 }
 
 /* Create two unequal columns that floats next to each other */
 .column {
   float: left;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .left {
   width: 65%;
-
   padding-left: 0px;
 }
 
 .mapButtons {
-  padding-left:0px;
+  padding-left: 1.8vw;
   padding-top: 0px;
- float:right;
+  float:left;
 
 }
 
 .right {
   width: 35%;
-
   padding-left: 30px;
   padding-top:35px;
 }
@@ -37,7 +59,6 @@
   padding-left: 30px;
 }
 
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -46,11 +67,11 @@
 }
 
 .map-container {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 70px);
     width: 60vw;
     margin-top: 5vh;
     margin-bottom: 1vh;
-    margin-left: 5vw;
+    margin-left: 1.8vw;
     margin-right: 5vw;
     padding-top: 1px;
     padding-left: 0px;
@@ -65,46 +86,48 @@
 
   
   #create{
-    height: 80px;
-    width: 130px;
-    margin: 0px;
+    height: 70px;
+    width: 170px;
+    margin: 4px;
     border-radius: 0px;
     padding-top: 2px;
     padding-right: 6px;
     padding-left: 6px;
-    font-family: Montserrat, Helvetica, sans-serif;
+    font-family: 'Heebo', Helvetica, sans-serif;
     font-weight: bold;
     color: white;
-    background-color:black;
+    background-color:#CFAE70;
+    border: none;
     cursor: pointer;
     transition-duration: 0.4s;
 
   }
 
   #find{
-    height: 80px;
-    width: 130px;
+    height: 70px;
+    width: 170px;
     margin: 0px;
     margin-left: 0px;
     border-radius: 0px;
     padding-top: 2px;
     padding-right: 6px;
     padding-left: 6px;
-    font-family: Montserrat, Helvetica, sans-serif;
+    font-family: 'Heebo', Helvetica, sans-serif;
     font-weight: bold;
     color: black;
     background-color: white;
     cursor: pointer;
     transition-duration: 0.4s;
+    border: none;
 
   }
 
-  #create:hover {
+  /* #create:hover {
     background-color:black;
-  }
+  } */
 
   #find:hover {
-    background-color:#CFAE70;
+    background-color:rgba(223, 184, 111, 0.5);
   }
 
   .reset-button {
@@ -114,7 +137,8 @@
     font-size: large;
     color: white;
     margin:5px;
-    border-radius: 5px;
+    border-radius: 15px;
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
   
     /* background-color: #6bb8d1; */
     color:black;
@@ -125,13 +149,15 @@
   }
 
   .undo-button {
-    border-color:black;
-    width: 60px;
+    /* border-color:black; */
+    border: none;
+    width: 35px;
+    height: 35px;
     text-decoration: none;
-    font-size: large;
+    /* font-size: 6px; */
     color: white;
     margin:5px;
-    border-radius: 5px;
+    border-radius: 50%;
   
     /* background-color: #6bb8d1; */
     color:black;
@@ -161,11 +187,11 @@
   }
 
   .reset-button:hover {
-    background-color: #CFAE70;
+    background-color: rgba(223, 184, 111, 0.75);
   }
 
   .undo-button:hover {
-    background-color: #CFAE70;
+    background-color: rgba(223, 184, 111, 0.75);
   }
 
   #tagsText{
@@ -188,20 +214,24 @@
   }
 
   .tagButtons{
- 
     padding-left: 200px;
    
   }
-.name{
-  padding-left: 9px;
-}
+  .name{
+    margin-right: 8px;
+    margin-left: 50px;
+    margin-top: 25px;
+  }
  
   .name input{
-    border-radius: 5px;
-    padding-left: 0px;
+    border-radius: 30px;
+    padding-left: 12px;
     width: 300px;
+    height: 40px;
     color:black;
-    border-color: black;
+    border-color: #1c1c1c;
+    border-width: 2px;
+    font-family: 'heebo', 'Times New Roman', Times, serif;
     
   }
   
