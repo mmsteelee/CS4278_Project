@@ -11,7 +11,7 @@ import "./find.css";
 const FindARun = () => {
 
 
-  const [runFindError, setFindText] = useState('Fill all required fields before submitting')
+  const [runFindError, setFindText] = useState('Fill all required fields before searching')
 
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(false)
@@ -82,7 +82,7 @@ const FindARun = () => {
   // };
   return (
     
-      <div className='main-wrapper-find'>
+      <div className='main-wrapper'>
         <div className='row'>
           <div className="column-find left-find">
             <h1 id="title">Find a run </h1>
@@ -124,6 +124,7 @@ const FindARun = () => {
             <div className='error'>
               <h1 disabled={!searchable} id="findErrText">{runFindError}</h1>
             </div>
+    
           </div>
           <div>
             {loading ?

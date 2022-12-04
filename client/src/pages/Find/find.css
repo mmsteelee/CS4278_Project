@@ -1,32 +1,20 @@
 
- 
- .main-wrapper-find {
-
-  display: flex;
-  padding-top: 40px;
-  padding-left: 10px;
-  padding-right: 20px;
-  margin: 0;
-background-color: yellow;
-
-}
-
 .column-find {
   float: left;
   padding: 10px;
+
 }
 
 .left-find {
-  width: 60%;
-background-color: magenta;
+  width: 65%;
+
   padding-left: 0px;
 }
 
 .right-find {
-  width: 40%;
-  background-color: aqua;
-  padding-left: 50px;
-  padding-top: 35px;
+  width: 35%;
+  padding-left: 20px;
+  padding-top: 75px;
 } 
 
 
@@ -85,10 +73,7 @@ background-color: magenta;
 
 }
 
-.slider{
-  background-color: magenta;
- 
-}
+
 
 #search-button{
   height: 80px;
@@ -117,7 +102,7 @@ background-color: magenta;
   font-weight: bold;
   font-size: medium;
   color: black;
-  background-color: magenta;
+  
   padding-bottom: 0px;
   padding-top: 20px;
 
