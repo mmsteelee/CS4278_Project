@@ -16,8 +16,6 @@ const getRun = async (req, res) => {
 const searchRuns = async (req, res) => {
     const runs = await RunMeta.find({})
     const query = req.query
-
-  
     
     if (query.minDistance && query.maxDistance && query.tags) {
         let ratings = []

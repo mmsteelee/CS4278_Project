@@ -13,11 +13,11 @@ import IconButton from '@mui/material/IconButton';
 import "./find.css";
 
 const FindARun = () => {
-
-
   const [runFindError, setFindText] = useState('Fill all required fields before searching')
 
   const [runs, setRuns] = useState([]);
+  const [runIndex, setRunIndex] = useState(0)
+  const [curRun, setCurRun] = useState()
   const [loading, setLoading] = useState(false)
   //controll if search should be an option
   const [searchable, setSearchable] = useState(false)
@@ -27,6 +27,13 @@ const FindARun = () => {
     //distance: 5,
     tags: []
   })
+
+  useEffect(() => {
+    if (runs.length) {
+      setCurRun(runs[0])
+      setRunIndex(0)
+    }
+  }, [runs])
 
   const navigate = useNavigate();
 
@@ -38,24 +45,20 @@ const FindARun = () => {
     navigate('/find');
   }
 
-
   const tagsRef = useRef()
-
-
 
   const validate = () => {
     return query.maxDistance !== 0 && !isNaN(query.maxDistance) && !isNaN(query.minDistance) && query.tags.length > 0
   }
 
   async function search() {
-    console.log(query)
     if (validate()) {
       setLoading(true)
       await searchAPI(query)
         .then(res => {
           setLoading(false)
-          setFindText(`Found ${runs.length} runs`)
           setRuns(res.data)
+          setFindText(`Found ${res.data.length} runs`)
         })
         .catch(err => {
           setFindText('Error Finding Run: ' + err.message)
@@ -71,6 +74,23 @@ const FindARun = () => {
     let tmp = query
     tmp.tags = tags
     setQuery(tmp)
+  }
+
+  const changeRun = (next) => {
+    if (next) {
+      if (runIndex < runs.length - 1) {
+        setRunIndex(runIndex + 1)
+      } else {
+        setRunIndex(0)
+      }
+    } else {
+      if (runIndex > 0) {
+        setRunIndex(runIndex - 1)
+      } else {
+        setRunIndex(runs.length - 1)
+      }
+    }
+    setCurRun(runs[runIndex])
   }
 
   // const handleChange = event => {
@@ -90,12 +110,17 @@ const FindARun = () => {
       <div className='row'>
         <div className="column-find left-find">
           <h1 id="title">Find a run </h1>
-          <IconButton id = "back" aria-label="delete">
-           <ArrowBack/>
-          </IconButton>
-          <IconButton id = "next" aria-label="delete">
-           <ArrowForward/>
-          </IconButton>
+          {runs.length &&
+            <div>
+              <h2 id="run-info"> Showing run {runIndex + 1} of {runs.length} </h2>
+              <IconButton id = "back" aria-label="delete" enabled={runs.length} onClick={() => changeRun(false)}>
+                <ArrowBack />
+              </IconButton>
+              <IconButton id = "next" aria-label="delete" enabled={runs.length} onClick={() => changeRun(true)}>
+                <ArrowForward/>
+              </IconButton>
+            </div>
+          }
         </div>
         <div className="column-find right-find">
           <div className='navButtons-find'>
@@ -140,10 +165,9 @@ const FindARun = () => {
           {loading ?
             <LoadingAnimation />
             :
-            runs.map(run => <RunDescription
-              description={run}
-              key={run.data_id}
-            />)
+            <RunDescription
+              description={curRun}
+            />
           }
         </div>
       </div>
