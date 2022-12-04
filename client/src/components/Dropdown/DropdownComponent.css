@@ -1,10 +1,9 @@
-.dropdown-container {
+  .dropdown-container {
     text-align: left;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(230, 27, 27);
     position: relative;
-    border-radius: 5px;
+    border-radius: 45%;
     padding:0;
-
   }
   
   .dropdown-input {
@@ -33,7 +32,8 @@
   }
   
   .dropdown-item:hover {
-    background-color: #9fc3f870;
+    background-color:  rgb(230, 27, 27);
+    /* background-color: #9fc3f870; */
   }
   
   .dropdown-item.selected {

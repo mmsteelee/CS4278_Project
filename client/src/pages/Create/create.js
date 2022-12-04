@@ -6,13 +6,12 @@ import "ol/ol.css";
 import "./create.css";
 import { makeRun } from '../../api/runs';
 import IconButton from '@mui/material/IconButton';
-// import UndoIcon from '@mui/icons-material/Undo';
-// import DeleteIcon from '@mui/icons-material/Delete';
+
 import Undo from '@material-ui/icons/Undo';
 import Create from '@material-ui/icons/Create';
 import Search from '@material-ui/icons/Search';
 import Delete from '@material-ui/icons/Delete';
-
+import Publish from '@material-ui/icons/Publish';
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
 
@@ -22,7 +21,7 @@ const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
   //declare a run route handler
-  const [runRouteError, setRouteText] = useState('Fill all required fields before submitting')
+  const [runRouteError, setRouteText] = useState('* Fill all required fields before submitting')
   const [routeDrawn, setDrawn] = useState(true); //indicates if route has been drawn
   const [mapContext, setMapContext] = useState({
     name: "",
@@ -30,7 +29,6 @@ const CreateARun = () => {
     tags: [],
     data: null,
   })
-  const [showInfo, setShowInfo] = useState(false);
 
   const navigate = useNavigate();
 
@@ -146,7 +144,7 @@ const CreateARun = () => {
     <div >
       <div className="hidden-part">
       <div className="create-header">
-        <h1 className='lets-create'>Create Your Run!</h1>
+        <h1 className='lets-create'>Create Your Run</h1>
         {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
       </div>
       {/* end create-header */}
@@ -187,7 +185,7 @@ const CreateARun = () => {
               {/* end name */}
 
               <div className="measuring-tool">
-                <button className="upload-button" onClick={uploadMap}>Upload Route</button>
+                <button className="upload-button" onClick={uploadMap}><Publish /> Upload Route</button>
                 <div>
                   <h1 id="routeErrText">{runRouteError}</h1>
                 </div>
@@ -219,7 +217,7 @@ const CreateARun = () => {
 
         {/*           HEADER DIV             */}
         <div className="create-header-hidden">
-          <h1 className='lets-create-hidden'>Create Your Run!</h1>
+          <h1 className='lets-create-hidden'>Create Your Run</h1>
         {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
         </div>
 
@@ -231,18 +229,48 @@ const CreateARun = () => {
 
         {/*            UNDO AND REDO BUTTONS         */}
         <div className="mapButtons-hidden">
-        <button className="undo-button-hidden" onClick={undoLines}><Undo /></button>
+          <button className="undo-button-hidden" onClick={undoLines}><Undo /></button>
           <button className="reset-button-hidden" onClick={removeLines}><Delete /></button>
           
         </div>
 
-            <div className="hidden-map">
-              <MapComponent
-                ref={mapRef}
-                updateMap={updateMap} 
-              /> 
-            </div>
+        {/*            MAP COMPONENT             */}
+        <div className="hidden-map">
+          <MapComponent
+            ref={mapRef}
+            updateMap={updateMap} 
+          /> 
+        </div>
+
+        {/*           ERROR MESSAGES          */}
+        <div className='error-msg'>
+          <h1 id="routeErrText-hidden">{runRouteError}</h1>
+        </div>
+
+        {/*             DROPDOWN COMPONENT         */}
+        <div className='dropdown-hidden'>
+          <Dropdown
+            ref={tagsRef} updateTags={updateTags}
+          />
+        </div>
+
+        {/*             NAME AND SUBMIT            */}
+        <div className='name-and-submit'>
+          {/* name */}
+          <div className="name-hidden">
+            <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
           </div>
+          {/* submit */}
+          <div className="submit-hidden">
+            <button className="upload-button-hidden" onClick={uploadMap}><Publish /> Upload Route</button>
+          </div>
+        </div>
+
+        
+
+
+
+      </div>
     </div>
     // end big div
 

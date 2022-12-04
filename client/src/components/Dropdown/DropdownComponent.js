@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import Tags from '../Tags/TagComponent';
+import "./DropdownComponent.css";
 //import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 //import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -149,8 +150,6 @@ const Dropdown = forwardRef(({ updateTags }, ref) => {
           </Select>
         </FormControl>
       </div>
-
-
     )
 
 })

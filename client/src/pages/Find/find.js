@@ -15,7 +15,7 @@ import "./find.css";
 const FindARun = () => {
 
 
-  const [runFindError, setFindText] = useState('Fill all required fields before searching')
+  const [runFindError, setFindText] = useState('* Fill all required fields before searching')
 
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(false)

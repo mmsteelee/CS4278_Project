@@ -254,15 +254,6 @@
       display: none;
     }
 
-    /* .main-wrapper-create{
-      display: flex;
-      padding-top: 30px;
-      padding-left: 10px;
-      padding-right: 20px;
-      background-color: rgb(255, 255, 255);
-    }
-    */
-
     .hidden-when-big{
       /* position: absolute; */
       width: 100vw;
@@ -385,32 +376,102 @@
       transition-duration: 0.4s;
     }
 
-
-
-
-    .hidden-map{
-      display:none;
+    .hidden-when-big .hidden-map{
+      display:flex;
+      position: absolute;
+      width: 100%;
+      margin-top: 175px;
+      height: 350px;
     }
 
-    /* .hidden-map{
-      /* width: 100%;
-      display:block; */
-      /* position: absolute;
-      margin-top: 10px;
-    } */
+    .hidden-when-big .hidden-map .map-container {
+      height: 350px;
+      width: 100%;
+      margin-top: 0px;
+      margin-left: 13px;
+      margin-right: 13px;
+      border: 1.5px solid #1c1c1c;
+    }
 
-    /* .map-container {
-      height: calc(100vh - 70px);
-      width: 60vw;
-      margin-top: 5vh;
-      margin-bottom: 1vh;
-      margin-left: 1.8vw;
-      margin-right: 5vw;
-      padding-top: 1px;
-      padding-left: 0px;
-  
-    } */ 
+    .hidden-when-big .dropdown-hidden{
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 75px;
+      margin-top: 550px;
+      justify-content: center;
+      align-items: center;
+    }
 
+    .hidden-when-big .dropdown-hidden .dropdown-container {
+      display: flex;
+      border-radius: 50%;
+    }
 
+    .hidden-when-big .name-and-submit {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 75px;
+      margin-top: 630px;
+      justify-content: center;
+      align-items: top;
+      padding-top: 8px;
+      
+    }
+
+    .hidden-when-big .name-and-submit .name-hidden {
+      margin-right: 7px;
+      font-family: 'heebo', 'Times New Roman', Times, serif;
+    }
+
+    .hidden-when-big .name-and-submit .name-hidden input{
+      border-radius: 30px;
+      padding-left: 12px;
+      width: 230px;
+      height: 47px;
+      color:black;
+      border-width: 1.5px;
+      border-color: #1c1c1c;
+    }
+
+    .hidden-when-big .name-and-submit .submit-hidden {
+      font-family: 'heebo', 'Times New Roman', Times, serif; 
+    }
+
+    .hidden-when-big .name-and-submit .submit-hidden .upload-button-hidden {
+      height: 44px;
+      border: none;
+      text-decoration: none;
+      background-color:#CFAE70;
+      color: white;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      padding-left: 2px;
+    }
+
+    .hidden-when-big .error-msg {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      /* margin-top: 657px; */
+      margin-top: 530px;
+      justify-content: center;
+      font-family: 'heebo', 'Times New Roman', Times, serif; 
+      align-items: center;
+    }
+
+    .hidden-when-big .error-msg h1{
+      display: flex;
+      justify-content: center;
+      font-size: 17px;
+      align-items: center;
+      margin-top: 5px;
+
+    }
+ 
   
   }
