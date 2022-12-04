@@ -21,6 +21,7 @@ const CreateARun = () => {
   const mapRef = useRef()
   const tagsRef = useRef()
   //declare a run route handler
+  const [showIcons, setShowIcons] = useState(false);
   const [runRouteError, setRouteText] = useState('* Fill all required fields before submitting')
   const [routeDrawn, setDrawn] = useState(true); //indicates if route has been drawn
   const [mapContext, setMapContext] = useState({
@@ -145,7 +146,6 @@ const CreateARun = () => {
       <div className="hidden-part">
       <div className="create-header">
         <h1 className='lets-create'>Create Your Run</h1>
-        {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
       </div>
       {/* end create-header */}
 
@@ -159,9 +159,11 @@ const CreateARun = () => {
                 <button className="reset-button" onClick={removeLines}><Delete /></button>
               </div>
               {/* end map buttons */}
-              <MapComponent
-                ref={mapRef}
-                updateMap={updateMap} /> 
+              <div className='map' id={showIcons ? "hidden" : ""}>
+                <MapComponent
+                  ref={mapRef}
+                  updateMap={updateMap} /> 
+              </div>
               {/* end map component */}
             </div>
             {/* end left column */}
@@ -236,10 +238,11 @@ const CreateARun = () => {
 
         {/*            MAP COMPONENT             */}
         <div className="hidden-map">
-          <MapComponent
+          <button onClick={() => setShowIcons(!showIcons)}>Calendar</button>
+          {/* <MapComponent
             ref={mapRef}
             updateMap={updateMap} 
-          /> 
+          />  */}
         </div>
 
         {/*           ERROR MESSAGES          */}
