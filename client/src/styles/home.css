@@ -49,6 +49,7 @@
   padding-bottom: 2px;
   border-radius: 15px;
   background-color: rgba(28, 28, 28, .75);
+  margin: 20px;
 }
 
 .main-section .meet-exec button:hover{
@@ -73,7 +74,7 @@
   }
 
   .main-section .meet-exec {
-    padding-top: 30%;
+    padding-top: 20%;
   }
 
   .main-section .meet-exec button {
@@ -84,6 +85,7 @@
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 2px;
+    margin: 10px;
   }
 }
 /* Links */

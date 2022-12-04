@@ -5,25 +5,18 @@ import {useNavigate} from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
-// import Navigation from '../components/NavBar.js'
-
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-
-
-// import CustomButton from '../../components/custom-button/custom-buttom.component'
-// import ContactForm from '../../components/contact-form/contact-form.component'
-// import Gallery from '../../components/gallery/gallery.component'
-// import {Link as Anchor} from 'react-scroll'
-
-
 const HomePage = () => {
 
   const navigate = useNavigate();
 
   const navigateToMeetTheTeam = () => {
     navigate('/meettheteam');
+  }
+  const navigateToFind = () => {
+    navigate('/find');
+  }
+  const navigateToSchedule = () =>  {
+    navigate('calendar');
   }
 
   return (
@@ -33,7 +26,9 @@ const HomePage = () => {
           <h1 className="cover-heading">WELCOME TO THE VANDY RUN CLUB</h1>
           <h1 className="come-run">Come run with us. No experience required.</h1>
           <div className="meet-exec">
-            <Button onClick={navigateToMeetTheTeam}>Meet Our Exec Board</Button>
+            <Button onClick={navigateToFind}>Ready to Start Running?</Button>
+            <Button onClick={navigateToMeetTheTeam}>Meet Our Exec Board!</Button>
+            <Button onClick={navigateToSchedule}>Look at our schedule!</Button>
           </div>
         </div>
       </div>
