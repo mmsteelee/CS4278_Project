@@ -15,8 +15,16 @@
 .bioInfo img {
     flex: 15%;
     padding: 15px;
-    max-height: 75px;
-    max-width: auto;
+    max-height: 25px;
+    max-width: 25px;
+    
+}
+
+.image {
+    height: auto; 
+    width: auto; 
+    max-width: 175px; 
+    max-height: 175px;
     
 }
 
