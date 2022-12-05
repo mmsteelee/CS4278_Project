@@ -81,18 +81,26 @@ const FindARun = () => {
   const changeRun = (next) => {
     if (next) {
       if (runIndex < runs.length - 1) {
+       
         setRunIndex(runIndex + 1)
+        console.log("nextRun");
+        setCurRun(runs[runIndex + 1])
+      
       } else {
         setRunIndex(0)
+        setCurRun(runs[0])
       }
     } else {
       if (runIndex > 0) {
         setRunIndex(runIndex - 1)
+        setCurRun(runs[runIndex - 1])
       } else {
         setRunIndex(runs.length - 1)
+        setCurRun(runs[runs.length - 1])
       }
     }
-    setCurRun(runs[runIndex])
+    console.log(runIndex);
+    //setCurRun(runs[runIndex + 1])
   }
 
   // const handleChange = event => {
