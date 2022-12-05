@@ -416,9 +416,9 @@
   .hidden-when-big-find .returned-runs-hidden{
     display: flex;
     position: absolute;
-    width: 350px;
+    width: 200px;
     height: 200px;
-    margin-top:800px;
+    margin-top:900px;
     margin-left:100px;
     justify-content: center;
     align-items: center;
@@ -446,13 +446,18 @@
 
 }
 
+.hidden-when-big-find .returned-runs-hidden .map-picture{
+
+
+}
+
 
 .hidden-when-big-find .zero-hidden {
   color: white;
   display: flex;
   position: absolute;
   margin-top:450px;
-  margin-left:120px;
+  margin-left:60px;
   justify-content: center;
   align-items: center;
 }
@@ -477,7 +482,7 @@
   font-weight: bold;
   text-align: center;
   padding-bottom: 0px;
-  margin-left: 15px;
+  margin-left: 20px;
   padding-left: 0px;
   width: 150px;
 
@@ -489,7 +494,7 @@
   margin-top: 0px;
   /* margin-left: 45px; */
   color: black;
-  margin-right: 25px;
+  margin-right: 5px;
 
 
 
