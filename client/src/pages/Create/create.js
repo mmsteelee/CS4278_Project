@@ -18,7 +18,8 @@ import Publish from '@material-ui/icons/Publish';
 
 
 const CreateARun = () => {
-  const mapRef = useRef()
+  const mapRef_web = useRef()
+  const mapRef_mobile = useRef()
   const tagsRef = useRef()
   //declare a run route handler
   const [showIcons, setShowIcons] = useState(false);
@@ -93,7 +94,7 @@ const CreateARun = () => {
   }
 
 
-  const uploadMap = () => {
+  const uploadMap_web = () => {
     let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
     let run = {
       meta: runMeta,
@@ -107,7 +108,7 @@ const CreateARun = () => {
         )
         .catch(err => console.log(err))
 
-      mapRef.current.reset();
+      mapRef_web.current.reset();
       setMapContext({
         // name: mapContext.name,
         name: '',
@@ -118,9 +119,9 @@ const CreateARun = () => {
     }
   };
 
-  const removeLines = () => {
+  const removeLines_web = () => {
     console.log(mapContext.name);
-    mapRef.current.reset();
+    mapRef_web.current.reset();
     tagsRef.current.clear();
     setDrawn(false);
     //setMapContext({ ...mapContext, name: "Please Draw a Route" });
@@ -133,11 +134,59 @@ const CreateARun = () => {
     })
   };
 
-  const undoLines = () => {
+  const undoLines_web = () => {
     console.log(mapContext.name);
-    mapRef.current.undoLine();
+    mapRef_web.current.undoLine();
 
   };
+
+
+  const uploadMap_mobile = () => {
+    let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
+    let run = {
+      meta: runMeta,
+      data: mapContext.data
+    }
+ 
+    if (validate()) {
+      makeRun(run)
+        .then(console.log('Successfull upload'),
+          setRouteText('Successfully uploaded run!')
+        )
+        .catch(err => console.log(err))
+
+      mapRef_mobile.current.reset();
+      setMapContext({
+        // name: mapContext.name,
+        name: '',
+        distance: 0,
+        tags: [],
+        coordinates: [],
+      })
+    }
+  };
+
+  const removeLines_mobile = () => {
+    console.log(mapContext.name);
+    mapRef_mobile.current.reset();
+    tagsRef.current.clear();
+    setDrawn(false);
+    //setMapContext({ ...mapContext, name: "Please Draw a Route" });
+    setMapContext({
+      // name: mapContext.name,
+      name: "Please Draw a Route",
+      distance: 0,
+      tags: [],
+      coordinates: [],
+    })
+  };
+
+  const undoLines_mobile = () => {
+    console.log(mapContext.name);
+    mapRef_mobile.current.undoLine();
+
+  };
+
 
   return (
     // make a whole new set of things and make them all hidden
@@ -154,13 +203,13 @@ const CreateARun = () => {
             <div className="column left">
               {/* id={showInfo ? "hidden" : ""} */}
               <div className="mapButtons">
-                <button className="undo-button" onClick={undoLines}><Undo /></button>
-                <button className="reset-button" onClick={removeLines}><Delete /></button>
+                <button className="undo-button" onClick={undoLines_web}><Undo /></button>
+                <button className="reset-button" onClick={removeLines_web}><Delete /></button>
               </div>
               {/* end map buttons */}
               <div className='map' id={showIcons ? "hidden" : ""}>
                 <MapComponent
-                  ref={mapRef}
+                  ref={mapRef_web}
                   updateMap={updateMap} /> 
               </div>
               <br></br>
@@ -189,7 +238,7 @@ const CreateARun = () => {
               {/* end name */}
 
               <div className="measuring-tool">
-                <button className="upload-button" onClick={uploadMap}><Publish /> Upload Route</button>
+                <button className="upload-button" onClick={uploadMap_web}><Publish /> Upload Route</button>
                 <div>
                   <h1 id="routeErrText">{runRouteError}</h1>
                 </div>
@@ -233,18 +282,18 @@ const CreateARun = () => {
 
         {/*            UNDO AND REDO BUTTONS         */}
         <div className="mapButtons-hidden">
-          <button className="undo-button-hidden" onClick={undoLines}><Undo /></button>
-          <button className="reset-button-hidden" onClick={removeLines}><Delete /></button>
+          <button className="undo-button-hidden" onClick={undoLines_mobile}><Undo /></button>
+          <button className="reset-button-hidden" onClick={removeLines_mobile}><Delete /></button>
           
         </div>
 
         {/*            MAP COMPONENT             */}
         <div className="hidden-map">
-          <button onClick={() => setShowIcons(!showIcons)}>Calendar</button>
-          {/* <MapComponent
-            ref={mapRef}
+          {/* <button onClick={() => setShowIcons(!showIcons)}>Calendar</button> */}
+          <MapComponent
+            ref={mapRef_mobile}
             updateMap={updateMap} 
-          />  */}
+          /> 
         </div>
 
         {/*           ERROR MESSAGES          */}
@@ -267,7 +316,7 @@ const CreateARun = () => {
           </div>
           {/* submit */}
           <div className="submit-hidden">
-            <button className="upload-button-hidden" onClick={uploadMap}><Publish /> Upload Route</button>
+            <button className="upload-button-hidden" onClick={uploadMap_mobile}><Publish /> Upload Route</button>
           </div>
         </div>
 
