@@ -65,7 +65,7 @@ const makeRun = async (req, res) => {
 
     // create run components
     if (runMeta && runData) {
-        console.log("banana");
+
         const result = await RunData.create(runData)
         runMeta.data_id = result.id
         RunMeta.create(runMeta)
