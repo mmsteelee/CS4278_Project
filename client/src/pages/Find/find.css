@@ -1,3 +1,7 @@
+.white-background{
+  background-color: white;
+}
+
 
 .column-find {
   float: left;
@@ -8,26 +12,108 @@
 .left-find {
   width: 65%;
 
-  padding-left: 0px;
+  padding-left: 30px;
+ 
 }
 
-#back{
-  margin-top: 200px;
-  margin-left: 75px;
-  color:black;
+.zero{
+  color:white;
 }
+
+#run-info{
+color:black;
+  font-size: larger;
+
+}
+.find-header{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding-top: 35px;
+  font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
+  margin-bottom: 2.5%;
+  height: 65px;
+}
+#lets-find {
+  color: #1c1c1c;
+  text-shadow: none;
+  font-weight: bold;
+  font-size: 9vh;
+  margin-bottom: 0%;
+  padding-bottom: 0%;
+  
+}
+.run-arrows{
+  padding-top: 0px;
+  margin-top: 0px;
+
+padding-left: 30%;
+
+
+}
+
+.returned-runs{
+background-color: white;
+}
+.returned-runs h1{
+  font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
+  color: #1c1c1c;
+  text-shadow: none;
+  font-weight: bold;
+  font-size: 7vh;
+text-align: center;
+  margin:0px;
+}
+
+.returned-runs p{
+  font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
+  color: #1c1c1c;
+  text-shadow: none;
+  font-weight: bold;
+margin:0px;
+padding-left: 30px;
+
+}
+
+.run-arrows p{
+  display: inline-block;
+  font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
+  color: #1c1c1c;
+  text-shadow: none;
+  font-weight: bold;
+  text-align:center;
+  padding-bottom: 0px;
+  margin-left: 15px;
+  padding-left:0px;
+  width:150px;
+
+  margin-top:20px;
+}
+#back{
+  display: inline-block;
+  margin-top: 0px;
+  /* margin-left: 45px; */
+  color:black;
+  margin-right: 25px;
+
+
+
+}
+
 
 #next{
- margin-top: 200px;
-  margin-left: 600px;
+  display: inline-block;
+ margin-top: 0px;
+ margin-left: 35px;
+
   color:black;
 }
 .right-find {
   width: 35%;
   padding-left: 20px;
-  padding-top: 75px;
-} 
+  padding-top: 35px;
 
+} 
 
 
 .row:after {
@@ -36,73 +122,80 @@
   clear: both;
 }
 
-#find-find{
-  height: 80px;
-  width: 130px;
-  margin: 0px;
-  border-radius: 0px;
-  padding-top: 2px;
-  padding-right: 6px;
-  padding-left: 6px;
-  font-family: Montserrat, Helvetica, sans-serif;
-  font-weight: bold;
-  color: white;
-  background-color:black;
-  cursor: pointer;
-  transition-duration: 0.4s;
-
+.dropdown{
+  padding-left:50px;
 }
 
+
 #create-find{
-  height: 80px;
-  width: 130px;
+  height: 70px;
+  width: 170px;
   margin: 0px;
   margin-left: 0px;
   border-radius: 0px;
   padding-top: 2px;
   padding-right: 6px;
   padding-left: 6px;
-  font-family: Montserrat, Helvetica, sans-serif;
+  font-family: 'Heebo', Helvetica, sans-serif;
   font-weight: bold;
   color: black;
   background-color: white;
   cursor: pointer;
   transition-duration: 0.4s;
+  border: none;
 
 }
 
-#create-find:hover {
-  background-color:#CFAE70;
-}
-
-#find-find:hover {
-  background-color:black;
-}
-
-.navButtons-find{
-  padding-left: 30px;
-
-}
-
-
-
-#search-button{
-  height: 80px;
-  width: 130px;
-  margin-top: 50px;
-  border-radius: 20px;
+#find-find{
+  height: 70px;
+  width: 170px;
+  margin: 4px;
+  border-radius: 0px;
   padding-top: 2px;
   padding-right: 6px;
   padding-left: 6px;
-  font-family: Montserrat, Helvetica, sans-serif;
+  font-family: 'Heebo', Helvetica, sans-serif;
   font-weight: bold;
   color: white;
-  background-color:black;
+  background-color:#CFAE70;
+  border: none;
   cursor: pointer;
   transition-duration: 0.4s;
 
 }
 
+
+#create-find:hover {
+  background-color:rgba(223, 184, 111, 0.5);
+}
+
+.navButtons-find{
+  padding-left: 30px;
+
+
+}
+
+
+
+#search-button {
+  border:none;
+   text-decoration: none;
+   margin-top: 50px;
+   margin-left: 70px;
+   font-size: large;
+   color: white;
+   border-radius: 5px;
+   padding: 15px 30px;
+   background-color: black;
+   cursor: pointer;
+   transition-duration: 0.4s;
+   
+ }
+ 
+ #search-button:hover {
+   /* background-color: #437e91; */
+   background-color: rgba(223, 184, 111, 0.75);
+ }
 #title {
   font-family: Montserrat, Helvetica, sans-serif;
   padding-left: 250px;
@@ -110,13 +203,14 @@
 
 #findErrText {
   font-family: Montserrat, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: medium;
-  color: black;
+    font-weight: bold;
+    font-size: medium;
+    color:black;
+    padding-right: 45px;
+    padding-top: 10px;
+    padding-left:100px;
+   
   
-  padding-bottom: 0px;
-  padding-top: 20px;
-
 
 }
 

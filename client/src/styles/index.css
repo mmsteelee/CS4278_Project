@@ -28,6 +28,10 @@ body {
 
 }
 
+.Find .main-wrapper{
+  background-color: magenta;
+}
+
 .main-wrapper navbar{
   padding: 0%;
   vertical-align: 0px;

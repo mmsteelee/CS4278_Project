@@ -68,6 +68,8 @@ const tags = [
     'Pedestrian Friendly',
     'Hills',
     'Scenic',
+    'Near Campus',
+    'Few Stops',
     'Short',
     'Medium',
     'Long',

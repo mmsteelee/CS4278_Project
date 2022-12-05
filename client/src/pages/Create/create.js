@@ -164,6 +164,7 @@ const CreateARun = () => {
                   ref={mapRef}
                   updateMap={updateMap} /> 
               </div>
+              <br></br>
               {/* end map component */}
             </div>
             {/* end left column */}
@@ -175,10 +176,12 @@ const CreateARun = () => {
                 <button id="find" onClick={navigateToFind}><Search /> Find A Run</button>
               </div>
               {/* end navButtons */}
+              <div className='dropdown'>
 
               <Dropdown
                 ref={tagsRef} updateTags={updateTags}
               />
+              </div>
               {/* end dropdown */}
            
               <div className="name">
