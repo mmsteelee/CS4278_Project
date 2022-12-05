@@ -48,6 +48,8 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
   useImperativeHandle(ref, () => ({
     reset() {
       source.clear()
+      totalRoute.length =0;
+      totalWaypts.length=0;
     },
 
     undoLine(){

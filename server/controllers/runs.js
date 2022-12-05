@@ -59,18 +59,22 @@ const searchRuns = async (req, res) => {
 
 const makeRun = async (req, res) => {
     
+   
     let runMeta = req.body.meta
-    let runData = req.body.data_id
-    
+    let runData = req.body.data
+
     // create run components
     if (runMeta && runData) {
+
         const result = await RunData.create(runData)
         runMeta.data_id = result.id
         RunMeta.create(runMeta)
             .then(res.status(200).send())
             .catch(err => res.status(400).send('Cannot create run meta record'))
     } else {
+        console.log("rejected");
         res.status(400).json({message: 'Submitted run not complete'})
+
     }
 }
 
