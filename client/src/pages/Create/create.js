@@ -94,13 +94,15 @@ const CreateARun = () => {
 
 
   const uploadMap = () => {
-    tagsRef.current.submit()
+    //tagsRef.current.submit()
+
+    
     let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
     let run = {
       meta: runMeta,
       data: mapContext.data
     }
-
+ 
     if (validate()) {
       makeRun(run)
         .then(console.log('Successfull upload'),
