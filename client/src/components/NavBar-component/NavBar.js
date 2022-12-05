@@ -24,7 +24,7 @@ const NavBar = ({handleClick}) => {
         <div className = "text" id={showLinks ? "hidden" : ""}>
           <a href="/calendar">SCHEDULE</a>
           <a href="/meettheteam">MEET THE TEAM</a>
-          <a href="/findyourrun">FIND YOUR RUN</a>
+          <a href="/find">FIND YOUR RUN</a>
           <a href="/links">LINKS</a>
           <Button onClick={handleClick}>Logout</Button>
           {user.role === 'admin' && 

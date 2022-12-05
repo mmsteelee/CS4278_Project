@@ -39,6 +39,7 @@
 .left {
   width: 65%;
   padding-left: 0px;
+
 }
 
 .mapButtons {
@@ -52,6 +53,7 @@
   width: 35%;
   padding-left: 30px;
   padding-top:35px;
+
 }
 
 
@@ -169,7 +171,10 @@
     cursor: pointer;
     transition-duration: 0.4s;   
   }
+.dropdown{
 
+  padding-left: 40px;
+}
   .upload-button {
    border:none;
     text-decoration: none;
@@ -186,7 +191,7 @@
   
   .upload-button:hover {
     /* background-color: #437e91; */
-    background-color: darkgoldenrod;
+    background-color: rgba(223, 184, 111, 0.75);
   }
 
   .reset-button:hover {

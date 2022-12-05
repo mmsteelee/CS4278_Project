@@ -47,12 +47,13 @@ const RunDescription = ({description}) => {
     return(
         <div className="run-returns"> 
             { !hasData ? 
-                <h1>Search</h1>
+          
+                <h1>  <br></br><br></br><br></br>Search for new running routes!</h1>
             :
             <div>
                 <div className="description">
                     <h1>{description.name}</h1>
-                    <p>Distance: {description.distance}</p>
+                    <p>Distance: {description.distance} miles</p>
                     <div className="array">
                     
                         {/* <p>Tags: {tags}</p> */}

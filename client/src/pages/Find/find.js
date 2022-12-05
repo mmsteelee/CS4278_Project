@@ -9,11 +9,13 @@ import { Avatar, Button, Paper, Typography, Container } from '@material-ui/core'
 import ArrowBack from '@material-ui/icons/ArrowBackIos';
 import ArrowForward from '@material-ui/icons/ArrowForwardIos';
 import IconButton from '@mui/material/IconButton';
+import Create from '@material-ui/icons/Create';
+import Search from '@material-ui/icons/Search';
 
 import "./find.css";
 
 const FindARun = () => {
-  const [runFindError, setFindText] = useState('Fill all required fields before searching')
+  const [runFindError, setFindText] = useState('*Fill all required fields before searching')
 
   const [runs, setRuns] = useState([]);
   const [runIndex, setRunIndex] = useState(0)
@@ -58,7 +60,7 @@ const FindARun = () => {
         .then(res => {
           setLoading(false)
           setRuns(res.data)
-          setFindText(`Found ${res.data.length} runs`)
+          //setFindText(`Found ${res.data.length} runs`)
         })
         .catch(err => {
           setFindText('Error Finding Run: ' + err.message)
@@ -107,68 +109,85 @@ const FindARun = () => {
   return (
 
     <div className='main-wrapper'>
-      <div className='row'>
-        <div className="column-find left-find">
-          <h1 id="title">Find a run </h1>
-          {runs.length &&
-            <div>
-              <h2 id="run-info"> Showing run {runIndex + 1} of {runs.length} </h2>
-              <IconButton id = "back" aria-label="delete" enabled={runs.length} onClick={() => changeRun(false)}>
-                <ArrowBack />
-              </IconButton>
-              <IconButton id = "next" aria-label="delete" enabled={runs.length} onClick={() => changeRun(true)}>
-                <ArrowForward/>
-              </IconButton>
+      <div className='white-background'>
+        <div className='find-header'>
+          <h1 id="lets-find">FIND A RUN</h1>
+        </div>
+        <div className='row'>
+          <div className="column-find left-find">
+
+           
+            <div className='returned-runs'>
+              {loading ?
+                <LoadingAnimation />
+                :
+                <RunDescription
+                  description={curRun}
+                />
+              }
             </div>
-          }
-        </div>
-        <div className="column-find right-find">
-          <div className='navButtons-find'>
-            <button id="create-find" onClick={navigateToCreate}>
-              Create A Run
-            </button>
-            <button id="find-find" onClick={navigateToFind}>
-              Find A Run
-            </button>
+
+            <div className='zero'>
+              {runs.length &&
+                <div className='run-arrows'>
+                  
+                  <IconButton id="back" aria-label="delete" enabled={runs.length} onClick={() => changeRun(false)}>
+                    <ArrowBack />
+                  </IconButton>
+                  <p id="run-info"> [ Showing run {runIndex + 1} of {runs.length} ] </p>
+                  <IconButton id="next" aria-label="delete" enabled={runs.length} onClick={() => changeRun(true)}>
+                    <ArrowForward />
+                  </IconButton>
+                 
+                </div>
+              }
+            </div>
+          </div>
+          <div className="column-find right-find">
+            <div className='navButtons-find'>
+              <button id="create-find" onClick={navigateToCreate}>
+                <Create />Create A Run
+              </button>
+              <button id="find-find" onClick={navigateToFind}>
+                <Search />Find A Run
+              </button>
+            </div>
+            <div className='dropdown'>
+              <Dropdown
+                ref={tagsRef} updateTags={updateTags}
+              />
+            </div>
+
+            <div className='slider'>
+              <MultiRangeSlider
+                min={0}
+                max={30}
+                onChange={({ min, max }) => {
+                  let tmp = query;
+                  tmp.minDistance = parseFloat(min);
+                  tmp.maxDistance = parseFloat(max);
+                  setQuery(tmp);
+                  //console.log(query);
+                }} />
+
+            </div>
+
+            <div className='search'>
+              <button id='search-button'
+                onClick={search}
+              ><Search />Search
+              </button>
+            </div>
+            <div className='error'>
+              <h1 disabled={!searchable} id="findErrText">{runFindError}</h1>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
           </div>
 
-          <Dropdown
-            ref={tagsRef} updateTags={updateTags}
-          />
-
-          <div className='slider'>
-            <MultiRangeSlider
-              min={0}
-              max={100}
-              onChange={({ min, max }) => {
-                let tmp = query;
-                tmp.minDistance = parseFloat(min);
-                tmp.maxDistance = parseFloat(max);
-                setQuery(tmp);
-                //console.log(query);
-              }} />
-
-          </div>
-
-          <div className='search'>
-            <button id='search-button'
-              onClick={search}
-            >Search
-            </button>
-          </div>
-          <div className='error'>
-            <h1 disabled={!searchable} id="findErrText">{runFindError}</h1>
-          </div>
-
-        </div>
-        <div>
-          {loading ?
-            <LoadingAnimation />
-            :
-            <RunDescription
-              description={curRun}
-            />
-          }
         </div>
       </div>
     </div>
