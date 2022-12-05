@@ -130,6 +130,7 @@
     }
     
     .navbar .right-side #hidden {
+      z-index: 2;
       position: absolute;
       
       /* align-items: right; */
@@ -154,6 +155,7 @@
     }
 
     .navbar .right-side #hidden button {
+ 
       font-family:'Bebas Neue', Times, serif;
       padding: 4px;
       font-size: 25px;
