@@ -9,6 +9,8 @@ import { getBios } from '../../api/bios';
 import { UserContext } from '../../App';
 import './meetTheTeam.css'
 
+import Create from '@material-ui/icons/Create';
+
 const MeetTheTeam = () => {
     const [bios, setBios] = useState([])
     const [openNewBio, setopenNewBio] = useState(false)
@@ -22,32 +24,38 @@ const MeetTheTeam = () => {
     }, [])
 
     return (
-      <div className= "main-wrapper">
-        
+      <div className= "total-wrapper">
+ 
         { loading ?  
           <LoadingAnimation />
           :
           <div className='container' >
             <div className='pageCover'>
-              <h1>MEET THE TEAM!</h1>  
+              <h1>MEET Our Exec Board!</h1>  
             </div>
-      
+            
+            <div className='add-bio-button'>
+              {
+                user.role === 'admin' &&
+                <button onClick={() => setopenNewBio(true)}><Create />Add New Bio</button>
+              }
+            </div>
+
             {bios.map(bio => <Bio
               key={bio._id}
               bio={bio}
             />)}
-            {
-              user.role === 'admin' &&
-              <button onClick={() => setopenNewBio(true)}>Add New Bio</button>
-            }
+
+           
             <NewBioPopup 
-              message={'Add Executive Team Bio'}
+              message={'Add New Exec Member Bio'}
               open={openNewBio}
               handleClose={() => {setopenNewBio(false)}}
             />
           </div>
         }
       </div>
+
    
     );
   };

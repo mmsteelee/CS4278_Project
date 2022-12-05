@@ -2,21 +2,58 @@
 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
 @import url('https://fonts.cdnfonts.com/css/heebo');
 
-.main-wrapper {
-    width: 100%;
-    margin:none;
+.total-wrapper {
+    /* display: flex; */
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    margin: 0px;
 }
 
-.main-wrapper .container{
-    width: 100%;
-    background-color: beige;
+.total-wrapper .container{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+
+ 
 
 }
 .container .pageCover{
-width: 100%;
-text-align: center;
-font-family: 'Heebo', 'Montserrat', Helvetica, sans-serif;
-font-size: 30px;
-text-shadow: none;
-/* padding-top: 6%; */
+    width: 100vw;
+    text-align: center;
+    font-family: 'Bebas Neue', 'Montserrat', Helvetica, sans-serif;
+    margin-top: 35px;
+    /* padding-top: 6%; */
+
+}
+
+.container .pageCover h1{
+    font-weight: bold;
+    font-size: 70px;
+    text-shadow: none;
+}
+
+.container .add-bio-button {
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
+    width: 100%;
+}
+.container .add-bio-button button {
+        border: none;
+        width: 150px;
+        height: 45px;
+        text-decoration: none;
+        font-size: large;
+        margin-bottom: 15px;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: top;
+        /* background-color: #6bb8d1; */
+        color:white;
+        font-weight: bold;
+        background-color:#CFAE70;
+        cursor: pointer;
+}
+.bios{
+    margin: 30px;
 }

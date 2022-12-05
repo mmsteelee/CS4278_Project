@@ -1,7 +1,4 @@
 import React, {useState} from "react";
-// import {Nav, Navbar, NavLink } from "react-bootstrap";
-import { Link } from "react-router-dom";
-// import'../styles/index.css';
 import '../NavBar-component/navbar.css';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';

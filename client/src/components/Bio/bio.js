@@ -108,27 +108,25 @@ const Bio = ({bio}) => {
                 </form>
                 : 
                 <div className = 'bioView' onDoubleClick ={handleEditAttempt}>
-                    
                     <img className = 'image' src={imageURL}></img>
                     <table>
-                    <tbody>
-                    <tr>
-                        <td className= 'bioInfo'>
-                            <h1>{bio.name}</h1>
-                            <div className="exec-title">
-                                <h1>{bio.title}</h1>
-                            </div>
-                            <div className = 'email'>
-                                <a href= {bio.email}> email: {bio.email} </a> 
-                                {/* <a href="mailto:drechsler.lina@gmail.com"> email lina </a>  */}
-                            </div>
-                            <p>{bio.text}</p>
-                        </td>
-                        {/* <td classname = 'bioText'>
-                            <p>{bio.text}</p>
-                        </td> */}
-                    </tr>
-                    </tbody>
+                       
+                            
+                        
+                        <tbody>
+                            <tr>
+                                <td className= 'bioInfo'>
+                                    <h1>{bio.name}</h1>
+                                    <div className="exec-title">
+                                        <h1>{bio.title}</h1>
+                                    </div>
+                                    <div className = 'email'>
+                                        <h1>{bio.email}</h1> 
+                                    </div>
+                                    <p>{bio.text}</p>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     
                 </div>

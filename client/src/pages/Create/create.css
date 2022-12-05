@@ -403,10 +403,10 @@
       align-items: center;
     }
 
-    .hidden-when-big .dropdown-hidden .dropdown-container {
+    /* .hidden-when-big .dropdown-hidden .dropdown-container {
       display: flex;
       border-radius: 50%;
-    }
+    } */
 
     .hidden-when-big .name-and-submit {
       display: flex;

@@ -1,61 +1,76 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Work Sans&display=swap');
+@import url('https://fonts.cdnfonts.com/css/heebo');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
 
 .bioView{
+    margin-top: 10px;
     vertical-align: center;
-    padding: 15px;
+    /* padding: 15px; */
     size: 100%;
-    background: rgba(255, 251, 251, 0.5);
+
+    /* background: rgba(255, 251, 251, 0.5); */
     display: flex;
     text-shadow: none;
-    font-family: Work Sans, Helvetica, sans-serif;
+    
 }
 
 
 .bioInfo img {
-    flex: 15%;
-    padding: 15px;
-    max-height: 25px;
-    max-width: 25px;
     
+    
+    max-height: 25px;
+    max-width: 25px; 
+   
 }
 
 .image {
+    margin: 10px;
+    
     height: auto; 
     width: auto; 
     max-width: 175px; 
     max-height: 175px;
-    
 }
 
 .bioInfo{
-    flex: 75%;
+    padding-top: 10px;
     vertical-align: text-top;
-    padding: 15px;
+    padding-left: 7px;
+    font-family: 'heebo', 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
 }
 
 .bioInfo h1 {
     align-items: top;
     /* text-transform: uppercase; */
-    font-size: 30px;
+    font-size: 40px;
     margin: 0px;
+    font-family: 'Bebas neue', 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 
 .bioInfo .exec-title h1{
-    font-style:italic;
-    font-size: 17px;
+    /* font-style:italic; */
+    font-weight: normal;
+    font-size: 27px;
     margin: 0px;
 }
 
-.bioView .bioInfo .email a{
+.bioView .bioInfo .email {
+    margin-bottom:3px ;
+}
+.bioView .bioInfo .email h1{
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
     text-decoration: none;
     color: black;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: normal;
 }
 
 .bioInfo p{
-    font-size: 17px;
-    margin: 0px;
+    font-size: 15px;
+    margin-bottom: 3px;
 }
 
 /* .bioParagraph{
