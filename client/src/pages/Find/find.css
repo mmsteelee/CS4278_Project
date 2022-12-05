@@ -60,6 +60,18 @@
   background-color: white;
 }
 
+.returned-runs .map-container {
+  height: calc(100vh - 220px);
+  width: 60vw;
+  margin-top: 5vh;
+  margin-bottom: 1vh;
+  margin-left: 1.8vw;
+  margin-right: 5vw;
+  padding-top: 1px;
+  padding-left: 0px;
+
+}
+
 .returned-runs h1 {
   font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
   color: #1c1c1c;
@@ -356,7 +368,7 @@
     justify-content: center;
     font-family: 'heebo', 'Times New Roman', Times, serif; 
     align-items: left;
-    background-color: magenta;
+
   }
 
   .hidden-when-big-find .error-msg-find h1{
@@ -421,13 +433,24 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    margin-top:900px;
+    margin-top: 750px;
     margin-left:100px;
     justify-content: center;
     align-items: center;
 
   }
 
+  .hidden-when-big-find .returned-runs-hidden .map-container {
+    height: calc(100vh - 400px);
+    width: 60vw;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+    margin-left: 1.8vw;
+    margin-right: 5vw;
+    padding-top: 1px;
+    padding-left: 0px;
+  
+  }
   
   .hidden-when-big-find .returned-runs-hidden h1 {
   font-family: 'Bebas Neue', 'Times New Roman', Times, serif;
@@ -437,6 +460,12 @@
   font-size: 7vh;
   text-align: center;
   margin: 0px;
+ 
+}
+
+.hidden-when-big-find .returned-runs-hidden .welcome-message {
+display:none;
+ 
 }
 
 .hidden-when-big-find .returned-runs-hidden p {
@@ -448,6 +477,9 @@
   padding-left: 30px;
 
 }
+
+
+
 
 .hidden-when-big-find .returned-runs-hidden .map-picture{
 

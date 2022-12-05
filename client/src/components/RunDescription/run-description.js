@@ -47,9 +47,9 @@ const RunDescription = ({description}) => {
     return(
         <div className="run-returns"> 
             { !hasData ? 
-          
+          <div className = "welcome-message">
                 <h1>  <br></br><br></br><br></br>Search for new running routes!<h2>Choose your distance and tags to find the perfect route for you</h2></h1>
-                
+                </div>
             :
             <div>
                 <div className="description">
