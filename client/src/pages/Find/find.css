@@ -347,14 +347,16 @@
 
   .hidden-when-big-find .error-msg-find {
     display: flex;
-    position: absolute;
+    position: absolute; 
+    z-index: 1;
     width: 100%;
     height: 30px;
     /* margin-top: 657px; */
     margin-top: 150px;
     justify-content: center;
     font-family: 'heebo', 'Times New Roman', Times, serif; 
-    align-items: center;
+    align-items: left;
+    background-color: magenta;
   }
 
   .hidden-when-big-find .error-msg-find h1{
@@ -399,16 +401,17 @@
     border-radius: 30px;
     cursor: pointer;
     transition-duration: 0.4s;
-    padding-left: 2px;
+    padding: 10px;
   }
 
    
   .hidden-when-big-find .slider-hidden{
     display: flex;
     position: absolute;
-    width: 100%;
+    width: 50%;
     height: 75px;
     margin-top: 250px;
+    margin-left:30px;
     justify-content: center;
     align-items: center;
   }
