@@ -81,11 +81,11 @@ const FindARun = () => {
   const changeRun = (next) => {
     if (next) {
       if (runIndex < runs.length - 1) {
-       
+
         setRunIndex(runIndex + 1)
         console.log("nextRun");
         setCurRun(runs[runIndex + 1])
-      
+
       } else {
         setRunIndex(0)
         setCurRun(runs[0])
@@ -116,6 +116,7 @@ const FindARun = () => {
   // };
   return (
 
+
     <div className='main-wrapper'>
       <div className='white-background'>
         <div className='find-header'>
@@ -124,7 +125,7 @@ const FindARun = () => {
         <div className='row'>
           <div className="column-find left-find">
 
-           
+
             <div className='returned-runs'>
               {loading ?
                 <LoadingAnimation />
@@ -138,7 +139,7 @@ const FindARun = () => {
             <div className='zero'>
               {runs.length &&
                 <div className='run-arrows'>
-                  
+
                   <IconButton id="back" aria-label="delete" enabled={runs.length} onClick={() => changeRun(false)}>
                     <ArrowBack />
                   </IconButton>
@@ -146,7 +147,7 @@ const FindARun = () => {
                   <IconButton id="next" aria-label="delete" enabled={runs.length} onClick={() => changeRun(true)}>
                     <ArrowForward />
                   </IconButton>
-                 
+
                 </div>
               }
             </div>
@@ -198,7 +199,79 @@ const FindARun = () => {
 
         </div>
       </div>
-    </div>
+      <div className="hidden-when-big-find">
+        {/*           HEADER DIV             */}
+        <div className="find-header-hidden">
+          <h1 className='lets-find-hidden'>Find Your Run</h1>
+          {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
+        </div>
+
+        {/*            NAVBUTTONS DIV          */}
+        <div className='navButtons-hidden-find'>
+          <button id="create-hidden-find" onClick={navigateToCreate}><Create /> Create A Run</button>
+          <button id="find-hidden-find" onClick={navigateToFind}><Search /> Find A Run</button>
+        </div>
+
+
+
+        {/*             DROPDOWN COMPONENT         */}
+        <div className='dropdown-hidden-find'>
+          <Dropdown
+            ref={tagsRef} updateTags={updateTags}
+          />
+        </div>
+
+        {/*           Distance Slider          */}
+        <div className='slider-hidden'>
+          <MultiRangeSlider
+            min={0}
+            max={30}
+            onChange={({ min, max }) => {
+              let tmp = query;
+              tmp.minDistance = parseFloat(min);
+              tmp.maxDistance = parseFloat(max);
+              setQuery(tmp);
+              //console.log(query);
+            }} />
+
+        </div>
+        {/*           ERROR MESSAGES          */}
+        <div className='error-msg-find'>
+          <h1 id="routeErrText-hidden-find">{runFindError}</h1>
+        </div>
+
+        {/* search */}
+        <div className="search-hidden">
+          <button className="search-button-hidden" onClick={search}> Search</button>
+        </div>
+        <div className='zero-hidden'>
+              {runs.length &&
+                <div className='run-arrows-hidden'>
+
+                  <IconButton id="back-hidden"  enabled={runs.length} onClick={() => changeRun(false)}>
+                    <ArrowBack />
+                  </IconButton>
+                  <p id="run-info-hidden"> [ Showing run {runIndex + 1} of {runs.length} ] </p>
+                  <IconButton id="next-hidden"  enabled={runs.length} onClick={() => changeRun(true)}>
+                    <ArrowForward />
+                  </IconButton>
+
+                </div>
+              }
+            </div>
+        <div className='returned-runs-hidden'>
+          {loading ?
+            <LoadingAnimation />
+            :
+            <RunDescription
+              description={curRun}
+            />
+          } 
+        </div>
+   
+
+      </div>
+    </div >
 
   );
 };
