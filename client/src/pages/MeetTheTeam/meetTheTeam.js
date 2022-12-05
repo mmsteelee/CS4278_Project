@@ -29,22 +29,26 @@ const MeetTheTeam = () => {
         { loading ?  
           <LoadingAnimation />
           :
-          <div className='container' >
+          <div className='main-wrapper' >
             <div className='pageCover'>
               <h1>MEET Our Exec Board!</h1>  
             </div>
             
+            
+
+            <div className='bios'>
+            {bios.map(bio => <Bio
+              key={bio._id}
+              bio={bio}
+            />)}
+            </div>
+
             <div className='add-bio-button'>
               {
                 user.role === 'admin' &&
                 <button onClick={() => setopenNewBio(true)}><Create />Add New Bio</button>
               }
             </div>
-
-            {bios.map(bio => <Bio
-              key={bio._id}
-              bio={bio}
-            />)}
 
            
             <NewBioPopup 

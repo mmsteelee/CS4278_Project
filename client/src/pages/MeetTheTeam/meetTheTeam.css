@@ -10,35 +10,35 @@
     margin: 0px;
 }
 
-.total-wrapper .container{
+.total-wrapper .main-wrapper{
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
-
- 
-
 }
-.container .pageCover{
+
+.main-wrapper .pageCover{
     width: 100vw;
     text-align: center;
     font-family: 'Bebas Neue', 'Montserrat', Helvetica, sans-serif;
-    margin-top: 35px;
+    margin-top: 45px;
+    background-color: white;
     /* padding-top: 6%; */
 
 }
 
-.container .pageCover h1{
+.main-wrapper .pageCover h1{
     font-weight: bold;
     font-size: 70px;
     text-shadow: none;
 }
 
-.container .add-bio-button {
+.main-wrapper .add-bio-button {
     font-family: 'Heebo', 'Times New Roman', Times, serif;
     width: 100%;
+
 }
-.container .add-bio-button button {
+.main-wrapper .add-bio-button button {
         border: none;
         width: 150px;
         height: 45px;
@@ -53,7 +53,31 @@
         font-weight: bold;
         background-color:#CFAE70;
         cursor: pointer;
+        margin-left: 35px;
 }
 .bios{
-    margin: 30px;
+    margin-left: 30px;
+    margin-right:30px;
+    margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 950px) {
+    .main-wrapper .pageCover h1{
+        font-size: 50px;
+    }
+
+    .bios{
+        margin-left: 10px;
+        margin-right:10px;
+        margin-bottom: 20px;
+    }
+
+    .main-wrapper .add-bio-button {
+        text-align: center;
+        padding-right: 10px;
+    }
+
+    .main-wrapper .add-bio-button button{
+        margin-left: 0px;
+    }
+  }

@@ -6,6 +6,10 @@ import { BACKEND_URL, IMAGE_UPLOAD_PRESET } from "../../constants"
 import '../Bio/bio.css';
 import axios from 'axios';
 
+import CameraAlt from '@material-ui/icons/CameraAlt';
+import Create from '@material-ui/icons/Create';
+
+
 const Bio = ({bio}) => {
     const {user} = useContext(UserContext)
     const [isEditing, setIsEditing] = useState(false)
@@ -97,26 +101,33 @@ const Bio = ({bio}) => {
         <div className = 'tasks-container'>
             {isEditing ? 
                 <form onSubmit={handleSubmit} encType='multipart/form-data'>
-                <input type='text' name='name' defaultValue={bio.name} placeholder='Name' onChange={handleChange}/>
-                <input type='text' name='title' defaultValue={bio.title} placeholder='Exec Title' onChange={handleChange}/>
-                <input type='text' name='text' defaultValue={bio.text} placeholder='Bio' onChange={handleChange}/>
-                <input type = 'text' name='email' defaultValue = {bio.email} placeholder='Email' onChange={handleChange}/>
-                <input type = 'file' name='photo' accept=".png, .jpg, .jpeg"  onChange={handlePhoto}/>
-                <button type="submit" disabled={!isValid}>Update Bio</button> 
-                <button type="button" onClick={handleDelete}>Delete Bio</button>
-                <button type="button" onClick={() => setIsEditing(false)}>Cancel Edit</button>
+                <div className="edit-buttons">
+                    <button type="submit" disabled={!isValid}>Update Bio</button> 
+                    <button type="button" onClick={handleDelete}>Delete Bio</button>
+                    <button type="button" onClick={() => setIsEditing(false)}>Cancel Edit</button>
+                </div>
+                
+                    <input type='text' name='name' defaultValue={bio.name} placeholder='Name' onChange={handleChange}/>
+                    <input type='text' name='title' defaultValue={bio.title} placeholder='Exec Title' onChange={handleChange}/>
+                    <input type = 'text' name='email' defaultValue = {bio.email} placeholder='Email' onChange={handleChange}/>
+                    <input type='text' name='text' defaultValue={bio.text} placeholder='Bio' onChange={handleChange}/>
+                
+                <div className = "photo-file">
+                    <h1>Upload a photo for your bio <CameraAlt /></h1>
+                    <input type = 'file' name='photo' accept=".png, .jpg, .jpeg" onChange={handlePhoto}/>  
+                </div>
                 </form>
                 : 
-                <div className = 'bioView' onDoubleClick ={handleEditAttempt}>
+                <div className = 'bioView'>
                     <img className = 'image' src={imageURL}></img>
                     <table>
-                       
-                            
-                        
                         <tbody>
                             <tr>
                                 <td className= 'bioInfo'>
-                                    <h1>{bio.name}</h1>
+                                    <div className="name-and-edit">
+                                        <h1>{bio.name}</h1>
+                                        {user.role === 'admin' && <button onClick = {handleEditAttempt}><Create /></button>}
+                                    </div>
                                     <div className="exec-title">
                                         <h1>{bio.title}</h1>
                                     </div>

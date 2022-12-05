@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    padding-right: 30px;
+    padding-right: 7px;
 }
 .navbar .text a {
   text-decoration: none;
@@ -71,6 +71,10 @@
   
 }
 
+.navbar .admin-button {
+  margin-left: 20px;
+}
+
 
   @media only screen and (max-width: 1200px) {
 
@@ -89,6 +93,7 @@
     .navbar .text button {
       font-size: 12px;
     }
+
   }
 
   @media only screen and (max-width: 950px) {

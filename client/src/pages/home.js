@@ -9,16 +9,17 @@ const HomePage = () => {
 
   const navigate = useNavigate();
 
+  const addCalendar = () => {
+    window.open('https://calendar.google.com/calendar/u/2?cid=MjY0MGJlOWJjZDM5YmRjYjgxNDZhMTUwOGEyZDFmNGY3MGQxYzgxMzQ1ZDBkZDlhOTkzOWRmMmRjYmZmNTg2Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t', '_blank');
+  }
+
   const navigateToMeetTheTeam = () => {
     navigate('/meettheteam');
   }
   const navigateToFind = () => {
     navigate('/find');
   }
-  const navigateToSchedule = () =>  {
-    navigate('calendar');
-  }
-
+  
   return (
     <div>
       <div class= "main-wrapper">
@@ -28,7 +29,7 @@ const HomePage = () => {
           <div className="meet-exec">
             <Button onClick={navigateToFind}>Ready to Start Running?</Button>
             <Button onClick={navigateToMeetTheTeam}>Meet Our Exec Board!</Button>
-            <Button onClick={navigateToSchedule}>Look at our schedule!</Button>
+            <Button onClick={addCalendar}>Add our calendar to your gcal!</Button>
           </div>
         </div>
       </div>
