@@ -106,8 +106,8 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
       retStyle.push(labelStyle('Start', startPt))
       if (geometry.getCoordinates().length > 1) {
         let endPt = new Point(geometry.getLastCoordinate())
-
-        retStyle.push(labelStyle('End: ' + formatLength(calcDistance()), endPt))
+        let label = 'End' + (editable ? ': ' + formatLength(calcDistance()) : '')
+        retStyle.push(labelStyle(label, endPt))
       }
     } else if (name === 'WayPoints') {
       retStyle.push(stopsStyle)
