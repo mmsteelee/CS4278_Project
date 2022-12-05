@@ -238,8 +238,10 @@ const CreateARun = () => {
               {/* end name */}
 
               <div className="measuring-tool">
-                <button className="upload-button" onClick={uploadMap_web}><Publish /> Upload Route</button>
-                <div>
+                <div className="button-wrap">
+                  <button className="upload-button" onClick={uploadMap_web}><Publish /> Upload Route</button>
+                </div>
+                <div className='fill-text'>
                   <h1 id="routeErrText">{runRouteError}</h1>
                 </div>
                 {/* end h1 */}

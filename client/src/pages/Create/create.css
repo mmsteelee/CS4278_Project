@@ -82,9 +82,26 @@
   
   .measuring-tool {
     margin: 20px auto;
-    padding-left: 70px;
-
+    /* padding-left: 100px; */
+    text-align: center;
+ 
   }
+
+  /* .measuring-tool button {
+    justify-content: center;
+  } */
+
+  .measuring-tool .button-wrap {
+
+    text-align: middle;
+    /* margin: */
+  }
+  .measuring-tool .fill-text {
+    padding-top: 1%;
+    padding-left: 8%;
+  }
+
+
 
   
   #create{
@@ -227,8 +244,9 @@
   }
   .name{
     margin-right: 8px;
-    margin-left: 50px;
-    margin-top: 25px;
+    margin-left: 59px;
+    margin-top: 18px;
+
   }
  
   .name input{
