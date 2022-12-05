@@ -89,6 +89,7 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
     let dist = 0
     for (const i in totalRoute) {
       dist += getDistance(new LineString(totalRoute[i]))
+   
     }
     return dist
   }
@@ -123,7 +124,8 @@ const MapComponent = forwardRef(({updateMap, editable=true, mapData}, ref) => {
   }))
 
   const submit = (route, waypoints) => {
-    distance = calcDistance() / 1.609
+    distance = calcDistance() / 1.609;
+    distance = Math.round(distance *100)/ 100;
     updateMap(route.flat().map(x => toLonLat(x).map(y => y.toFixed(5))), 
               waypoints.map(x => toLonLat(x).map(y => y.toFixed(5))),
               distance)
