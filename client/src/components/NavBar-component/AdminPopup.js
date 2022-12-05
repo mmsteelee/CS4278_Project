@@ -9,7 +9,6 @@ const AdminPopup = ({message, open, handleClose}) => {
     useEffect(() => {
         getAdmins().then(
             res => {
-                console.log(res)
                 setAdmins(res.data.map(x => x.email))
             }
         )
@@ -34,7 +33,7 @@ const AdminPopup = ({message, open, handleClose}) => {
             <DialogTitle id="alert-dialog-title">{message}</DialogTitle>
             <Typography type='h4'>Current Administrators:</Typography>
             {admins.map(email => 
-                <Typography type='h5'>{email}</Typography>
+                <Typography key={email} type='h5'>{email}</Typography>
             )}
             <DialogActions>
                 <form onSubmit={handleGrant}>

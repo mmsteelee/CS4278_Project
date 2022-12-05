@@ -46,7 +46,6 @@ export default function App() {
     async function timeout(){
       await exp()
         .then(res => {
-          console.log(res.data)
           setTimeout(() => setOpenDialog(true), res.data.exp*1000 + 1000)})
         .catch(err => console.log(err))
     }

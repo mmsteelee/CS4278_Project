@@ -24,8 +24,9 @@ const newBio = async (req, res) => {
     if (count > 10) {
         res.status(400).send('Cannot add another Bio')
     } else {
-        const result = await Bio.create(bio).catch(err => res.status(400).send(err))
-        res.status(200).send(result)
+        Bio.create(bio)
+            .catch(err => res.status(400).send(err))
+            .then(result => res.status(200).send(result.body))
     }
 }
 
