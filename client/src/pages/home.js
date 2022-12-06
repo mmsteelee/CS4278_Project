@@ -22,7 +22,7 @@ const HomePage = () => {
   
   return (
     <div>
-      <div class= "main-wrapper">
+      <div >
         <div className="main-section">
           <h1 className="cover-heading">WELCOME TO THE VANDY RUN CLUB</h1>
           <h1 className="come-run">Come run with us. No experience required.</h1>
