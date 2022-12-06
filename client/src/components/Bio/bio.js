@@ -122,24 +122,23 @@ const Bio = ({bio}) => {
                 <div className = 'bioView'>
                     <img className = 'image' src={imageURL}></img>
                     <table>
-                    <tbody>
-                    <tr>
-                        <td className= 'bioInfo'>
-                            <h1>{bio.name}</h1>
-                            <div className="exec-title">
-                                <h1>{bio.title}</h1>
-                            </div>
-                            <div className = 'email'>
-                                <p>`email: ${bio.email}`</p>
-                                {/* <a href="mailto:drechsler.lina@gmail.com"> email lina </a>  */}
-                            </div>
-                            <p>{bio.text}</p>
-                        </td>
-                        {/* <td classname = 'bioText'>
-                            <p>{bio.text}</p>
-                        </td> */}
-                    </tr>
-                    </tbody>
+                        <tbody>
+                            <tr>
+                                <td className= 'bioInfo'>
+                                    <div className="name-and-edit">
+                                        <h1>{bio.name}</h1>
+                                        {user.role === 'admin' && <button onClick = {handleEditAttempt}><Create /></button>}
+                                    </div>
+                                    <div className="exec-title">
+                                        <h1>{bio.title}</h1>
+                                    </div>
+                                    <div className = 'email'>
+                                        <h1>{bio.email}</h1> 
+                                    </div>
+                                    <p>{bio.text}</p>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     
                 </div>
