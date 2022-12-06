@@ -34,6 +34,7 @@ const MeetTheTeam = () => {
               <h1>MEET Our Exec Board!</h1>  
             </div>
             
+            
             <div className='bios'>
             {bios.map(bio => <Bio
               key={bio._id}
