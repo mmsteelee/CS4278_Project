@@ -7,12 +7,22 @@ create a search-able archive of running routes endorsed by the running club. Use
 the application will be able to input runs, tagging the route's main characteristics, so that
 others can search for runs in the area.
 
+# Demo Video
+
+[![Demo](./server/images/vurunclub.jpg)](https://www.youtube.com/watch?v=7IFUI08kbqI)
+
 # Technical Details
 MERN fullstack application:
 - MangoDB Atlas database
 - Express JS backend framework
 - Node JS backend environment
 - React JS web portal frontend
+
+Tools Utilized:
+- Cloudinary image hosting API 
+- ArcGIS routing API
+- OpenLayers React map package
+- Google OAuth 2.0
 
 # Developer Info
 
@@ -21,10 +31,6 @@ Install all dependencies
 ```
 npm install
 ```
-```
-npm install multer
-```
-
 
 Install OpenLayers
 
@@ -37,9 +43,15 @@ Run server and client
 ```
 npm start
 ```
-
-
 which will launch the client code in the browser. Put http://localhost:3000 into the browser to access.
+
+Building for production
+
+checkout to the prod branch merge main into prod. Make sure production variable is set to true. Build react app by running
+```
+npm run build
+```
+Then push to prod which will trigger a heroku deployment of the server derictory of prod branch
 
 # Testing info
 
@@ -57,12 +69,3 @@ IF THIS DOES NOT WORK
 1. go to package.json 
 2. in the "scripts" section, add: "test": "jest"
 3. make sure to save all files before running
-
-## Useful Links
-[MERN full tutorial](https://blog.logrocket.com/mern-stack-tutorial/)
-
-[Connecting MangoDB to Backend](https://www.mongodb.com/languages/mern-stack-tutorial)
-
-[Website Using Maps Routes](https://onthegomap.com/#/create)
-- [GitHub](https://github.com/onthegomap)
-- [Blog describing development](https://medium.com/@onthegomap/a-new-on-the-go-map-d0b027250958)
