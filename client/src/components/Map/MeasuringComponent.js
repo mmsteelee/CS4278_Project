@@ -104,7 +104,7 @@ export const tipStyle = new Style({
   }),
 });
 
-export const formatLength = function (length) {
+export const formatLength = function (length, miles = true) {
   let kmLength;
   let mileLength;
   let meterLength;
@@ -112,14 +112,14 @@ export const formatLength = function (length) {
   let output;
   if (length > 1) {
     kmLength = length;
-    mileLength = Math.round((kmLength / 1.609)*100)/ 100;
+    mileLength = miles ? length : Math.round((kmLength / 1.609)*100)/ 100;
     //output = Math.round((length / 1000) * 100) / 100 + " km";
-    output = mileLength + " mi";
+    output = parseFloat(mileLength).toFixed(2) + " mi";
   } else {
     meterLength = length * 1000.0;
-    feetLength = Math.round((meterLength * 3.281)* 100) /100;
+    feetLength = miles ? length * 5280.0 : Math.round((meterLength * 3.281)* 100) / 100;
     //output = Math.round(length * 100) / 100 + " m";
-    output = feetLength + " ft";
+    output = parseFloat(feetLength).toFixed(0) + " ft";
   }
   return output;
 };
