@@ -190,7 +190,7 @@ const CreateARun = () => {
 
   return (
     // make a whole new set of things and make them all hidden
-    <div >
+    <div className="main-wrapper">
       <div className="hidden-part">
       <div className="create-header">
         <h1 className='lets-create'>Create Your Run</h1>
