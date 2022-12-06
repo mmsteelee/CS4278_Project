@@ -1,45 +1,117 @@
-/* from github */
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-.page{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    min-height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+@import url('https://fonts.cdnfonts.com/css/yeseva-one');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import url('https://fonts.cdnfonts.com/css/anton');
+@import url('https://fonts.cdnfonts.com/css/merriweather');
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+@import url('https://fonts.cdnfonts.com/css/noto-sans-japanese');
+@import url('https://fonts.cdnfonts.com/css/heebo');
+
+.main-section {
+  padding-top: 4.5%;
+  padding-bottom: none;
+  text-align: center;
+  font-family:'Bebas Neue', Times, serif;
 }
 
-/* from bootstrap template */
-/*
- * Globals
- */
+.main-section .cover-heading {
+  /* text-align: center;
+  font-family: 'Times New Roman', Times, serif; */
+  color: #1C1c1c;
+  font-size: 15vh;
+  text-shadow: none;
+  font-weight: 600;
+  padding-bottom: 0;
+  margin-bottom: 0%;
+}
 
+.main-section .come-run {
+  color: #b59761;
+  font-size: 7vh;
+  text-shadow: none;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.main-section .meet-exec {
+  padding-top: 6%;
+}
+
+.main-section .meet-exec button {
+  color: #b59761;
+  font-family:'Bebas Neue', Times, serif;
+  font-weight: 600;
+  font-size: 5.5vh;
+  background: rgba(255, 251, 251, 0.65);
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  border-radius: 15px;
+  background-color: rgba(28, 28, 28, .75);
+  margin: 20px;
+}
+
+.main-section .meet-exec button:hover{
+  background-color: rgba(28, 28, 28, .90);
+}
+
+@media only screen and (max-width: 950px) {
+
+  .main-section {
+    padding-top: 11%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .main-section .cover-heading {
+    font-size: 7.8vh;
+  }
+
+  .main-section .come-run {
+    font-size: 3.5vh;
+    color: #b59761;
+  }
+
+  .main-section .meet-exec {
+    padding-top: 20%;
+  }
+
+  .main-section .meet-exec button {
+    font-family:'Bebas Neue', Times, serif;
+    font-weight: 600;
+    font-size: 4vh;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    margin: 10px;
+  }
+}
 /* Links */
-a,
+/* a,
 a:focus,
 a:hover {
   color: black;
-}
+} */
 
 /* Custom default button */
-.btn-default,
+/* .btn-default,
 .btn-default:hover,
 .btn-default:focus {
   color: #333;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
+  text-shadow: none; */
+   /* Prevent inheritence from `body` */
+  /* background-color: #fff;
   border: 1px solid #fff;
-}
+} */
 
 
 /*
  * Base structure
  */
 
-html,
+/* html,
 body {
   height: 100vh;
   background-color: #f5f3ef;
@@ -48,10 +120,10 @@ body {
   color: black;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
+} */
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
+/* .site-wrapper {
   display: table;
   width: 100%;
   height: 100%;
@@ -66,41 +138,16 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
-}
+} */
 
 /* Padding for spacing */
-.inner {
+/* .inner {
   padding: 30px;
-}
+} */
 
-.main-section {
-  padding-top: 3%;
-  margin-bottom: 5vh;
-  text-align: center;
-  font-family: Montserrat, Times, serif;
-}
 
-/* Things Anneliese is adding */
-.main-section .cover-heading {
-  /* text-align: center;
-  font-family: 'Times New Roman', Times, serif; */
-  color: rgb(74, 47, 3);
-  font-size: 9vh;
-  text-shadow: none;
-}
 
-.main-section .check-text{
-  font-size: 5vh;
-  color: rgb(74, 47, 3);
-  text-shadow: none;
-}
-.main-section .calendar {
-  border: solid 0px #777;
-  width: "800";
-  height: "600";   
-  scroll-behavior: none;
-  font-family: 'Times New Roman', Times, serif;
-}
+
 /* .main-wrapper {
   width: 100vw;
 } */
@@ -145,14 +192,14 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .masthead-brand {
     float: left;
   }
   .masthead-nav {
     float: right;
   }
-}
+} */
 
 
 /*
@@ -171,17 +218,17 @@ body {
  * Affix and center
  */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   /* Pull out the header and footer */
-  .masthead {
+  /* .masthead {
     position: fixed;
     top: 0;
-  }
+  } */
   /* Start the vertical centering */
-  .site-wrapper-inner {
+  /* .site-wrapper-inner {
     vertical-align: middle;
   }
-}
+} */
 
 
 

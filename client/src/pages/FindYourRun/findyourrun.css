@@ -1,29 +1,21 @@
-.main-wrapper{
-  display: flex;
-  padding-top: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
 
-}
-
+/* 
 .map-container {
     height: calc(100vh - 90px);
     width: 100%;
     padding-right: 175çpx;
-    /* margin-top: 5vh;
+     margin-top: 5vh;
     margin-bottom: 5vh;
     margin-left: 5vw;
-    margin-right: 15vw; */
+    margin-right: 15vw; 
   }
   
   .measuring-tool {
     margin: 20px auto;
   }
   
-  .main-wrapper{
-    display: flex;
-  }
-  .main-wrapper .create{
+
+  /* .main-wrapper .create{
     flex: 50%;
     height: 80px;
     padding-top: 8vh;
@@ -36,7 +28,7 @@
     padding-top: 8vh;
     padding-right: 25px;
     padding-left: 50px;
-  }
+  } 
 
   #create{
     height: 80px;
@@ -72,27 +64,7 @@
     transition-duration: 0.4s;
 
   }
-  /* .create button{
-    border: none;
-    text-decoration: none;
-    font-size: large;
-    color: white;
-    background-color: #6bb8d1;
-    cursor: pointer;
-    transition-duration: 0.4s;
-  } */
 
-  /* .find button{
-    border: none;
-    text-decoration: none;
-    font-size: large;
-    color: white;
-    border-radius: 5px;
-    padding: 15px 30px;
-    background-color: #6bb8d1;
-    cursor: pointer;
-    transition-duration: 0.4s;
-  } */
   
   #create:hover {
     background-color:darkgoldenrod;
@@ -101,4 +73,4 @@
   #find:hover {
     background-color: darkgoldenrod;
   }
- 
+  */

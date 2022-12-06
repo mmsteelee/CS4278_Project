@@ -1,9 +1,83 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import url('https://fonts.cdnfonts.com/css/heebo');
 
-.pageCover{
-width: 100%;
-text-align: center;
-font-family: Montserrat, Helvetica, sans-serif;
-text-shadow: none;
-padding-top: 7%;
+.total-wrapper {
+    /* display: flex; */
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    margin: 0px;
 }
+
+.total-wrapper .main-wrapper{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.main-wrapper .pageCover{
+    width: 100vw;
+    text-align: center;
+    font-family: 'Bebas Neue', 'Montserrat', Helvetica, sans-serif;
+    margin-top: 45px;
+    background-color: white;
+    /* padding-top: 6%; */
+
+}
+
+.main-wrapper .pageCover h1{
+    font-weight: bold;
+    font-size: 70px;
+    text-shadow: none;
+}
+
+.main-wrapper .add-bio-button {
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
+    width: 100%;
+
+}
+.main-wrapper .add-bio-button button {
+        border: none;
+        width: 150px;
+        height: 45px;
+        text-decoration: none;
+        font-size: large;
+        margin-bottom: 15px;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: top;
+        /* background-color: #6bb8d1; */
+        color:white;
+        font-weight: bold;
+        background-color:#CFAE70;
+        cursor: pointer;
+        margin-left: 35px;
+}
+.bios{
+    margin-left: 30px;
+    margin-right:30px;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 950px) {
+    .main-wrapper .pageCover h1{
+        font-size: 50px;
+    }
+
+    .bios{
+        margin-left: 10px;
+        margin-right:10px;
+        margin-bottom: 20px;
+    }
+
+    .main-wrapper .add-bio-button {
+        text-align: center;
+        padding-right: 10px;
+    }
+
+    .main-wrapper .add-bio-button button{
+        margin-left: 0px;
+    }
+  }

@@ -5,15 +5,17 @@ const MAX_RUNS_SHOWN = 10
 
 const getRun = async (req, res) => {
     RunData.findById(req.params.id)
-        .then(run => res.status(200).send(run.coordinates))
+        .then(run => 
+            res.status(200).send({
+                route: run.route,
+                 waypoints: run.waypoints
+        }))
         .catch(err => res.status(400).send(err))
 }
 
 const searchRuns = async (req, res) => {
     const runs = await RunMeta.find({})
     const query = req.query
-
-  
     
     if (query.minDistance && query.maxDistance && query.tags) {
         let ratings = []
@@ -56,19 +58,23 @@ const searchRuns = async (req, res) => {
 }
 
 const makeRun = async (req, res) => {
+    
+   
     let runMeta = req.body.meta
     let runData = req.body.data
+    
     // create run components
     if (runMeta && runData) {
+
         const result = await RunData.create(runData)
-            .catch(err => res.status(400).send('Cannot create run data record'))
-        
         runMeta.data_id = result.id
         RunMeta.create(runMeta)
             .then(res.status(200).send())
             .catch(err => res.status(400).send('Cannot create run meta record'))
     } else {
+        console.log("rejected");
         res.status(400).json({message: 'Submitted run not complete'})
+
     }
 }
 

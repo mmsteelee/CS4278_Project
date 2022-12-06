@@ -1,32 +1,46 @@
 import React, { useRef, useState } from 'react';
-import NavBar from '../../components/NavBar-component/NavBar'
-
+import { useNavigate } from 'react-router-dom';
 import MapComponent from "../../components/Map/MapComponent";
-import Tags from "../../components/Tags/TagComponent";
+import Dropdown from '../../components/Dropdown/DropdownComponent';
 import "ol/ol.css";
 import "./create.css";
 import { makeRun } from '../../api/runs';
-// import Header from '../../components/header-component/header'
+import IconButton from '@mui/material/IconButton';
 
-const defaultRun = [[-86.81009726157794, 36.146299217317576],
-[-86.80131438406454, 36.15044574144105],
-[-86.7992112393866, 36.14801580890686],
-[-86.80075254366587, 36.13742787171793],
-[-86.81087733379613, 36.13868784177623],
-[-86.8098680396668, 36.14635011068731]]
+import Undo from '@material-ui/icons/Undo';
+import Create from '@material-ui/icons/Create';
+import Search from '@material-ui/icons/Search';
+import Delete from '@material-ui/icons/Delete';
+import Publish from '@material-ui/icons/Publish';
+// import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
+
+
+
 
 const CreateARun = () => {
-  const mapRef = useRef()
+  const mapRef_web = useRef()
+  const mapRef_mobile = useRef()
   const tagsRef = useRef()
   //declare a run route handler
-  const [runRouteError, setRouteText] = useState('Fill all required fields before submitting')
+  const [showIcons, setShowIcons] = useState(false);
+  const [runRouteError, setRouteText] = useState('* Fill all required fields before submitting')
   const [routeDrawn, setDrawn] = useState(true); //indicates if route has been drawn
   const [mapContext, setMapContext] = useState({
     name: "",
     distance: 0,
     tags: [],
-    coordinates: [],
+    data: null,
   })
+
+  const navigate = useNavigate();
+
+  const navigateToCreate = () => {
+    navigate('/create');
+  }
+
+  const navigateToFind = () => {
+    navigate('/find');
+  }
   const handleChange = (event) => {
 
     if (routeDrawn) {
@@ -40,7 +54,7 @@ const CreateARun = () => {
   };
 
   const validate = () => {
-    if (!mapContext.coordinates.length) {
+    if (!mapContext.data?.route.length) {
       setRouteText('Please draw a route on the map')
       return false
     }
@@ -56,19 +70,17 @@ const CreateARun = () => {
   }
 
 
-  // useEffect(()=>{
-  //   drawnRoute = mapContext.coordinates.length > 0
-  // }, [mapContext]);
-
-  const updateMap = (runData, distance) => {
+  const updateMap = (route, waypoints, distance) => {
     setDrawn(true);
-    console.log(mapContext.name);
+
     let tmp = mapContext;
     tmp.name = mapContext.name;
-    tmp.coordinates = runData;
+    tmp.data = {
+      route: route,
+      waypoints: waypoints
+    }
     tmp.distance = distance;
     setMapContext(tmp);
-    console.log("updateMap");
   }
 
   //Why are these the same?
@@ -77,25 +89,26 @@ const CreateARun = () => {
     let tmp = mapContext;
     tmp.tags = tags_;
     setMapContext(tmp);
+    console.log(tags_);
     console.log("updateTags");
   }
 
 
-  const uploadMap = () => {
+  const uploadMap_web = () => {
     let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
     let run = {
       meta: runMeta,
-      data: { coordinates: mapContext.coordinates.map(String) }
+      data: mapContext.data
     }
-
+ 
     if (validate()) {
       makeRun(run)
-      .then(console.log('Successfull upload'),
-            setRouteText('Successfully uploaded run!')  
-            )
-      .catch(err => console.log(err))
+        .then(console.log('Successfull upload'),
+          setRouteText('Successfully uploaded run!')
+        )
+        .catch(err => console.log(err))
 
-      mapRef.current.reset();
+      mapRef_web.current.reset();
       setMapContext({
         // name: mapContext.name,
         name: '',
@@ -103,12 +116,12 @@ const CreateARun = () => {
         tags: [],
         coordinates: [],
       })
-    } 
+    }
   };
 
-  const removeLines = () => {
+  const removeLines_web = () => {
     console.log(mapContext.name);
-    mapRef.current.reset();
+    mapRef_web.current.reset();
     tagsRef.current.clear();
     setDrawn(false);
     //setMapContext({ ...mapContext, name: "Please Draw a Route" });
@@ -121,50 +134,201 @@ const CreateARun = () => {
     })
   };
 
+  const undoLines_web = () => {
+    console.log(mapContext.name);
+    mapRef_web.current.undoLine();
+
+  };
+
+
+  const uploadMap_mobile = () => {
+    let runMeta = { name: mapContext.name, distance: mapContext.distance, tags: mapContext.tags }
+    let run = {
+      meta: runMeta,
+      data: mapContext.data
+    }
+ 
+    if (validate()) {
+      makeRun(run)
+        .then(console.log('Successfull upload'),
+          setRouteText('Successfully uploaded run!')
+        )
+        .catch(err => console.log(err))
+
+      mapRef_mobile.current.reset();
+      setMapContext({
+        // name: mapContext.name,
+        name: '',
+        distance: 0,
+        tags: [],
+        coordinates: [],
+      })
+    }
+  };
+
+  const removeLines_mobile = () => {
+    console.log(mapContext.name);
+    mapRef_mobile.current.reset();
+    tagsRef.current.clear();
+    setDrawn(false);
+    //setMapContext({ ...mapContext, name: "Please Draw a Route" });
+    setMapContext({
+      // name: mapContext.name,
+      name: "Please Draw a Route",
+      distance: 0,
+      tags: [],
+      coordinates: [],
+    })
+  };
+
+  const undoLines_mobile = () => {
+    console.log(mapContext.name);
+    mapRef_mobile.current.undoLine();
+
+  };
+
+
   return (
-
+    // make a whole new set of things and make them all hidden
     <div >
-      <div className="main-wrapper-create">
-        <div className="createFeatures">
+      <div className="hidden-part">
+      <div className="create-header">
+        <h1 className='lets-create'>Create Your Run</h1>
+      </div>
+      {/* end create-header */}
 
-          <div className='tagButtons'>
-            <h1 id="tagsText">Select the tags that apply to your run</h1>
-            <Tags ref={tagsRef} updateTags={updateTags} />
-          </div>
-          <div className='map'>
-            <div className ='mapBox'>
-            <MapComponent
-              ref={mapRef}
-              updateMap={updateMap}
-              points={defaultRun} />
+      <div className="main-wrapper-create">
+        
+          <div className='row'>
+            <div className="column left">
+              {/* id={showInfo ? "hidden" : ""} */}
+              <div className="mapButtons">
+                <button className="undo-button" onClick={undoLines_web}><Undo /></button>
+                <button className="reset-button" onClick={removeLines_web}><Delete /></button>
               </div>
-            <div className="name">
-              {/* placeholder='Name Your Run' */}
-              <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
+              {/* end map buttons */}
+              <div className='map' id={showIcons ? "hidden" : ""}>
+                <MapComponent
+                  ref={mapRef_web}
+                  updateMap={updateMap} /> 
+              </div>
+              <br></br>
+              {/* end map component */}
             </div>
-            <div className="measuring-tool">
-              <button className="reset-button" onClick={removeLines}>
-                Start Over
-              </button>
-              <button className="upload-button" onClick={uploadMap}>
-                Upload Route
-              </button>
-              <div>
-                <h1 id="routeErrText">{runRouteError}</h1>
+            {/* end left column */}
+
+            <div className="column right">
+            {/* id={showInfo ? "hidden" : ""} */}
+              <div className='navButtons'>
+                <button id="create" onClick={navigateToCreate}><Create /> Create A Run</button>
+                <button id="find" onClick={navigateToFind}><Search /> Find A Run</button>
+              </div>
+              {/* end navButtons */}
+              <div className='dropdown'>
+
+              <Dropdown
+                ref={tagsRef} updateTags={updateTags}
+              />
+              </div>
+              {/* end dropdown */}
+           
+              <div className="name">
+                <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
+              </div>
+              {/* end name */}
+
+              <div className="measuring-tool">
+                <div className="button-wrap">
+                  <button className="upload-button" onClick={uploadMap_web}><Publish /> Upload Route</button>
                 </div>
+                <div className='fill-text'>
+                  <h1 id="routeErrText">{runRouteError}</h1>
+                </div>
+                {/* end h1 */}
+              </div>
+              {/* end measuring-tool */}
+
             </div>
+            {/* end column right */}
+
+
           </div>
+          {/* end row div */}
+
+
+
+
+
+
+          {/* WORK HERE */}
+          
+
 
         </div>
-        {/* <div className = "map">
-      <MapComponent />
-    </div>   
+        {/* end hidden div */}
+      </div>
+      {/* end main wrapper create */}
+      <div className="hidden-when-big">
 
-    <div className = "tags">
-    <Tags/>
-    </div> */}
+        {/*           HEADER DIV             */}
+        <div className="create-header-hidden">
+          <h1 className='lets-create-hidden'>Create Your Run</h1>
+        {/* <h1 className='start-tracing'>Click anywhere on the map to start tracing your route.</h1> */}
+        </div>
+
+        {/*            NAVBUTTONS DIV          */}
+        <div className='navButtons-hidden'>
+          <button id="create-hidden" onClick={navigateToCreate}><Create /> Create A Run</button>
+          <button id="find-hidden" onClick={navigateToFind}><Search /> Find A Run</button>
+        </div>
+
+        {/*            UNDO AND REDO BUTTONS         */}
+        <div className="mapButtons-hidden">
+          <button className="undo-button-hidden" onClick={undoLines_mobile}><Undo /></button>
+          <button className="reset-button-hidden" onClick={removeLines_mobile}><Delete /></button>
+          
+        </div>
+
+        {/*            MAP COMPONENT             */}
+        <div className="hidden-map">
+          {/* <button onClick={() => setShowIcons(!showIcons)}>Calendar</button> */}
+          <MapComponent
+            ref={mapRef_mobile}
+            updateMap={updateMap} 
+          /> 
+        </div>
+
+        {/*           ERROR MESSAGES          */}
+        <div className='error-msg'>
+          <h1 id="routeErrText-hidden">{runRouteError}</h1>
+        </div>
+
+        {/*             DROPDOWN COMPONENT         */}
+        <div className='dropdown-hidden'>
+          <Dropdown
+            ref={tagsRef} updateTags={updateTags}
+          />
+        </div>
+
+        {/*             NAME AND SUBMIT            */}
+        <div className='name-and-submit'>
+          {/* name */}
+          <div className="name-hidden">
+            <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
+          </div>
+          {/* submit */}
+          <div className="submit-hidden">
+            <button className="upload-button-hidden" onClick={uploadMap_mobile}><Publish /> Upload Route</button>
+          </div>
+        </div>
+
+        
+
+
+
       </div>
     </div>
+    // end big div
 
   );
 }

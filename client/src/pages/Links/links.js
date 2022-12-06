@@ -1,32 +1,47 @@
 import React from 'react'
-// //import { Link } from "react-router-dom";
-import NavBar from '../../components/NavBar-component/NavBar.js'
-
-import Logout from '../../components/logout-component/logout.js'
+import {useNavigate} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 import './links.css'
 
 const Links = () => {
-    return (
-      <div>
-        <div className= "main-wrapper">
-          
-          <div className='links'>
-          <table>
-            <thead> Want to further connect with us? Click on the links below!</thead>
-            <tbody>
-              <tr>
-                <a href="https://groupme.com/join_group/88408537/MKZan3OD"> GROUPME </a>
-                <a href="https://docs.google.com/spreadsheets/d/1EDIrVz3ZESnqif_Kfs86KTd_whF9-cg_210EIRAJ2dU/edit"> PRACTICE SIGNUPS </a>
-                <a href="https://www.instagram.com/vandyrunclub/?hl=en"> INSTAGRAM </a>
-                <a href="https://anchorlink.vanderbilt.edu/organization/runningclub"> ANCHORLINK </a>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+
+  const navigate = useNavigate();
+
+  const openGroupMe = () => {
+    window.open('https://groupme.com/join_group/88408537/MKZan3OD', '_blank');
+  }
+
+  const practiceSignups = () => {
+    window.open('https://docs.google.com/spreadsheets/d/1EDIrVz3ZESnqif_Kfs86KTd_whF9-cg_210EIRAJ2dU/edit', '_blank');
+  }
+
+  const Instagram = () => {
+    window.open('https://www.instagram.com/vandyrunclub/?hl=en', '_blank');
+  }
+
+  const AnchorLink = () => {
+    window.open('https://anchorlink.vanderbilt.edu/organization/runningclub', '_blank');
+  }
+
+  return (
+ 
+    <div className='links'>
+      <table>
+        <thead>
+          <h1 className="connect">Want to further connect with us?</h1>
+          <h1 className="linksBelow">Click on the links below!</h1>
+        </thead>
+        <tbody>
+          <tr>
+            <Button onClick={openGroupMe}>GROUPME</Button>
+            <Button onClick={Instagram}>INSTAGRAM</Button>
+            <Button onClick={practiceSignups}>PRACTICE SIGNUPS</Button>
+            <Button onClick={AnchorLink}>ANCHORLINK</Button>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  
     );
   };
     

@@ -1,53 +1,158 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Work Sans&display=swap');
+@import url('https://fonts.cdnfonts.com/css/heebo');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
 
+
+.tasks-container input {
+    display: flex;
+    font-family: 'heebo', 'Times New Roman', Times, serif;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    width: 650px;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+.tasks-container .edit-buttons {
+    width: 660px;
+    text-align: right;
+    
+}
+
+.tasks-container button {
+    margin-top: 3px;
+    margin: 5px;
+    border-radius: 5px;
+    font-family: 'heebo', 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: rgba(223, 184, 111, 0.85);
+    border: none;
+    color: white;
+    text-decoration: none;
+}
+
+
+.tasks-container .photo-file {
+    display: flex;
+    flex-direction: row;
+    /* width: 660px; */
+    margin-top: 0px;
+    font-family: 'heebo', 'Times New Roman', Times, serif;
+}
+
+.tasks-container .photo-file input {
+    justify-content: top;
+    
+}
+
+.tasks-container .photo-file h1 {
+    margin-left: 200px;
+    font-size: 17px;
+    justify-content: left;
+    font-weight: normal;
+    vertical-align: middle;
+    margin-top: 17.5px;
+
+}
+
+.tasks-container button:hover {
+    background-color:#CFAE70;
+}
 .bioView{
+    margin-top: 10px;
     vertical-align: center;
-    padding: 15px;
+    /* padding: 15px; */
     size: 100%;
-    background: rgba(255, 251, 251, 0.5);
+
+    /* background: rgba(255, 251, 251, 0.5); */
     display: flex;
     text-shadow: none;
-    font-family: Work Sans, Helvetica, sans-serif;
+    
 }
 
 
 .bioInfo img {
-    flex: 15%;
-    padding: 15px;
-    max-height: 75px;
-    max-width: auto;
     
+    
+    max-height: 25px;
+    max-width: 25px; 
+   
+}
+
+.image {
+    margin: 10px;
+    
+    height: auto; 
+    width: auto; 
+    max-width: 175px; 
+    max-height: 175px;
 }
 
 .bioInfo{
-    flex: 75%;
+    padding-top: 10px;
     vertical-align: text-top;
-    padding: 15px;
+    padding-left: 7px;
+    font-family: 'heebo', 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
 }
+
 
 .bioInfo h1 {
     align-items: top;
     /* text-transform: uppercase; */
-    font-size: 30px;
+    font-size: 40px;
     margin: 0px;
+    font-family: 'Bebas neue', 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.bioInfo .name-and-edit {
+    display: flex;
+    flex-direction: row;
+}
+
+.bioInfo .name-and-edit button {
+    transform: scale(1.2);
+    color: black;
+    background-color: white;
+    padding-bottom: 9px;
+    margin-left: 7px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.bioInfo .name-and-edit button:hover {
+    transform: scale(1.4);
+    color:#CFAE70;
 }
 
 .bioInfo .exec-title h1{
-    font-style:italic;
-    font-size: 17px;
+    /* font-style:italic; */
+    font-weight: normal;
+    font-size: 27px;
     margin: 0px;
 }
 
-.bioView .bioInfo .email a{
+.bioView .bioInfo .email {
+    margin-bottom:3px ;
+}
+.bioView .bioInfo .email h1{
+    font-family: 'Heebo', 'Times New Roman', Times, serif;
     text-decoration: none;
-    color: black;
-    font-size: 17px;
+    color: #dab46c;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .bioInfo p{
-    font-size: 17px;
-    margin: 0px;
+    font-size: 15px;
+    margin-bottom: 3px;
 }
 
 /* .bioParagraph{
@@ -57,3 +162,59 @@
     background-color: black;
     
 } */
+
+@media only screen and (max-width: 950px) {
+
+    .tasks-container input {
+        width: 100%;
+        justify-content: center;
+        margin: 0px;
+        margin-top: 5px;
+    }
+    
+
+    .tasks-container .edit-buttons {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .tasks-container button {
+        font-size:20px;
+    }
+
+    .tasks-container .photo-file {
+        width: 100%;
+    }
+
+    .tasks-container .photo-file h1 {
+        margin-left: 4px;
+        font-size: 0px;
+   
+ 
+    
+    }
+
+
+    .bioView{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bioInfo h1{
+        text-align: center;
+    }
+
+    .bioInfo p{
+        text-align: center;
+    }
+
+    .bioInfo .name-and-edit {
+        justify-content: center;
+        align-items: center;
+
+    }
+    
+}
