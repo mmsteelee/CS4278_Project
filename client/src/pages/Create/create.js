@@ -190,7 +190,7 @@ const CreateARun = () => {
 
   return (
     // make a whole new set of things and make them all hidden
-    <div >
+    <div className="main-wrapper">
       <div className="hidden-part">
       <div className="create-header">
         <h1 className='lets-create'>Create Your Run</h1>
@@ -236,6 +236,7 @@ const CreateARun = () => {
                 <input id="namebox" type='text' name='name' placeholder='Name Your Run' value={mapContext.name} onChange={handleChange} />
               </div>
               {/* end name */}
+
 
               <div className="measuring-tool">
                 <div className="button-wrap">

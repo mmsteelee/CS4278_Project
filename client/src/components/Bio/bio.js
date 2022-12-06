@@ -10,6 +10,7 @@ import CameraAlt from '@material-ui/icons/CameraAlt';
 import Create from '@material-ui/icons/Create';
 
 
+
 const Bio = ({bio}) => {
     const {user} = useContext(UserContext)
     const [isEditing, setIsEditing] = useState(false)
